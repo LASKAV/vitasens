@@ -1,0 +1,19 @@
+.nav-menu {
+    @apply flex justify-between m-auto max-w-[100rem] text-[#4ABCBC] select-none;
+}
+
+.nav-menu-logo {
+    @apply flex items-center gap-4;
+}
+
+.nav-menu-controls {
+    @apply flex justify-between items-center font-normal;
+}
+
+.nav-menu-item {
+    @apply border-4 hover:shadow-[0px_0px_5px_5px_rgba(74,188,188,1)] hover:border-[#4ABCBC] mx-6 my-3 w-[8.75rem] h-11 rounded-2xl border-white border-solid transition-all duration-300 cursor-pointer font-medium;
+}
+
+.nav-menu-item div {
+    @apply flex justify-center gap-[0.31rem] mt-[0.42rem];
+}
