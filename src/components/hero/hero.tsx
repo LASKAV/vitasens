@@ -1,7 +1,7 @@
 export default () => {
   return (
-    <div class="mx-auto relative">
-      <div class="container ">
+    <div class="relative 2xl:container 2xl:mx-auto">
+      <div class="relative container mx-auto">
         <div class="absolute top-[1rem] left-[1.5rem] h-36 w-36 drop-shadow-[15px_15px_10px_rgba(0,0,0,0.5)]">
           <img class="rotate-[-36deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
         </div>
@@ -28,10 +28,10 @@ export default () => {
             систем організму.
           </span>
         </div>
-        <div class="absolute top-24 right-0 flex shadow-[8.7px_8.7px_4px_0px_rgba(0,0,0,0.35)] overflow-hidden rounded-l-[5rem] w-[37.68rem] h-[36.87rem]">
+      </div>
+        <div class="absolute top-24 right-0 flex shadow-[8.7px_8.7px_4px_0px_rgba(0,0,0,0.35)] overflow-hidden rounded-l-[5rem] 2xl:rounded-r-[5rem] w-[37.68rem] h-[36.87rem]">
           <img class="object-cover w-full" src="/assets/images/ceo.png" alt="ceo" />
         </div>
-      </div>
     </div>
   )
 }
