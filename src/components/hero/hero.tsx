@@ -1,3 +1,5 @@
+import ActionButton from '../actionButton/actionButton'
+
 export default () => {
   return (
     <div class="relative 2xl:container 2xl:mx-auto">
@@ -28,10 +30,13 @@ export default () => {
             систем організму.
           </span>
         </div>
-      </div>
-        <div class="absolute top-24 right-0 flex shadow-[8.7px_8.7px_4px_0px_rgba(0,0,0,0.35)] overflow-hidden rounded-l-[5rem] 2xl:rounded-r-[5rem] w-[37.68rem] h-[36.87rem]">
-          <img class="object-cover w-full" src="/assets/images/ceo.png" alt="ceo" />
+        <div class="absolute top-[34.75rem] left-[7.25rem]">
+          <ActionButton text="Консультація" />
         </div>
+      </div>
+      <div class="absolute top-24 right-0 flex shadow-[8.7px_8.7px_4px_0px_rgba(0,0,0,0.35)] overflow-hidden rounded-l-[5rem] 2xl:rounded-r-[5rem] w-[37.68rem] h-[36.87rem]">
+        <img class="object-cover w-full" src="/assets/images/ceo.png" alt="ceo" />
+      </div>
     </div>
   )
 }
