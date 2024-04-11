@@ -1,3 +1,4 @@
+import styles from './hero.css'
 import ActionButton from '../actionButton/actionButton'
 
 export default () => {
@@ -22,9 +23,6 @@ export default () => {
         <div class="absolute top-[11.19rem] left-[7.25rem]">
           <span class="[text-shadow:3px_4px_4px_rgba(36,123,123,0.40)] text-[#4ABCBC] text-[4.375rem]">Ваше здоров’я</span>
         </div>
-        <div class="absolute top-[17.5rem] left-[11.75rem]">
-          <span class="text-[#48CBCB] text-[6rem] tracking-[0.6rem] font-suave">VitaSens</span>
-        </div>
         <div class="absolute top-[26.69rem] left-[7.25rem] max-w-[43.56rem] text-pretty">
           <span class="[text-shadow:0px_4px_4px_rgba(0,0,0,0.25)] italic font-medium text-[#444] leading-[1.52419rem] text-5">
             Клініка VitaSens - коли все в одному місці і без черг.
@@ -32,6 +30,16 @@ export default () => {
             а також - спеціально розроблені чек-апи для усіх
             систем організму.
           </span>
+        </div>
+        <div class="absolute flex top-[17.5rem] left-[11.75rem] ">
+          <span class="branding-letter">V</span>
+          <span class="branding-letter">i</span>
+          <span class="branding-letter">t</span>
+          <span class="branding-letter">a</span>
+          <span class="branding-letter">S</span>
+          <span class="branding-letter">e</span>
+          <span class="branding-letter">n</span>
+          <span class="branding-letter">s</span>
         </div>
         <div class="absolute top-[34.75rem] left-[7.25rem]">
           <ActionButton text="Консультація" />
