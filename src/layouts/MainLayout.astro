@@ -27,7 +27,9 @@ const { title } = Astro.props;
 			<NavBar />
 		</header>
 
-		<slot />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
 <style is:global>
