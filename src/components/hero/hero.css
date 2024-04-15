@@ -1,0 +1,54 @@
+.vita-sens {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    display: inline-block;
+    animation: rollout 3s forwards;
+}
+
+@keyframes rollout {
+    from {
+        opacity: 0;
+        transform: translateX(-30rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.branding-letter {
+    @apply vita-sens [text-shadow:1px_3px_4px_#0FF] text-[#48CBCB] text-[6rem] tracking-[0.6rem] font-suave static select-none;
+}
+
+.branding-letter:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.branding-letter:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.branding-letter:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.branding-letter:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.branding-letter:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.branding-letter:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.branding-letter:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+.branding-letter:nth-child(8) {
+    animation-delay: 0.7s;
+}
