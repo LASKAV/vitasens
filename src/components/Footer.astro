@@ -1,0 +1,62 @@
+---
+import instagramIcon from '@/assets/images/instagram-icon.svg';
+import facebookIcon from '@/assets/images/facebook-icon.png';
+import clockFilledIcon from '@/assets/images/clock-filled-icon.svg';
+import envelopeFilledIcon from '@/assets/images/envelope-filled-icon.svg';
+import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
+import Logo from './Logo.astro';
+---
+
+<div class='mx-auto max-w-[100rem]'>
+  <div class='flex px-24 pb-5 pt-[100px]'>
+    <div class='absolute'>
+      <Logo />
+    </div>
+    <div
+      class='mx-auto flex items-start text-6xl font-medium leading-tight tracking-[3.2px] text-[#88D2D2] [text-shadow:4px_4px_4px_#247B7B]'
+    >
+      Наші контакти
+    </div>
+  </div>
+  <div
+    class='flex justify-center gap-7 bg-tiffany py-10 text-xs leading-normal tracking-[0.6px] text-white'
+  >
+    <div class='flex flex-col items-center gap-3'>
+      <img class='h-5 w-5' src={phoneFilledIcon.src} alt='Телефон' />
+      <div>+38093 432 00 22 <br /> +38096 432 00 22</div>
+    </div>
+    <div class='flex flex-col items-center gap-3'>
+      <img class='h-5 w-5' src={envelopeFilledIcon.src} alt='Пошта' />
+      <div>klinikavitasens@gmail.com</div>
+    </div>
+    <div class='flex flex-col items-center gap-3'>
+      <img class='h-5 w-5' src={clockFilledIcon.src} alt='Графік роботи' />
+      <div class='text-center'>Понеділок - пʼятниця: <br /> 9:00 - 18:00</div>
+    </div>
+  </div>
+  <div
+    class='text- pb-7 pt-5 text-center font-medium leading-normal tracking-[0.8px] text-tiffany'
+  >
+    адреса: м. Одеса, вул. Сонячна 4, ЖК “Сонячний”
+  </div>
+  <div class='mx-auto flex w-[1240px] flex-col gap-4'>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1374.794547172635!2d30.75125318197134!3d46.437023465893596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c6339296243e51%3A0xcc68c288f2ab6aa1!2sSonyachna%20St%2C%204%2C%20Odesa%2C%20Odes'ka%20oblast%2C%2065000!5e0!3m2!1sen!2sua!4v1713203557262!5m2!1sen!2sua"
+      width='1240'
+      height='220'
+      class='self-center rounded-[40px]'
+      style='border:0;'
+      allowfullscreen=''
+      loading='lazy'
+      referrerpolicy='no-referrer-when-downgrade'></iframe>
+    <div class='flex gap-7 self-end'>
+      <a href=''>
+        <img src={instagramIcon.src} alt='' />
+      </a>
+      <a href=''>
+        <img class='h-[50px] w-[50px]' src={facebookIcon.src} alt='' />
+      </a>
+    </div>
+  </div>
+  <div class='flex pt-4'></div>
+</div>
