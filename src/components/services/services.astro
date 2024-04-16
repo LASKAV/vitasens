@@ -1,0 +1,35 @@
+---
+import ServiceItem from '../serviceItem/serviceItem';
+
+const serviceItemData = [
+    {title: 'Аналізи', text: `УЗД - це безпечний, неінвазивний метод дослідження,
+          який дозволяє отримати детальні зображення внутрішніх
+          органів та тканин за допомогою високочастотних звукових хвиль.
+          В нашій клініці деякі види УЗД проводиться як дорослим, так і дітям`},
+    {title: 'УЗД діагностика', text: `УЗД - це безпечний, неінвазивний метод дослідження,
+          який дозволяє отримати детальні зображення внутрішніх
+          органів та тканин за допомогою високочастотних звукових хвиль.
+          В нашій клініці деякі види УЗД проводиться як дорослим, так і дітям`},
+    {title: 'Чек-апи', text: `УЗД - це безпечний, неінвазивний метод дослідження,
+          який дозволяє отримати детальні зображення внутрішніх
+          органів та тканин за допомогою високочастотних звукових хвиль.
+          В нашій клініці деякі види УЗД проводиться як дорослим, так і дітям`}
+]
+---
+<div class="container mx-auto">
+    <div class="flex justify-around z-[-1]">
+        {
+          serviceItemData.map(serviceItem  => (
+            <ServiceItem title={serviceItem.title} text={serviceItem.text}/>
+          ))
+        }
+    </div>
+    <div class="flex justify-between items-end px-[1.46rem] mt-[-3rem]">
+        <div>
+            <img src="/assets/images/stock-desk.svg" alt="" />
+        </div>
+        <div class="z-[1]">
+            <img src="/assets/images/stock-female-doctor-table.svg" alt="" />
+        </div>
+    </div>
+</div>
