@@ -17,17 +17,36 @@ const serviceItemData = [
 ]
 ---
 <div class="container mx-auto">
-    <div class="flex justify-around z-[-1]">
-        {
-          serviceItemData.map(serviceItem  => (
-            <ServiceItem title={serviceItem.title} text={serviceItem.text}/>
-          ))
-        }
+    <div class="flex items-center justify-around z-[-1]">
+
+        <div class="relative 2xl:flex overflow-hidden w-[21.9rem] h-[31.25rem] rounded-[1.25rem] drop-shadow-[5px_6px_4px_rgba(0,0,0,0.25)] bg-[#E8E8E8]">
+            <div class="absolute w-full h-full opacity-0 hover:opacity-100 transition-all duration-300 bg-[#E8E8E8] z-10">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <ServiceItem title={serviceItemData[0].title} text={serviceItemData[0].text}/>
+                </div>
+            </div>
+            <img class="object-cover w-full z-[-1]" src="/assets/images/service-blood-test.jpeg" alt="personnel" />
+        </div>
+
+        <div class="relative 2xl:flex overflow-hidden w-[21.9rem] h-[47rem] rounded-[1.25rem] drop-shadow-[5px_6px_4px_rgba(0,0,0,0.25)] bg-[#E8E8E8]">
+            <div class="absolute w-full h-full opacity-0 hover:opacity-100 transition-all duration-300 bg-[#E8E8E8] z-10">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <ServiceItem title={serviceItemData[1].title} text={serviceItemData[1].text}/>
+                </div>
+            </div>
+            <img class="object-cover w-full z-[-1]" src="/assets/images/service-ultrasound.jpeg" alt="personnel" />
+        </div>
+
+        <div class="relative 2xl:flex overflow-hidden w-[21.9rem] h-[36.25rem] rounded-[1.25rem] drop-shadow-[5px_6px_4px_rgba(0,0,0,0.25)] bg-[#E8E8E8]">
+            <div class="absolute w-full h-full opacity-0 hover:opacity-100 transition-all duration-300 bg-[#E8E8E8] z-10">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <ServiceItem title={serviceItemData[2].title} text={serviceItemData[2].text}/>
+                </div>
+            </div>
+            <img class="object-cover w-full z-[-1]" src="/assets/images/service-blood-pressure.jpeg" alt="personnel" />
+        </div>
     </div>
     <div class="flex justify-between items-end px-[1.46rem] mt-[-3rem]">
-        <div>
-            <img src="/assets/images/stock-desk.svg" alt="" />
-        </div>
         <div class="z-[1]">
             <img src="/assets/images/stock-female-doctor-table.svg" alt="" />
         </div>
