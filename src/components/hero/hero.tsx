@@ -35,7 +35,7 @@ export default () => {
       <div class="hidden" ref={bookingModalRef}>
         <BookingModal toggleModal={openAndCloseModal} />
       </div>
-      <div use:gsapParallax class="parallax absolute container h-full mx-auto z-[-1]">
+      <div use:gsapParallax class="parallax absolute container h-full mx-auto z-[-1] overflow-x-hidden">
         <div class="relative top-[1rem] left-[-2.5rem] lg:left-[1.5rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
           <img class="h-[80%] lg:h-[100%] rotate-[-36deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
         </div>
