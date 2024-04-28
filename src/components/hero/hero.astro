@@ -1,8 +1,16 @@
 ---
 import ActionButton from '../actionButton/actionButton';
 import ActionButtonMinor from '../actionButtonMinor/actionButtonMinor';
-import BookingModal from '../bookConsultationModal/bookConsultationModal.astro';
+import BookingModal from '../bookConsultationModal/bookConsultationModal';
 import './hero.css';
+
+
+
+function openAndCloseModal() {
+    document.body.classList.toggle('hidden')
+    console.log('log');
+    alert('vhgsp');
+}
 ---
 <>
     <script>
@@ -23,8 +31,9 @@ import './hero.css';
         tl.to('.parallax', {
             y: 70
         })
+
     </script>
-    <BookingModal />
+    <BookingModal client:load />
     <div class="2xl:relative lg:container lg:mx-auto">
         <div class="parallax absolute container h-full mx-auto z-[-1]">
             <div class="relative top-[1rem] left-[-2.5rem] lg:left-[1.5rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
@@ -66,7 +75,7 @@ import './hero.css';
               </span>
             </div>
             <div class="hidden lg:block">
-                <ActionButton text="Консультація" />
+                <ActionButton text="Консультація" action={openAndCloseModal} client:load/>
             </div>
             <div class="block lg:hidden">
                 <ActionButtonMinor text="Консультація" />
