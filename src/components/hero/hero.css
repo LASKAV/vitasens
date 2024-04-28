@@ -18,7 +18,7 @@
 }
 
 .branding-letter {
-    @apply vita-sens [text-shadow:1px_3px_4px_#0FF] text-[#48CBCB] text-[6rem] tracking-[0.6rem] font-suave static select-none;
+    @apply vita-sens [text-shadow:1px_3px_4px_#0FF] text-[#48CBCB] text-[2.25rem] lg:text-[6rem] tracking-[0.6rem] font-suave static select-none;
 }
 
 .branding-letter:nth-child(1) {
