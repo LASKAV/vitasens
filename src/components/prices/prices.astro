@@ -30,31 +30,59 @@ let priceLists
 
         tl.from(".price-lists", { opacity: 1, y: 100, duration: 1});
     </script>
-    <div class="container mx-auto h-[29rem] pt-[2.3rem] pb-[1.2rem] overflow-hidden">
+    <div class="hidden xl:block container mx-auto h-[29rem] pt-[2.3rem] lg:pb-[1.2rem] overflow-hidden">
         <div class="[text-shadow:2px_3px_4px_rgba(13,92,99,0.5)] mx-auto flex justify-center text-[2rem] text-tiffany-light">Вартість послуг</div>
         <div class="relative">
-            <img class="absolute left-0" src={femaleDoctor.src} alt="" />
+            <img class="hidden lg:block absolute left-0" src={femaleDoctor.src} alt="" />
             <img class="absolute top-10 left-[21.5rem]" src={thumbUpIcon.src} alt="" />
             <img class="absolute top-[3.37rem] left-[34rem]" src={smallCrossIcon.src} alt="" />
             <img class="absolute top-[3.12rem] right-[36.13rem]" src={herzIcon.src} alt="" />
             <img class="absolute top-[2.42rem] right-[22rem]" src={pillsIcon.src} alt="" />
-            <img class="absolute right-0" src={maleDoctor.src} alt="" />
+            <img class="hidden lg:block absolute right-0" src={maleDoctor.src} alt="" />
         </div>
         <a href="#">
-            <div class="mx-auto price-lists w-fit flex justify-center items-end gap-6 h-full drop-shadow-[5px_0px_4px_rgba(0,0,0,0.25)] hover:drop-shadow-[0px_36px_50px_rgba(70,208,208,0.5)] transition-[filter]">
-                <div class="relative top-[3.75rem] overflow-hidden w-[12.5rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
+            <div class="mx-auto price-lists w-fit flex justify-center items-end gap-4 lg:gap-6 h-full drop-shadow-[5px_0px_4px_rgba(0,0,0,0.25)] hover:drop-shadow-[0px_36px_50px_rgba(70,208,208,0.5)] transition-[filter]">
+                <div class="relative overflow-hidden w-[8.125rem] lg:w-[12.5rem] lg:top-[3.75rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
                     <img class="object-cover w-full" src={priceList1.src} alt="" />
                 </div>
-                <div class="overflow-hidden w-[12.5rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
+                <div class="relative overflow-hidden w-[8.125rem] lg:w-[12.5rem] top-[0rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
                     <img class="object-cover w-full" src={priceList2.src} alt="" />
                 </div>
-                <div class="overflow-hidden w-[12.5rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
+                <div class="relative overflow-hidden w-[8.125rem] lg:w-[12.5rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
                     <img class="object-cover w-full" src={priceList3.src} alt="" />
                 </div>
-                <div class="relative top-[3.12rem] overflow-hidden w-[12.5rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
+                <div class="hidden lg:block relative overflow-hidden lg:w-[12.5rem] lg:top-[3.12rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
                     <img class="object-cover w-full" src={priceList4.src} alt="" />
                 </div>
             </div>
         </a>
     </div>
+    <div class="block xl:hidden container mx-auto pt-[2.95rem]">
+        <div class="mx-auto flex justify-center text-[2rem] text-tiffany-light">Вартість послуг</div>
+        <div class="h-[30rem]">
+            <div class="relative top-[3.88rem]">
+                <img class="absolute top-[0.25rem] left-[1.25rem] h-[2.5rem] rotate-[-15deg] xl:h-[3.1rem] xl:top-[0rem] xl:left-[16rem] xl:rotate-0" src={thumbUpIcon.src} alt="" />
+                <img class="absolute top-[18.5rem] left-[5.31rem] xl:h-[3.2rem] xl:top-[0.89rem] xl:left-[21.5rem] xl:rotate-0" src={smallCrossIcon.src} alt="" />
+                <img class="absolute top-[0rem] right-[2.78rem] h-[2.19rem] rotate-[22deg]" src={herzIcon.src} alt="" />
+                <img class="absolute top-[16.7rem] right-[6.62rem] h-[2.5rem] rotate-[3deg]" src={pillsIcon.src} alt="" />
+            </div>
+            <a href="/">
+                <div class="relative top-[3.88rem] mx-auto price-lists flex justify-center gap-4 lg:gap-6 drop-shadow-[5px_0px_4px_rgba(0,0,0,0.25)] hover:drop-shadow-[0px_36px_50px_rgba(70,208,208,0.5)] transition-[filter] xl:top-[0rem]">
+                    <div class="relative overflow-hidden w-[8.125rem] lg:w-[12.5rem] top-[3.75rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
+                       <img class="object-cover w-full" src={priceList1.src} alt="" />
+                    </div>
+                    <div class="relative overflow-hidden w-[8.125rem] lg:w-[12.5rem] top-[0rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
+                       <img class="object-cover w-full" src={priceList2.src} alt="" />
+                    </div>
+                    <div class="relative overflow-hidden w-[8.125rem] lg:w-[12.5rem] top-[3.75rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9] xl:top-[0rem]">
+                       <img class="object-cover w-full" src={priceList3.src} alt="" />
+                    </div>
+                    <div class="hidden xl:block relative overflow-hidden w-[8.125rem] lg:w-[12.5rem] top-[3.75rem] rounded-[1.25rem] border-[3px] border-[#D9D9D9]">
+                       <img class="object-cover w-full" src={priceList3.src} alt="" />
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </>
+
