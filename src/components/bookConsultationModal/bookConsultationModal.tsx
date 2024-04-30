@@ -27,7 +27,7 @@ export default (props: BookConsultationModalProps) => {
 
             <div
               class="[text-shadow:1px_2px_4px_rgba(0,0,0,0.25)] text-[1.5rem] font-semibold tracking-[0.075rem] mx-auto flex justify-center pt-[2.72rem] pb-[0.8rem]">
-              <span class="text-black">Запис на&nbsp;</span><span class="text-tiffany">консультацію</span>
+              <span class="text-black">Запис на&nbsp;<span class="text-tiffany">консультацію</span></span>
             </div>
             <form id="bookingModal" method="post" class="flex flex-col">
               <div class="flex flex-col pt-[2rem]">
@@ -56,7 +56,7 @@ export default (props: BookConsultationModalProps) => {
                 </div>
               </div>
               <div class="flex border-b drop-shadow-[0px_4px_4px_rgba(0,0,0,0.5)]"></div>
-              <div class="grid gap-[1.2rem] pt-8 grid-cols-2 grid-rows-2">
+              <div class="grid gap-[1.2rem] pt-8 grid-cols-2 grid-rows-2 text-[0.75rem]">
                 <div class='flex flex-col items-center gap-6'>
                   <img class='h-6 w-6' src={Clock.src} alt='Working schedule'/>
                   <div class='text-center'>Понеділок - пʼятниця: <br/>&nbsp;&nbsp;&nbsp;&nbsp;9:00 - 18:00</div>
