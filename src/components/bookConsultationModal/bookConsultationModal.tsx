@@ -7,7 +7,9 @@ import ActionButtonMinor from '../actionButtonMinor/actionButtonMinor';
 import ActionButton from '../actionButton/actionButton';
 
 type BookConsultationModalProps = {
-  toggleModal: () => void;
+  toggleModal: (container: Element) => void;
+  onRequestSuccess: () => void;
+  modalContainer: Element;
 }
 
 export default (props: BookConsultationModalProps) => {
@@ -20,7 +22,7 @@ export default (props: BookConsultationModalProps) => {
           <img class="object-cover w-full h-[50rem]" src={Background.src} alt=""/>
         </div>
         <div class="grow w-[50%] px-5 py-[2.12rem]">
-          <div onClick={props.toggleModal} class="flex justify-end hover:cursor-pointer">
+          <div onClick={() => props.toggleModal(props.modalContainer)} class="flex justify-end hover:cursor-pointer">
             <img src={CloseModal.src} alt=""/>
           </div>
           <div class="mx-auto lg:max-w-[24rem]">
@@ -49,10 +51,10 @@ export default (props: BookConsultationModalProps) => {
               </div>
               <div class="flex justify-end pt-[2rem] pb-[2.43rem]">
                 <div class="hidden lg:block">
-                  <ActionButton text="Відправити" />
+                  <ActionButton text="Відправити" action={props.onRequestSuccess} />
                 </div>
                 <div class="block lg:hidden">
-                  <ActionButtonMinor text="Відправити"/>
+                  <ActionButtonMinor text="Відправити" action={props.onRequestSuccess} />
                 </div>
               </div>
               <div class="flex border-b drop-shadow-[0px_4px_4px_rgba(0,0,0,0.5)]"></div>
