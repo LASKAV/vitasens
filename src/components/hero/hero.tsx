@@ -3,12 +3,28 @@ import ActionButtonMinor from '../actionButtonMinor/actionButtonMinor';
 import BookingModal from '../bookConsultationModal/bookConsultationModal';
 import SuccessModal from '../bookConsultationSuccessModal/bookConsultationSuccessModal';
 import './hero.css';
+// @ts-ignore
 import { gsap } from 'gsap/dist/gsap';
+// @ts-ignore
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const gsapParallax = (element: Element) => {
+// const gsapParallax = (element: HTMLDivElement) => {
+//   let tl = gsap.timeline({
+//     scrollTrigger: {
+//       trigger: element,
+//       start: 0,
+//       end: 'bottom top',
+//       scrub: true,
+//     }
+//   });
+//   tl.to(element, {
+//     y: 140
+//   })
+// };
+
+const gsapParallax = (element: HTMLDivElement) => {
   let tl = gsap.timeline({
     scrollTrigger: {
       trigger: element,
@@ -22,8 +38,8 @@ const gsapParallax = (element: Element) => {
   })
 };
 
-let bookingModalRef: Element;
-let successModalRef: Element;
+let bookingModalRef: HTMLDivElement;
+let successModalRef: HTMLDivElement;
 
 const openAndCloseModal = (container: Element) => {
   document.body.classList.toggle('overflow-hidden');
@@ -53,7 +69,7 @@ export default () => {
       <div class="hidden" ref={successModalRef}>
         <SuccessModal toggleModal={openAndCloseModal} modalContainer={successModalRef} />
       </div>
-      <div use:gsapParallax class="parallax absolute container h-full mx-auto z-[-1] overflow-x-hidden">
+      <div ref={gsapParallax} class="parallax absolute container h-full mx-auto z-[-1] overflow-x-hidden">
         <div class="relative top-[1rem] left-[-2.5rem] lg:left-[1.5rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
           <img class="h-[80%] lg:h-[100%] rotate-[-36deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
         </div>
