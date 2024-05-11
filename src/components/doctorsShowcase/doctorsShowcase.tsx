@@ -11,7 +11,10 @@ import './doctorsShowcase.css'
 
 import {For} from 'solid-js';
 
+import DoctorTile from './doctorsShowcaseTile.tsx'
+
 type RegisteredNurseData = {
+  id: string;
   fullName: string;
   position: string;
   description?: string;
@@ -23,26 +26,31 @@ type RegisteredNurseData = {
 export default () => {
   let rnInfo: RegisteredNurseData[] = [
     {
+      id: '1',
       fullName: 'Саморукова Вікторія',
       position: 'Засновниця клініки',
       rnPhotoLink: '/assets/images/rn-v-samorukova.jpeg'
     },
     {
+      id: '2',
       fullName: 'Хоміна Ольга',
       position: 'Лікар гастроентеролог',
       rnPhotoLink: '/assets/images/rn-o-homina.jpeg'
     },
     {
+      id: '3',
       fullName: 'Дукова Ольга',
       position: 'Лікар невропатолог',
       rnPhotoLink: '/assets/images/rn-o-dukova.jpeg'
     },
     {
+      id: '4',
       fullName: 'Гвоздяниця Анастасія',
       position: 'Лікар ендокринолог',
       rnPhotoLink: '/assets/images/rn-a-gvozdianitsa.jpeg'
     },
     {
+      id: '5',
       fullName: 'Кудінова Наталія',
       position: 'Лікар УЗД',
       rnPhotoLink: '/assets/images/rn-n-kudinova.jpeg'
@@ -50,34 +58,30 @@ export default () => {
   ]
 
   return (
-    <div class="pt-[3.3rem]">
-      <Swiper
-        modules={[Navigation, Scrollbar]}
-        spaceBetween={50}
-        slidesPerView={1}
-        scrollbar={{ draggable: false }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
-      >
-        <For each={rnInfo}>{(info) =>
-          <SwiperSlide class="py-4">
-            <div class="relative w-[13.5rem] h-[19.3rem] pt-[0.44rem] pb-2 bg-white shadow-[5px_5px_0px_0px_rgba(217,217,217,1)] rounded-[1.25rem] mx-auto border border-[#D9D9D9]">
-              <div class="w-[12.5rem] h-[12rem] rounded-[0.9375rem] overflow-hidden mx-auto">
-                <img class="select-none object-cover w-full h-full" src={info.rnPhotoLink} alt="ceo"/>
-              </div>
-              <div class="pl-[0.5rem] pt-[0.62rem]">
-                <div class="text-tiffany text-[0.75rem] font-semibold">{info.fullName}</div>
-                <div class="text-[0.75rem]">{info.position}</div>
-              </div>
-              <button class="absolute left-2 bottom-2 text-[0.75rem] border-[2px] border-tiffany-light rounded-full px-2 py-1 hover:bg-tiffany-light hover:text-white">консультація</button>
-              <button class="absolute right-2 bottom-2">
-                <img class="object-cover w-full h-full" src="/assets/images/expand-view-icon.svg" alt="ceo"/>
-              </button>
-            </div>
-          </SwiperSlide>
+    <>
+      <div class="pt-[3.3rem] lg:hidden">
+        <Swiper
+          modules={[Navigation, Scrollbar]}
+          spaceBetween={50}
+          slidesPerView={1}
+          scrollbar={{ draggable: false }}
+          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.log('slide change')}
+        >
+          <For each={rnInfo}>{(info: RegisteredNurseData) =>
+            <SwiperSlide class="py-4">
+              <DoctorTile id={info.id} fullName={info.fullName} position={info.position} rnPhotoLink={info.rnPhotoLink} />
+            </SwiperSlide>
+          }
+          </For>
+        </Swiper>
+      </div>
+      <div class="hidden pt-16 gap-[0rem] lg:flex lg:container lg:mx-auto">
+        <For each={rnInfo}>{(info: RegisteredNurseData) =>
+          <DoctorTile id={info.id} fullName={info.fullName} position={info.position} rnPhotoLink={info.rnPhotoLink} />
         }
         </For>
-      </Swiper>
-    </div>
+      </div>
+    </>
   )
 }
