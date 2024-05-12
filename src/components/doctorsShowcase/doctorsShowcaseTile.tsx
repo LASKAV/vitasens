@@ -16,7 +16,7 @@ export default (props: DoctorsShowcaseTileProps) => {
           <img class="select-none object-cover w-full h-full" src={props.info.rnPhotoLink} alt="ceo"/>
         </div>
         <div class="pl-[0.5rem] pt-[0.62rem]">
-          <div class="text-tiffany text-[0.75rem] font-semibold">{props.info.fullName}</div>
+          <div class="text-tiffany text-[0.75rem] font-semibold">{props.info.lastName} {props.info.firstName}</div>
           <div class="text-[0.75rem]">{props.info.position}</div>
         </div>
         <button

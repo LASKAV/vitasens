@@ -14,31 +14,35 @@ import DoctorTile from './doctorsShowcaseTile.tsx';
 import DoctorDetailsModal from './doctorDetailsModal';
 
 export type RegisteredNurseData = {
-  id: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
+  middleName: string;
   position: string;
   description: string;
   additional?: string;
   workingDays: string;
   serviceAppointmentPrice?: number;
-  outOfOfficeAppointment?: number;
+  outOfOfficeAppointmentPrice?: number;
   rnPhotoLink: string;
 }
 
 export default () => {
   let rnInfo: RegisteredNurseData[] = [
     {
-      id: '1',
-      fullName: 'Саморукова Вікторія',
+      firstName: 'Вікторія',
+      lastName: 'Саморукова',
+      middleName: 'Володимірівна',
       position: 'Засновниця клініки',
       description: 'Лікар кардіолог, лікар вищої категорії зі стажем роботи більше 20 років, кандидат медичних наук, входить до 100 найвпливовіших жінок України. Проводить консультації та УЗД діагностику. Каже, що закохана у серце з першого погляду на УЗД апараті.',
+      additional: 'Проводить консультації як офлайн, так і онлайн',
       workingDays: 'Прийом: пн-пт',
       serviceAppointmentPrice: 800,
       rnPhotoLink: '/assets/images/rn-v-samorukova.jpeg'
     },
     {
-      id: '2',
-      fullName: 'Хоміна Ольга',
+      firstName: 'Ольга',
+      lastName: 'Хоміна',
+      middleName: 'Юріївна',
       position: 'Лікар гастроентеролог',
       description: 'Лікар гастроентеролог зі стажем роботи більше 20 років. Керується лише принципами доказової медицини, тому не радить пити соду від печії, а радить записатися на прийом! Допоможе вирішити будь-яку гастроентерологічну проблему.',
       workingDays: 'Прийом щосуботи',
@@ -46,8 +50,9 @@ export default () => {
       rnPhotoLink: '/assets/images/rn-o-homina.jpeg'
     },
     {
-      id: '3',
-      fullName: 'Дукова Ольга',
+      firstName: 'Ольга',
+      lastName: 'Дукова',
+      middleName: 'Робертівна',
       position: 'Лікар невропатолог',
       description: 'ЛІкар вищої категорії, стаж роботи - більше 40 років. Кандидат медичних наук, доцент кафедри “Загальної практики” ОНМедУ. Як і всі лікарі команди VitaSens, керується лише принципами доказової медицини, тому розповість чому діагнозу вегето-судинна дистонія не існує.',
       workingDays: 'Прийом щовівторка',
@@ -55,18 +60,21 @@ export default () => {
       rnPhotoLink: '/assets/images/rn-o-dukova.jpeg'
     },
     {
-      id: '4',
-      fullName: 'Гвоздяниця Анастасія',
+      firstName: 'Анастасія',
+      lastName: 'Гвоздяниця',
+      middleName: 'Іванівна',
       position: 'Лікар ендокринолог',
       description: 'Лікар ендокринолог зі стажем роботи більше 10 років. Анастасія Іванівна знається на ендокринних проблемах з заплідненням, спеціалізується на правильному харчуванні та допоможе вирішити будь-яку ендокринологічну проблему.',
+      additional: 'Проводить консультації як офлайн, так і онлайн',
       workingDays: 'Прийом щовівторка',
       serviceAppointmentPrice: 700,
-      outOfOfficeAppointment: 800,
+      outOfOfficeAppointmentPrice: 800,
       rnPhotoLink: '/assets/images/rn-a-gvozdianitsa.jpeg'
     },
     {
-      id: '5',
-      fullName: 'Кудінова Наталія',
+      firstName: 'Наталія',
+      lastName: 'Кудінова',
+      middleName: 'Анатоліївна',
       position: 'Лікар УЗД',
       description: 'Лікар вищої категорії зі стажем роботи понад 40 років. Робити УЗД у Наталії Анатоліївни - це як прийти на екскурсію власного організму, ви почуєте про свої органи і побачите їх на УЗД апараті.\n' +
         'Дослідження проводяться як дорослим, так і дітям',
