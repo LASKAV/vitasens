@@ -1,7 +1,7 @@
 ---
 import SecondaryLayout from '../layouts/SecondaryLayout.astro';
 import NavBar from '../components/navBar/navBar';
-import Doctors from '../components/doctorsShowcase/doctorsShowcase';
+import DoctorsShowcase from '../components/doctorsShowcase/doctorsShowcase';
 ---
 
 <SecondaryLayout title="Doctors">
@@ -15,7 +15,7 @@ import Doctors from '../components/doctorsShowcase/doctorsShowcase';
             індивідуальний підхід до кожного пацієнта.
         </div>
     </div>
-    <Doctors client:only="solid-js" />
+    <DoctorsShowcase client:only="solid-js" />
 
     <div class="absolute bottom-0 w-full h-[10rem] bg-[url('/assets/images/vitasens-doctors-footer-pattern-mobile.png')] bg-repeat-x md:h-[16rem] md:bg-[url('/assets/images/vitasens-doctors-footer-pattern.png')] " slot="footer"></div>
 
