@@ -10,20 +10,6 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// const gsapParallax = (element: HTMLDivElement) => {
-//   let tl = gsap.timeline({
-//     scrollTrigger: {
-//       trigger: element,
-//       start: 0,
-//       end: 'bottom top',
-//       scrub: true,
-//     }
-//   });
-//   tl.to(element, {
-//     y: 140
-//   })
-// };
-
 const gsapParallax = (element: HTMLDivElement) => {
   let tl = gsap.timeline({
     scrollTrigger: {
