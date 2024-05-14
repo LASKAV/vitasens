@@ -45,7 +45,7 @@ export default (props: DetailsProps) => {
             {props.details.info.position}
           </div>
           <button
-            class="bottom-[1.25rem] right-[1.25rem] text-[0.85rem] font-medium border border-tiffany-light py-[0.69rem] px-[0.88rem] skew-x-[-20deg]">
+            class="bottom-[1.25rem] right-[1.25rem] text-[0.85rem] font-medium border border-tiffany-light py-[0.69rem] px-[0.88rem] skew-x-[-20deg] transition-all duration-300 hover:bg-tiffany-light hover:text-white">
             <div class="skew-x-[20deg]">
               Консультація
             </div>
