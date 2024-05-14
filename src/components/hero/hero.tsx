@@ -7,6 +7,7 @@ import './hero.css';
 import { gsap } from 'gsap/dist/gsap';
 // @ts-ignore
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import {createSignal} from 'solid-js';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,37 +25,45 @@ const gsapParallax = (element: HTMLDivElement) => {
   })
 };
 
-let bookingModalRef: HTMLDivElement;
 let successModalRef: HTMLDivElement;
 
-const openAndCloseModal = (container: Element) => {
-  document.body.classList.toggle('overflow-hidden');
-  container.classList.toggle('hidden');
+
+const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
+
+const openBookingModal = () => {
+  setBookingModalOpen(true);
 }
 
-const closeModalIfOpened = (modalContainer: Element) => {
-  if (!modalContainer.classList.contains('hidden')) {
-    modalContainer.classList.add('hidden');
-  }
-  if (document.body.classList.contains('overflow-hidden')) {
-    document.body.classList.remove('overflow-hidden');
-  }
+const closeBookingModal = () => {
+  setBookingModalOpen(false);
 }
 
-const onRequestSuccess = () => {
-  closeModalIfOpened(bookingModalRef);
-  successModalRef.classList.toggle('hidden');
-}
+// const openAndCloseModal = (container: Element) => {
+//   document.body.classList.toggle('overflow-hidden');
+//   container.classList.toggle('hidden');
+// }
+//
+// const closeModalIfOpened = (modalContainer: Element) => {
+//   if (!modalContainer.classList.contains('hidden')) {
+//     modalContainer.classList.add('hidden');
+//   }
+//   if (document.body.classList.contains('overflow-hidden')) {
+//     document.body.classList.remove('overflow-hidden');
+//   }
+// }
+//
+// const onRequestSuccess = () => {
+//   closeModalIfOpened(bookingModalRef);
+//   successModalRef.classList.toggle('hidden');
+// }
 
 export default () => {
   return (
     <div class="2xl:relative lg:container lg:mx-auto">
-      <div class="hidden" ref={bookingModalRef}>
-        <BookingModal toggleModal={openAndCloseModal} onRequestSuccess={onRequestSuccess} modalContainer={bookingModalRef} />
-      </div>
-      <div class="hidden" ref={successModalRef}>
-        <SuccessModal toggleModal={openAndCloseModal} modalContainer={successModalRef} />
-      </div>
+      <BookingModal isOpen={isBookingModalOpen()} onClose={closeBookingModal} />
+      {/*<div class="hidden" ref={successModalRef}>*/}
+      {/*  <SuccessModal toggleModal={openAndCloseModal} modalContainer={successModalRef} />*/}
+      {/*</div>*/}
       <div ref={gsapParallax} class="parallax absolute container h-full mx-auto z-[-1] overflow-x-hidden">
         <div class="relative top-[1rem] left-[-2.5rem] lg:left-[1.5rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
           <img class="h-[80%] lg:h-[100%] rotate-[-36deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
@@ -95,10 +104,10 @@ export default () => {
             </span>
         </div>
         <div class="hidden lg:block">
-          <ActionButton text="Консультація" action={() => openAndCloseModal(bookingModalRef)}  />
+          <ActionButton text="Консультація" action={openBookingModal}  />
         </div>
         <div class="block lg:hidden">
-          <ActionButtonMinor text="Консультація" action={() => openAndCloseModal(bookingModalRef)} />
+          <ActionButtonMinor text="Консультація" action={openBookingModal} />
         </div>
       </div>
       <div class="absolute top-[12.62rem] 2xl:top-24 right-0 hidden xl:flex shadow-[8.7px_8.7px_4px_0px_rgba(0,0,0,0.35)] overflow-hidden rounded-l-[5rem] 2xl:rounded-r-[5rem] w-[37.68rem] h-[36.87rem]">
