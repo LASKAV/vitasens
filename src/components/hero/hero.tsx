@@ -25,10 +25,8 @@ const gsapParallax = (element: HTMLDivElement) => {
   })
 };
 
-let successModalRef: HTMLDivElement;
-
-
 const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
+const [isSuccessModalOpen, setSuccessModalOpen] = createSignal(false);
 
 const openBookingModal = () => {
   setBookingModalOpen(true);
@@ -38,32 +36,20 @@ const closeBookingModal = () => {
   setBookingModalOpen(false);
 }
 
-// const openAndCloseModal = (container: Element) => {
-//   document.body.classList.toggle('overflow-hidden');
-//   container.classList.toggle('hidden');
-// }
-//
-// const closeModalIfOpened = (modalContainer: Element) => {
-//   if (!modalContainer.classList.contains('hidden')) {
-//     modalContainer.classList.add('hidden');
-//   }
-//   if (document.body.classList.contains('overflow-hidden')) {
-//     document.body.classList.remove('overflow-hidden');
-//   }
-// }
-//
-// const onRequestSuccess = () => {
-//   closeModalIfOpened(bookingModalRef);
-//   successModalRef.classList.toggle('hidden');
-// }
+const closeSuccessModal = () => {
+  setSuccessModalOpen(false);
+}
+
+const onRequestSuccess = () => {
+  closeBookingModal();
+  setSuccessModalOpen(true);
+}
 
 export default () => {
   return (
     <div class="2xl:relative lg:container lg:mx-auto">
-      <BookingModal isOpen={isBookingModalOpen()} onClose={closeBookingModal} />
-      {/*<div class="hidden" ref={successModalRef}>*/}
-      {/*  <SuccessModal toggleModal={openAndCloseModal} modalContainer={successModalRef} />*/}
-      {/*</div>*/}
+      <BookingModal isOpen={isBookingModalOpen()} onClose={closeBookingModal} onRequestSuccess={onRequestSuccess} />
+      <SuccessModal isOpen={isSuccessModalOpen()} onClose={closeSuccessModal} />
       <div ref={gsapParallax} class="parallax absolute container h-full mx-auto z-[-1] overflow-x-hidden">
         <div class="relative top-[1rem] left-[-2.5rem] lg:left-[1.5rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
           <img class="h-[80%] lg:h-[100%] rotate-[-36deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
