@@ -39,15 +39,18 @@ export default (props: DetailsProps) => {
             Ціна консультації вихідного дня:&nbsp;{props.details.info.outOfOfficeAppointmentPrice}&nbsp;грн
           </div>
         </Show>
-        <div class="absolute bottom-[1.25rem] left-[1.25rem] font-bold">
-          {props.details.info.position}
-        </div>
-        <button
-          class="absolute bottom-[1.25rem] right-[1.25rem] text-[0.85rem] font-medium border border-tiffany-light py-[0.69rem] px-[0.88rem] skew-x-[-20deg]">
-          <div class="skew-x-[20deg]">
-            Консультація
+        <div class="h-4"></div>
+        <div class="static md:absolute px-5 pb-5 flex justify-between items-center bottom-0 w-full">
+          <div class="bottom-[1.25rem] left-[1.25rem] font-bold">
+            {props.details.info.position}
           </div>
-        </button>
+          <button
+            class="bottom-[1.25rem] right-[1.25rem] text-[0.85rem] font-medium border border-tiffany-light py-[0.69rem] px-[0.88rem] skew-x-[-20deg] transition-all duration-300 hover:bg-tiffany-light hover:text-white">
+            <div class="skew-x-[20deg]">
+              Консультація
+            </div>
+          </button>
+        </div>
       </div>
     </>
   )

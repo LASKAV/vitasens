@@ -9,14 +9,13 @@ import DoctorsShowcase from '../components/doctorsShowcase/doctorsShowcase';
     <NavBar slot="header" />
     <div class="flex flex-col items-center text-center min-h-[8.8125rem] bg-[url('/assets/images/doctors-header-bg.png')] bg-cover pt-[0.62rem] pb-[1.25rem] mt-[1.94rem] lg:mt-[3.62rem]">
         <div class="mt-[1.25rem] text-tiffany-light text-[1.5rem] font-semibold lg:text-[2.25rem] lg:mt-[0.62rem]">Наша команда</div>
-        <div class="mt-[1rem] w-[25.625rem] px-[0.63rem] text-black text-[0.6875rem] lg:text-[0.875rem] lg:w-[35.375rem] lg:mt-[0.5rem]">
+        <div class="mt-[1rem] max-w-[25.625rem] px-[0.63rem] text-black text-[0.6875rem] lg:text-[0.875rem] lg:max-w-[35.375rem] lg:mt-[0.5rem]">
             Команда VitaSens - це досвідчені лікарі і професіонали своєї справи.
             Наші лікарі керуються лише принципами доказової медицини і мають
             індивідуальний підхід до кожного пацієнта.
         </div>
     </div>
     <DoctorsShowcase client:only="solid-js" />
-
-    <div class="absolute bottom-0 w-full h-[10rem] bg-[url('/assets/images/vitasens-doctors-footer-pattern-mobile.png')] bg-repeat-x md:h-[16rem] md:bg-[url('/assets/images/vitasens-doctors-footer-pattern.png')] " slot="footer"></div>
+    <div class="relative bottom-0 w-full h-[10rem] mt-[5rem] bg-[url('/assets/images/vitasens-doctors-footer-pattern-mobile.png')] bg-repeat-x md:absolute md:h-[16rem] md:bg-[url('/assets/images/vitasens-doctors-footer-pattern.png')] " slot="footer"></div>
 
 </SecondaryLayout>
