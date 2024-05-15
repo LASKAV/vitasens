@@ -50,7 +50,7 @@ export default () => {
     <div class="2xl:relative lg:container lg:mx-auto">
       <BookingModal isOpen={isBookingModalOpen()} onClose={closeBookingModal} onRequestSuccess={onRequestSuccess} />
       <SuccessModal isOpen={isSuccessModalOpen()} onClose={closeSuccessModal} />
-      <div ref={gsapParallax} class="parallax absolute container h-full mx-auto z-[-1] overflow-x-hidden">
+      <div ref={gsapParallax} class="parallax absolute container h-[130%] mx-auto z-[-1] overflow-x-hidden lg:h-full">
         <div class="relative top-[1rem] left-[-2.5rem] lg:left-[1.5rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
           <img class="h-[80%] lg:h-[100%] rotate-[-36deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
         </div>
@@ -61,10 +61,10 @@ export default () => {
           <img class="rotate-[-36deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
         </div>
         <div class="absolute top-[41rem] left-[2.5rem] lg:left-[11.42rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
-          <img class="h-[80%] rotate-[27deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
+          <img class="h-[80%] rotate-[27deg] lg:h-full" src="/assets/images/hero-bg-element.png" alt="hero" />
         </div>
         <div class="absolute top-[36.19rem] lg:top-[41.19rem] right-[-2.5rem] lg:right-[11.53rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)]">
-          <img class="h-[80%] rotate-[57deg]" src="/assets/images/hero-bg-element.png" alt="hero" />
+          <img class="h-[80%] rotate-[57deg] lg:h-full" src="/assets/images/hero-bg-element.png" alt="hero" />
         </div>
       </div>
       <div class="px-4 lg:px-[7.25rem] pt-[10rem] pb-[15rem] z-[1]">
