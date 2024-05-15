@@ -1,4 +1,3 @@
-import Background from '@/assets/images/booking-modal-picture.jpeg';
 import CloseModal from '@/assets/images/close-modal-icon.svg';
 import ActionButton from '@/components/actionButton/actionButton.tsx';
 import ActionButtonMinor from '@/components/actionButtonMinor/actionButtonMinor.tsx';
@@ -32,9 +31,9 @@ export default (props: BookConsultationModalProps) => {
                    type="text" id="booking-phone"/>
           </div>
           <div class="flex flex-col pt-[2rem]">
-            <label for="booking-phone">Послуги</label>
+            <label for="booking-service">Послуги</label>
             <input class="pl-4 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[0.625rem] bg-[#D9D9D9] h-[3rem] outline-none"
-                   type="text" id="booking-phone"/>
+                   type="text" id="booking-service"/>
           </div>
           <div class="flex flex-row items-center justify-center pt-[2rem]">
             <input class="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] bg-[#D9D9D9] h-[0.8125rem] mr-2"
