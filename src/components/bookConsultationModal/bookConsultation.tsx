@@ -16,26 +16,26 @@ export default (props: BookConsultationModalProps) => {
       </div>
       <div class="mx-auto lg:max-w-[24rem]">
         <div
-          class="[text-shadow:1px_2px_4px_rgba(0,0,0,0.25)] text-[1.5rem] font-semibold tracking-[0.075rem] mx-auto flex justify-center pt-[2.72rem] pb-[0.8rem]">
+          class="[text-shadow:1px_2px_4px_rgba(0,0,0,0.25)] text-[1.5rem] font-semibold tracking-[0.075rem] mx-auto flex justify-center pt-[0rem] pb-[0.8rem]">
           <span class="text-black">Запис на&nbsp;<span class="text-tiffany">консультацію</span></span>
         </div>
         <form id="bookingModal" method="post" class="flex flex-col">
-          <div class="flex flex-col pt-[2rem]">
+          <div class="flex flex-col pt-[1.25rem]">
             <label for="booking-name">Імʼя</label>
             <input class="pl-4 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[0.625rem] bg-[#D9D9D9] h-[3rem] outline-none"
                    type="text" id="booking-name"/>
           </div>
-          <div class="flex flex-col pt-[2rem]">
+          <div class="flex flex-col pt-[1.25rem]">
             <label for="booking-phone">Номер телефону</label>
             <input class="pl-4 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[0.625rem] bg-[#D9D9D9] h-[3rem] outline-none"
                    type="text" id="booking-phone"/>
           </div>
-          <div class="flex flex-col pt-[2rem]">
+          <div class="flex flex-col pt-[1.25rem]">
             <label for="booking-service">Послуги</label>
             <input class="pl-4 drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] rounded-[0.625rem] bg-[#D9D9D9] h-[3rem] outline-none"
                    type="text" id="booking-service"/>
           </div>
-          <div class="flex flex-row items-center justify-center pt-[2rem]">
+          <div class="flex flex-row items-center justify-center pt-[1.25rem]">
             <input class="drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] bg-[#D9D9D9] h-[0.8125rem] mr-2"
                    type="checkbox" id="booking-policy"/>
             <label class="text-[0.6875rem]" for="booking-policy">Я згоден (на) з <a href="/" class="text-tiffany">політикою конфіденційності</a></label>

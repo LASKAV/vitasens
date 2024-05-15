@@ -32,7 +32,7 @@ export default (props: BookConsultationModalProps) => {
       {props.isOpen && (
         <>
           <div ref={containerRef} class="fixed hidden justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-10 backdrop-blur-md px-5 lg:flex">
-            <div class="flex bg-white rounded-[2.5rem] lg:rounded-[3.5rem] overflow-hidden lg:container">
+            <div class="flex bg-white h-[50rem] rounded-[2.5rem] lg:rounded-[3.5rem] overflow-hidden lg:container">
               <div class="hidden lg:block overflow-hidden grow-0 lg:grow w-[50%] ">
                 <img class="object-cover w-full h-full" src={Background.src} alt=""/>
               </div>
