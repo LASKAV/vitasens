@@ -5,7 +5,7 @@ export default () => {
   const [links, setLinks]  = createSignal([
     { href: '/', img: '/assets/images/house-icon.svg', text: 'Головна' },
     { href: '/', img: '/assets/images/document-icon.svg', text: 'Послуги' },
-    { href: '/', img: '/assets/images/list-icon.svg', text: 'Чек-апи' },
+    { href: '/check-ups', img: '/assets/images/list-icon.svg', text: 'Чек-апи' },
     { href: '/', img: '/assets/images/price-icon.svg', text: 'Вартість' },
     { href: '/doctors', img: '/assets/images/doctors-icon.svg', text: 'Лікарі' },
     { href: '/', img: '/assets/images/camera-icon.svg', text: 'Галерея' },
@@ -18,7 +18,7 @@ export default () => {
     >
       <Logo />
       <div class='hidden xl:flex items-start justify-end gap-3 pt-1'>
-        <For each={links()}>{(link, i) =>
+        <For each={links()}>{(link) =>
           <a
             class='flex items-center gap-[6px] rounded-xl px-5 py-2 outline outline-[3px] outline-offset-2 outline-tiffany/0 transition-all duration-300 ease-in-out hover:shadow-[0px_0px_5px_5px] hover:shadow-tiffany hover:outline-offset-0 hover:outline-tiffany'
             href={link.href}
