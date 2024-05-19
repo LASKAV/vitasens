@@ -1,5 +1,5 @@
 import Background from '@/assets/images/booking-modal-picture.jpeg';
-import BookConsultation from './bookConsultation.tsx';
+import BookConsultation from './bookConsultation';
 import {createEffect} from 'solid-js';
 
 export type BookConsultationModalProps = {
