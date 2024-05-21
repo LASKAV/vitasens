@@ -67,6 +67,7 @@ export default () => {
           scrollbar={{draggable: false}}
           grabCursor={true}
           centeredSlides={true}
+          observer={true}
           slideToClickedSlide={true}
           preventClicksPropagation={true}
           coverflowEffect={{
@@ -75,13 +76,6 @@ export default () => {
             depth: 100,
             modifier: 5,
           }}
-          breakpoints={{
-            1280: {
-              slidesPerView: 'auto',
-            }
-          }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
           class="swiper_container"
         >
           <For each={checkUps}>{(checkUp: CheckUp) =>
