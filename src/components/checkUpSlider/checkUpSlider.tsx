@@ -79,7 +79,7 @@ export default () => {
           class="swiper_container"
         >
           <For each={checkUps}>{(checkUp: CheckUp) =>
-            <SwiperSlide>
+            <SwiperSlide class="swiper_checkup_slide">
               <div class="absolute w-full h-full transition-all duration-300 z-10 bg-vs-gray/0 hover:bg-vs-gray/40">
                 <div class="absolute w-full h-full transition-all duration-300 opacity-0 hover:opacity-100">
                   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
