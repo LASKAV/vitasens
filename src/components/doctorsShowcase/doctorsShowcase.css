@@ -6,7 +6,7 @@
     background-color: #7A7A7A;
 }
 
-.swiper-scrollbar.swiper-scrollbar-horizontal {
+.swiper > .swiper-scrollbar.swiper-scrollbar-horizontal {
     bottom: 0;
     width: 150px;
     height: 8px;
