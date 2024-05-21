@@ -67,6 +67,7 @@ export default () => {
           scrollbar={{draggable: false}}
           grabCursor={true}
           centeredSlides={true}
+          observer={true}
           slideToClickedSlide={true}
           preventClicksPropagation={true}
           coverflowEffect={{
@@ -75,17 +76,10 @@ export default () => {
             depth: 100,
             modifier: 5,
           }}
-          breakpoints={{
-            1280: {
-              slidesPerView: 'auto',
-            }
-          }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log('slide change')}
           class="swiper_container"
         >
           <For each={checkUps}>{(checkUp: CheckUp) =>
-            <SwiperSlide>
+            <SwiperSlide class="swiper_checkup_slide">
               <div class="absolute w-full h-full transition-all duration-300 z-10 bg-vs-gray/0 hover:bg-vs-gray/40">
                 <div class="absolute w-full h-full transition-all duration-300 opacity-0 hover:opacity-100">
                   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
