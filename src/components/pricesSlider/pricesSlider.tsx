@@ -57,7 +57,7 @@ export default () => {
           }</For>
         </Swiper>
       </div>
-      <div class="hidden pt-[5rem] md:flex md:justify-center md:items-stretch md:gap-[9rem]">
+      <div class="hidden pt-[5rem] md:flex md:justify-center md:items-stretch md:gap-[9rem] drop-shadow-[10px_10px_0px_rgba(70,208,208,1)]">
         <For each={pricesData}>{(priceData: PricesInfoType) =>
           <PricesInfoCard name={priceData.name} text={priceData.text} services={priceData.services} />
         }</For>
