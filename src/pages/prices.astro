@@ -1,0 +1,10 @@
+---
+import SecondaryLayout from '../layouts/SecondaryLayout.astro';
+import NavBar from '../components/navBar/navBar';
+import PricesSlider from '../components/pricesSlider/pricesSlider';
+---
+
+<SecondaryLayout title="Вартість">
+    <NavBar slot="header" />
+    <PricesSlider client:only="solid-js" />
+</SecondaryLayout>

@@ -6,9 +6,8 @@ export default () => {
     { href: '/', img: '/assets/images/house-icon.svg', text: 'Головна' },
     { href: '/', img: '/assets/images/document-icon.svg', text: 'Послуги' },
     { href: '/check-ups', img: '/assets/images/list-icon.svg', text: 'Чек-апи' },
-    { href: '/', img: '/assets/images/price-icon.svg', text: 'Вартість' },
+    { href: '/prices', img: '/assets/images/price-icon.svg', text: 'Вартість' },
     { href: '/doctors', img: '/assets/images/doctors-icon.svg', text: 'Лікарі' },
-    { href: '/', img: '/assets/images/camera-icon.svg', text: 'Галерея' },
     { href: '/', img: '/assets/images/phone-icon.svg', text: 'Контакти' },
   ]);
 
