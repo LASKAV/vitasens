@@ -85,7 +85,7 @@ export default () => {
           <div class="w-[19.5rem]">
             <Logo />
           </div>
-          <div class="flex items-center w-full">
+          <div class="hidden xl:flex items-center w-full">
             <div class="flex justify-center gap-[2.5rem] w-full">
               <For each={menuItems}>{(menuItem: NavBarItem) =>
                 <div onClick={menuItem.action} class="item-container flex text-[#B6B6B6] hover:text-tiffany-light underline-half">
