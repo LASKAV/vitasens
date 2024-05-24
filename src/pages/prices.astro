@@ -1,16 +1,13 @@
 ---
 import SecondaryLayout from '../layouts/SecondaryLayout.astro';
-import NavBar from '../components/navBar/navBar';
 import PricesSlider from '../components/pricesSlider/pricesSlider';
-import CheckUpSlider from '../components/checkUpSlider/checkUpSlider';
 
 import Rect1 from '@/assets/images/prices-background-rect1.svg';
 import Rect2 from '@/assets/images/prices-background-rect2.svg';
 ---
 
 <SecondaryLayout title="Вартість">
-    <NavBar slot="header" />
     <PricesSlider client:only="solid-js" />
-    <img class="absolute right-0 top-0 hidden xl:block" src={Rect2.src} alt="" />
+    <img class="absolute right-0 top-0 hidden xl:block z-[-1]" src={Rect2.src} alt="" />
     <img class="absolute bottom-0 hidden xl:block" src={Rect1.src} alt="" />
 </SecondaryLayout>
