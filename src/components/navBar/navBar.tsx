@@ -1,5 +1,6 @@
 import Logo from '../logo/logo.tsx';
-import {For, onMount, Show} from 'solid-js';
+import {createSignal, For, Show} from 'solid-js';
+import ContactUsModal from '@/components/contactUsModal/contactUsModal';
 
 import './navBar.css';
 
@@ -8,7 +9,7 @@ type NavBarItem = {
   href: string;
   img: string;
   submenu?: NavBarSubmenuItem[];
-  action?: () => {};
+  action?: () => void;
 }
 
 type NavBarSubmenuItem = {
@@ -16,14 +17,15 @@ type NavBarSubmenuItem = {
   href: string
 }
 
-let menuItemContainer: HTMLDivElement;
-const toggleChevronOnHover = (event: MouseEvent, ) => {
-  console.log('toggleChevronOnHover', event);
+const [isContactUsModalOpen, setContactUsModalOpen] = createSignal(false);
+
+const openContactUsModal = () => {
+  setContactUsModalOpen(true);
 }
 
-onMount(() => {
-  menuItemContainer.addEventListener('click', toggleChevronOnHover);
-});
+const closeContactUsModalOpen = () => {
+  setContactUsModalOpen(false);
+}
 
 export default () => {
   let menuItems: NavBarItem[] =
@@ -67,6 +69,7 @@ export default () => {
       title: 'Контакти',
       href: 'javascript:void(0);',
       img: '/assets/images/phone-icon.svg',
+      action: openContactUsModal,
     },
   ];
 
@@ -85,7 +88,7 @@ export default () => {
           <div class="flex items-center w-full">
             <div class="flex justify-center gap-[2.5rem] w-full">
               <For each={menuItems}>{(menuItem: NavBarItem) =>
-                <div ref={menuItemContainer} class="item-container flex text-[#B6B6B6] hover:text-tiffany-light underline-half">
+                <div onClick={menuItem.action} class="item-container flex text-[#B6B6B6] hover:text-tiffany-light underline-half">
                   <a class="pr-[0.31rem]" href={menuItem.href}>{menuItem.title}</a>
                   <Show when={menuItem.submenu}>
                     <svg class="inline fill-[#B6B6B6] chevron-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
@@ -110,6 +113,7 @@ export default () => {
           </div>
         </div>
       </div>
+      <ContactUsModal isOpen={isContactUsModalOpen()} onClose={closeContactUsModalOpen} />
     </>
   )
 }
