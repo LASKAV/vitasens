@@ -9,21 +9,30 @@ type ContactUsModalProps = {
   onClose: () => void;
 }
 
+let containerRef: HTMLDivElement;
 
 export default (props: ContactUsModalProps) =>{
 
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (event?.target === containerRef){
+      props.onClose();
+    }
+  }
+
   createEffect(() => {
     if (props.isOpen) {
-      document.body.style.overflow = 'hidden'; // Disable scrolling
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('click', handleOutsideClick);
     } else {
-      document.body.style.overflow = ''; // Enable scrolling
+      document.body.style.overflow = '';
+      document.removeEventListener('click', handleOutsideClick);
     }
-  })
+  });
 
   return (
     <>
       {props.isOpen && (
-          <div class="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-10 backdrop-blur-md px-5">
+          <div ref={containerRef} class="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-[10000] backdrop-blur-md px-5">
             <div
               class="relative bg-white rounded-[2.5rem] overflow-hidden w-[24.375rem] lg:rounded-[3.125rem] lg:w-[71.8rem] ">
               <div class="grid grid-cols-3 pt-[3.75rem] pb-[2.42rem] px-[2.5rem] text-tiffany-light">
@@ -37,7 +46,7 @@ export default (props: ContactUsModalProps) =>{
                   </div>
                 </div>
                 <div class="leading-[3rem] text-[3rem] text-center">Контакти</div>
-                <div class="flex justify-end">
+                <div onClick={props.onClose} class="flex justify-end">
                   <img class="hover:cursor-pointer" src={CloseModal.src} alt=""/>
                 </div>
               </div>
