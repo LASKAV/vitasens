@@ -32,7 +32,7 @@ export default (props: DoctorDetailsModalProps) => {
     <>
       {props.isOpen && (
         <>
-          <div class="fixed hidden md:flex justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-10 backdrop-blur-md px-5" ref={containerRef}>
+          <div class="fixed hidden md:flex justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-[10000] backdrop-blur-md px-5" ref={containerRef}>
             <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-[26.7rem] h-[58.1rem]">
               <Details details={props} />
             </div>

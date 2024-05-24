@@ -33,7 +33,7 @@ export default (props: BookConsultationSuccessModalProps) => {
     <>
       {props.isOpen && (
         <div
-          class="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-10 backdrop-blur-md px-5"
+          class="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-[10000] backdrop-blur-md px-5"
           ref={containerRef}>
           <div class="relative bg-white rounded-[2.5rem] overflow-hidden w-[24.375rem] h-[30.56rem] lg:rounded-[3.5rem] lg:w-[56.375rem] lg:h-[39.25rem]">
             <div onClick={props.onClose} class="pt-[1.69rem] px-[1.5rem] flex justify-end hover:cursor-pointer">
