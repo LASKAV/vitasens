@@ -37,7 +37,7 @@ export default (props: DoctorDetailsModalProps) => {
               <Details details={props} />
             </div>
           </div>
-          <div class="fixed top-0 left-0 overflow-y-auto w-full h-full max-h-[58.5rem] z-10 md:hidden">
+          <div class="fixed top-0 left-0 overflow-y-auto w-full h-full max-h-[58.5rem] z-[10000] md:hidden">
               <Details details={props} />
           </div>
         </>

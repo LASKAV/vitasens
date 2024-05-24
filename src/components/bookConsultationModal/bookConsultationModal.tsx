@@ -41,7 +41,7 @@ export default (props: BookConsultationModalProps) => {
               </div>
             </div>
           </div>
-          <div class="fixed overflow-y-auto top-0 left-0 w-full h-full max-h-[58.5rem] bg-white z-10 px-5 pt-[2rem] lg:hidden">
+          <div class="fixed overflow-y-auto top-0 left-0 w-full h-full max-h-[58.5rem] bg-white z-[10000] px-5 pt-[2rem] lg:hidden">
             <BookConsultation isOpen={props.isOpen} onClose={props.onClose} onRequestSuccess={props.onRequestSuccess} />
           </div>
         </>
