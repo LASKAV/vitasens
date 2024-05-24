@@ -6,7 +6,6 @@ export default () => {
         <div>
           <img src='/assets/images/logo.png' alt='Logo'/>
         </div>
-        <div class='h-[1.25rem] w-[2px] shrink-0 rounded-full bg-tiffany'></div>
         <div class='text-2xl leading-normal'>VitaSens</div>
       </div>
       <span class='pt-1 font-medium'>клiніка Доктора Саморукової</span>
