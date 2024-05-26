@@ -26,3 +26,24 @@
 .item-container:hover .drop-down-menu {
     @apply h-auto py-2 border;
 }
+
+#burger-icon {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#burger-icon line {
+    transition: transform 0.3s ease;
+}
+
+#burger-icon.open line:nth-child(1) {
+    transform: translateY(-3px) translateX(16px) rotate(45deg);
+}
+
+#burger-icon.open line:nth-child(2) {
+    opacity: 0;
+}
+
+#burger-icon.open line:nth-child(3) {
+    transform: translateY(18px) translateX(-17px) rotate(-45deg);
+}
