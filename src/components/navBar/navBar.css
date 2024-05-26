@@ -37,7 +37,7 @@
 }
 
 #burger-icon.open line:nth-child(1) {
-    transform: rotate(45deg);
+    transform: translateY(-3px) translateX(16px) rotate(45deg);
 }
 
 #burger-icon.open line:nth-child(2) {
@@ -45,6 +45,5 @@
 }
 
 #burger-icon.open line:nth-child(3) {
-    transform: rotate(-45deg);
+    transform: translateY(18px) translateX(-17px) rotate(-45deg);
 }
-

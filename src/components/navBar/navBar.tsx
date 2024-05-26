@@ -2,7 +2,6 @@ import Logo from '../logo/logo.tsx';
 import {createSignal, For, Show} from 'solid-js';
 import ContactUsModal from '@/components/contactUsModal/contactUsModal';
 import MobileMenu from './mobileMenu';
-
 import './navBar.css';
 
 export type NavBarItem = {
@@ -20,6 +19,8 @@ export type NavBarSubmenuItem = {
 
 const [isContactUsModalOpen, setContactUsModalOpen] = createSignal(false);
 const [isMobileMenuOpen, setMobileMenuOpen] = createSignal(false);
+
+let burgerMenuRef: SVGSVGElement;
 
 const openContactUsModal = () => {
   setContactUsModalOpen(true);
@@ -120,8 +121,11 @@ export default () => {
               </button>
             </div>
           </div>
-          <div onClick={() => setMobileMenuOpen(!isMobileMenuOpen())} class="pr-5 pt-2 xl:hidden">
-            <svg id="burger-icon" class="" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none">
+          <div onClick={() => {
+            burgerMenuRef.classList.toggle('open');
+            setMobileMenuOpen(!isMobileMenuOpen());
+          }} class="pr-5 pt-2 xl:hidden">
+            <svg ref={burgerMenuRef} id="burger-icon" class="" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="#FFF">
               <line x1="11.5" y1="13.5" x2="38.5" y2="13.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
               <line x1="11.5" y1="23.5" x2="38.5" y2="23.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
               <line x1="11.5" y1="33.5" x2="38.5" y2="33.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
@@ -130,7 +134,7 @@ export default () => {
         </div>
       </div>
       <ContactUsModal isOpen={isContactUsModalOpen()} onClose={closeContactUsModalOpen}/>
-      <MobileMenu isOpen={isMobileMenuOpen()} onClose={() => setMobileMenuOpen(false) } menuItems={menuItems}/>
+      <MobileMenu isOpen={isMobileMenuOpen()} onClose={() => setMobileMenuOpen(false)} menuItems={menuItems}/>
     </>
   )
 }
