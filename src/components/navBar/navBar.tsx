@@ -1,10 +1,10 @@
 import Logo from '../logo/logo.tsx';
 import {createSignal, For, Show} from 'solid-js';
 import ContactUsModal from '@/components/contactUsModal/contactUsModal';
-
+import MobileMenu from './mobileMenu';
 import './navBar.css';
 
-type NavBarItem = {
+export type NavBarItem = {
   title: string;
   href: string;
   img: string;
@@ -12,12 +12,15 @@ type NavBarItem = {
   action?: () => void;
 }
 
-type NavBarSubmenuItem = {
+export type NavBarSubmenuItem = {
   title: string;
   href: string
 }
 
 const [isContactUsModalOpen, setContactUsModalOpen] = createSignal(false);
+const [isMobileMenuOpen, setMobileMenuOpen] = createSignal(false);
+
+let burgerMenuRef: SVGSVGElement;
 
 const openContactUsModal = () => {
   setContactUsModalOpen(true);
@@ -41,11 +44,15 @@ export default () => {
       img: '/assets/images/document-icon.svg',
       submenu: [
         {
-          title: 'Пункт 1',
+          title: 'УЗД діагностика',
           href: '/'
         },
         {
-          title: 'Пункт 2',
+          title: 'Консультації спеціалістів',
+          href: '/'
+        },
+        {
+          title: 'Аналізи',
           href: '/'
         },
       ],
@@ -69,20 +76,23 @@ export default () => {
       title: 'Контакти',
       href: 'javascript:void(0);',
       img: '/assets/images/phone-icon.svg',
-      action: openContactUsModal,
+      action: () => {
+        setMobileMenuOpen(false);
+        openContactUsModal();
+      },
     },
   ];
 
   return (
     <>
-      <div class="h-[2.62rem] w-full bg-white">
+      <div class="h-[2.62rem] w-full bg-white z-[9999]">
 
       </div>
       <div
         class="sticky top-0 select-none text-tiffany bg-white z-[9999]"
       >
-        <div class="container flex mx-auto">
-          <div class="w-[19.5rem]">
+        <div class="container flex justify-between mx-auto">
+          <div class="w-[19.5rem] pl-5 xl:p-0">
             <Logo />
           </div>
           <div class="hidden xl:flex items-center w-full">
@@ -111,9 +121,20 @@ export default () => {
               </button>
             </div>
           </div>
+          <div onClick={() => {
+            burgerMenuRef.classList.toggle('open');
+            setMobileMenuOpen(!isMobileMenuOpen());
+          }} class="pr-5 pt-2 xl:hidden">
+            <svg ref={burgerMenuRef} id="burger-icon" class="" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="#FFF">
+              <line x1="11.5" y1="13.5" x2="38.5" y2="13.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="11.5" y1="23.5" x2="38.5" y2="23.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
+              <line x1="11.5" y1="33.5" x2="38.5" y2="33.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
         </div>
       </div>
-      <ContactUsModal isOpen={isContactUsModalOpen()} onClose={closeContactUsModalOpen} />
+      <ContactUsModal isOpen={isContactUsModalOpen()} onClose={closeContactUsModalOpen}/>
+      <MobileMenu isOpen={isMobileMenuOpen()} onClose={() => setMobileMenuOpen(false)} menuItems={menuItems}/>
     </>
   )
 }

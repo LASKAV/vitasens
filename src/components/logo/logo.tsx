@@ -8,7 +8,7 @@ export default () => {
         </div>
         <div class='text-2xl leading-normal'>VitaSens</div>
       </div>
-      <span class='pt-1 font-medium'>клiніка Доктора Саморукової</span>
+      <span class='pt-1 font-medium text-[0.8125rem] xl:text-[1rem]'>клiніка Доктора Саморукової</span>
     </div>
   )
 }
