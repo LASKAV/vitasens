@@ -35,9 +35,9 @@ export default (props: ContactUsModalProps) =>{
           <div ref={containerRef} class="fixed flex justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-[10000] backdrop-blur-md px-5">
             <div
               class="relative bg-white rounded-[2.5rem] overflow-hidden w-[24.375rem] lg:rounded-[3.125rem] lg:w-[71.8rem] ">
-              <div class="grid grid-cols-3 pt-[3.75rem] pb-[2.42rem] px-[2.5rem] text-tiffany-light">
-                <div class='hidden select-none text-tiffany lg:block'>
-                  <div class='flex items-center gap-4'>
+              <div class="grid grid-cols-3 pt-[3.75rem] pb-[2.42rem] px-[1rem] text-tiffany-light lg:px-[2.5rem]">
+                <div class='select-none text-tiffany'>
+                  <div class='hidden items-center gap-4 lg:flex'>
                     <div>
                       <img src='/assets/images/logo.png' alt='Logo'/>
                     </div>
@@ -45,7 +45,7 @@ export default (props: ContactUsModalProps) =>{
                     <div class='text-2xl leading-normal'>VitaSens</div>
                   </div>
                 </div>
-                <div class="leading-[3rem] text-[3rem] text-center">Контакти</div>
+                <div class="leading-[3rem] text-[1.5rem] text-center xl:text-[3rem]">Контакти</div>
                 <div onClick={props.onClose} class="flex justify-end">
                   <img class="hover:cursor-pointer" src={CloseModal.src} alt=""/>
                 </div>
