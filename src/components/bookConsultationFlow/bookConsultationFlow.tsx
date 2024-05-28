@@ -1,5 +1,5 @@
-import BookingModal from '@/components/bookConsultationModal/bookConsultationModal.tsx';
-import SuccessModal from '@/components/bookConsultationSuccessModal/bookConsultationSuccessModal.tsx';
+import BookingModal from '@/components/bookConsultationModal/bookConsultationModal';
+import SuccessModal from '@/components/bookConsultationSuccessModal/bookConsultationSuccessModal';
 import {createSignal} from 'solid-js';
 
 type BookConsultationFlowProps = {
