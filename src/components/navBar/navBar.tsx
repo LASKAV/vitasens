@@ -2,6 +2,7 @@ import Logo from '../logo/logo.tsx';
 import {createEffect, createSignal, For, Show} from 'solid-js';
 import ContactUsModal from '@/components/contactUsModal/contactUsModal';
 import MobileMenu from './mobileMenu';
+import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
 import './navBar.css';
 
 export type NavBarItem = {
@@ -19,6 +20,7 @@ export type NavBarSubmenuItem = {
 
 const [isContactUsModalOpen, setContactUsModalOpen] = createSignal(false);
 const [isMobileMenuOpen, setMobileMenuOpen] = createSignal(false);
+const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
 
 let burgerMenuRef: SVGSVGElement;
 
@@ -124,7 +126,7 @@ export default () => {
               }</For>
             </div>
             <div>
-              <button class="font-medium bg-white tracking-[0.04375rem] text-[0.875rem] text-tiffany-light border-[3px] border-[#8AD4D4] rounded-[0.9375rem] px-[0.94rem] py-[0.7rem] transition-all duration-300 hover:bg-[#4ABCBC] hover:text-white hover:border-[#4ABCBC]">
+              <button onClick={() => setBookingModalOpen(true)} class="font-medium bg-white tracking-[0.04375rem] text-[0.875rem] text-tiffany-light border-[3px] border-[#8AD4D4] rounded-[0.9375rem] px-[0.94rem] py-[0.7rem] transition-all duration-300 hover:bg-[#4ABCBC] hover:text-white hover:border-[#4ABCBC]">
                 Консультація
               </button>
             </div>
@@ -142,6 +144,7 @@ export default () => {
       </div>
       <ContactUsModal isOpen={isContactUsModalOpen()} onClose={closeContactUsModalOpen}/>
       <MobileMenu isOpen={isMobileMenuOpen()} onClose={() => setMobileMenuOpen(false)} menuItems={menuItems}/>
+      <BookConsultationFlow isOpen={isBookingModalOpen()} onClose={() => setBookingModalOpen(false)} />
     </>
   )
 }
