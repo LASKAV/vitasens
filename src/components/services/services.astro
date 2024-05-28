@@ -1,54 +1,44 @@
 ---
-import ServiceItem from '../serviceItem/serviceItem';
+import ClinicViewImg from '@/assets/images/services-clinic-view.jpeg'
 
 const serviceItemData = [
-    {title: 'Аналізи', text: `УЗД - це безпечний, неінвазивний метод дослідження,
-          який дозволяє отримати детальні зображення внутрішніх
-          органів та тканин за допомогою високочастотних звукових хвиль.
-          В нашій клініці деякі види УЗД проводиться як дорослим, так і дітям`},
     {title: 'УЗД діагностика', text: `УЗД - це безпечний, неінвазивний метод дослідження,
           який дозволяє отримати детальні зображення внутрішніх
           органів та тканин за допомогою високочастотних звукових хвиль.
           В нашій клініці деякі види УЗД проводиться як дорослим, так і дітям`},
-    {title: 'Чек-апи', text: `УЗД - це безпечний, неінвазивний метод дослідження,
-          який дозволяє отримати детальні зображення внутрішніх
-          органів та тканин за допомогою високочастотних звукових хвиль.
-          В нашій клініці деякі види УЗД проводиться як дорослим, так і дітям`}
+    {title: 'Консультації', text: `Наші досвідчені лікарі надають індивідуальні поради 
+          та розробляють персоналізовані плани лікування, щоб забезпечити найкращий результат 
+          для кожного пацієнта.`},
+    {title: 'Аналізи', text: `Разом з нашими партнерами - лабораторією ProLab, ми 
+          забезпечуємо нашим пацієнтам швидку та надійну лабораторну діагностику. Ми 
+          використовуємо передові методи та сучасне обладнання для отримання точних результатів, 
+          необхідних для правильного діагностування та лікування`},
 ]
 ---
-<div class="container mx-auto">
-    <div class="flex items-center justify-around z-[-1]">
-
-        <div class="relative 2xl:flex overflow-hidden w-[6.875rem] xl:w-[21.9rem] h-[12.5rem] xl:h-[31.25rem] rounded-[1.875rem] drop-shadow-[5px_6px_4px_rgba(0,0,0,0.25)] bg-[#E8E8E8]">
-            <div class="absolute w-full h-full opacity-0 hover:opacity-100 transition-all duration-300 bg-[#E8E8E8] z-10">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <ServiceItem title={serviceItemData[0].title} text={serviceItemData[0].text}/>
+<div class="container mx-auto px-[1.2rem]">
+    <div class="flex flex-col">
+        <div class="overflow-hidden mx-auto w-full h-[23.375rem] lg:h-[33.75rem] lg:w-full">
+            <img class="object-cover w-full h-full" src={ClinicViewImg.src} alt="" />
+        </div>
+        <div class="flex flex-col xl:grid xl:grid-cols-3 xl:grid-rows-1 xl:gap-[1.88rem]">
+            <div class="pt-[2.5rem]">
+                <div class="text-[1.75rem] font-semibold">{serviceItemData[0].title}</div>
+                <div class="pt-[1.9rem] text-[#444] font-medium">
+                    {serviceItemData[0].text}
                 </div>
             </div>
-            <img class="object-cover w-full h-full z-[-1]" src="/assets/images/service-blood-test.jpeg" alt="personnel" />
-        </div>
-
-        <div class="relative 2xl:flex overflow-hidden w-[7rem] xl:w-[21.9rem] h-[18.75rem] xl:h-[47rem] rounded-[1.875rem] drop-shadow-[5px_6px_4px_rgba(0,0,0,0.25)] bg-[#E8E8E8]">
-            <div class="absolute w-full h-full opacity-0 hover:opacity-100 transition-all duration-300 bg-[#E8E8E8] z-10">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <ServiceItem title={serviceItemData[1].title} text={serviceItemData[1].text}/>
+            <div class="pt-[2.5rem]">
+                <div class="text-[1.75rem] font-semibold">{serviceItemData[1].title}</div>
+                <div class="pt-[1.9rem] text-[#444] font-medium">
+                    {serviceItemData[1].text}
                 </div>
             </div>
-            <img class="object-cover w-full h-full z-[-1]" src="/assets/images/service-ultrasound.jpeg" alt="personnel" />
-        </div>
-
-        <div class="relative 2xl:flex overflow-hidden w-[6.875rem] xl:w-[21.9rem] h-[14.5rem] xl:h-[31.25rem] rounded-[1.875rem] drop-shadow-[5px_6px_4px_rgba(0,0,0,0.25)] bg-[#E8E8E8]">
-            <div class="absolute w-full h-full opacity-0 hover:opacity-100 transition-all duration-300 bg-[#E8E8E8] z-10">
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <ServiceItem title={serviceItemData[2].title} text={serviceItemData[2].text}/>
+            <div class="pt-[2.5rem]">
+                <div class="text-[1.75rem] font-semibold">{serviceItemData[2].title}</div>
+                <div class="pt-[1.9rem] text-[#444] font-medium">
+                    {serviceItemData[2].text}
                 </div>
             </div>
-            <img class="object-cover w-full h-full z-[-1]" src="/assets/images/service-blood-pressure.jpeg" alt="personnel" />
-        </div>
-    </div>
-    <div class="flex justify-between items-end px-[1.46rem] mt-[-3rem]">
-        <div class="z-[1]">
-            <img class="object-cover h-[7.06rem] xl:h-[17.5rem]" src="/assets/images/stock-female-doctor-table.svg" alt="" />
         </div>
     </div>
 </div>
