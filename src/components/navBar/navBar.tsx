@@ -1,5 +1,5 @@
 import Logo from '../logo/logo.tsx';
-import {createSignal, For, Show} from 'solid-js';
+import {createEffect, createSignal, For, Show} from 'solid-js';
 import ContactUsModal from '@/components/contactUsModal/contactUsModal';
 import MobileMenu from './mobileMenu';
 import './navBar.css';
@@ -83,6 +83,14 @@ export default () => {
     },
   ];
 
+  createEffect(() => {
+    if (!isMobileMenuOpen()) {
+      burgerMenuRef.classList.remove('open');
+    } else {
+      burgerMenuRef.classList.add('open');
+    }
+  });
+
   return (
     <>
       <div class="h-[2.62rem] w-full bg-white z-[9999]">
@@ -122,7 +130,6 @@ export default () => {
             </div>
           </div>
           <div onClick={() => {
-            burgerMenuRef.classList.toggle('open');
             setMobileMenuOpen(!isMobileMenuOpen());
           }} class="pr-5 pt-2 xl:hidden">
             <svg ref={burgerMenuRef} id="burger-icon" class="" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="#FFF">
