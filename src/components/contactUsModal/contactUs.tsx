@@ -16,9 +16,7 @@ export default (props: ContactUsModalProps) => {
             <div class='text-2xl leading-normal'>VitaSens</div>
           </div>
         </div>
-
-        <div class="leading-[3rem] text-[3rem] text-center row-start-2 col-span-2 lg:row-start-1 lg:col-span-1 lg:">Контакти</div>
-
+        <div class="leading-[3rem] text-[3rem] text-center row-start-2 col-span-2 lg:row-start-1 lg:col-span-1 lg:col-start-2">Контакти</div>
         <div onClick={props.onClose} class="flex justify-end">
           <img class="hover:cursor-pointer" src={CloseModal.src} alt=""/>
         </div>
