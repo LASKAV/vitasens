@@ -38,18 +38,6 @@ export default () => {
       imageUrl: '/assets/images/check-up-cardiology-with-labs.jpeg',
     },
     {
-      imageUrl: '/assets/images/check-up-online-consulting.jpeg',
-    },
-    {
-      imageUrl: '/assets/images/check-up-labs-analysis.jpeg',
-    },
-    {
-      imageUrl: '/assets/images/check-up-ultrasonic-heart.jpeg',
-    },
-    {
-      imageUrl: '/assets/images/check-up-ultrasonic-stomach-kidney.jpeg',
-    },
-    {
       imageUrl: '/assets/images/check-up-female.jpeg',
     },
   ];
@@ -76,12 +64,12 @@ export default () => {
             depth: 100,
             modifier: 5,
           }}
-          class="swiper_container"
+          class="swiper_checkup_container"
         >
           <For each={checkUps}>{(checkUp: CheckUp) =>
             <SwiperSlide class="swiper_checkup_slide">
-              <div class="absolute w-full h-full transition-all duration-300 z-10 bg-vs-gray/0 hover:bg-vs-gray/40">
-                <div class="absolute w-full h-full transition-all duration-300 opacity-0 hover:opacity-100">
+              <div class="absolute w-full h-full transition-all duration-300 z-10 bg-vs-gray/0">
+                <div class="absolute w-full h-full transition-all duration-300 opacity-0">
                   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                     <button class="px-[1.35rem] py-[0.72rem] rounded-[0.625rem] bg-tiffany-light text-white opacity-100">Записатися</button>
                   </div>
