@@ -24,7 +24,7 @@
 }
 
 .item-container:hover .drop-down-menu {
-    @apply h-auto py-2 border;
+    @apply h-auto py-2;
 }
 
 #burger-icon {

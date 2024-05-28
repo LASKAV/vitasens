@@ -114,10 +114,10 @@ export default () => {
                     <svg class="inline fill-[#B6B6B6] chevron-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
                       <path d="M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z" />
                     </svg>
-                    <div class="absolute overflow-hidden w-[10rem] py-0 border-tiffany-light bg-white rounded-[0.625rem] transition-all duration-300 drop-down-menu h-0 translate-x-[-25%]">
+                    <div class="absolute overflow-hidden w-[25rem] py-0 bg-white transition-all duration-300  h-0 drop-down-menu">
                       <For each={menuItem.submenu}>{(submenuItem: NavBarSubmenuItem) =>
                         <a href={submenuItem.href}>
-                          <div class="pl-2 hover:bg-vs-gray/40">{submenuItem.title}</div>
+                          <div class="text-[#B6B6B6] hover:text-tiffany-light">{submenuItem.title}</div>
                         </a>
                       }</For>
                     </div>
