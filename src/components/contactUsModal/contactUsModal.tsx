@@ -1,5 +1,6 @@
 import {createEffect} from 'solid-js';
 import ContactUs from '@/components/contactUsModal/contactUs';
+import PlantImg from '@/assets/images/stock-icon-plant.svg';
 
 export type ContactUsModalProps = {
   isOpen: boolean;
@@ -34,6 +35,7 @@ export default (props: ContactUsModalProps) =>{
             <div
               class="relative bg-white rounded-[2.5rem] overflow-hidden w-[24.375rem] lg:rounded-[3.125rem] lg:w-[71.8rem] ">
               <ContactUs isOpen={props.isOpen} onClose={props.onClose} />
+              <img class="absolute top-[14.38rem] right-[6.9rem]" src={PlantImg.src} alt="" />
             </div>
           </div>
           <div class="fixed overflow-y-auto justify-center items-center top-0 left-0 w-full h-full bg-white z-[10000] backdrop-blur-md xl:hidden">

@@ -7,7 +7,7 @@ import type {ContactUsModalProps} from '@/components/contactUsModal/contactUsMod
 export default (props: ContactUsModalProps) => {
   return (
     <>
-      <div class="grid grid-cols-2 grid-rows-2 gap-y-[3.5rem] pt-[3.75rem] pb-[2.42rem] px-[1rem] text-tiffany-light lg:grid-cols-3">
+      <div class="grid grid-cols-2 grid-rows-2 gap-y-[3.5rem] pt-[3.75rem] pb-[2.42rem] px-[1rem] text-tiffany-light lg:grid-cols-3 lg:grid-rows-1 lg:gap-y-0">
         <div class='select-none text-tiffany'>
           <div class='flex items-center gap-4'>
             <div>
@@ -17,7 +17,7 @@ export default (props: ContactUsModalProps) => {
           </div>
         </div>
 
-        <div class="leading-[3rem] text-[3rem] text-center row-start-2 col-span-2 lg:row-start-1 lg:col-span-1">Контакти</div>
+        <div class="leading-[3rem] text-[3rem] text-center row-start-2 col-span-2 lg:row-start-1 lg:col-span-1 lg:">Контакти</div>
 
         <div onClick={props.onClose} class="flex justify-end">
           <img class="hover:cursor-pointer" src={CloseModal.src} alt=""/>
