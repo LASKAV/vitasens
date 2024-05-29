@@ -1,5 +1,7 @@
 ---
-import ClinicViewImg from '@/assets/images/services-clinic-view.jpeg'
+import ClinicViewImg from '@/assets/images/services-clinic-view.jpeg';
+import HeartMockupImg from '@/assets/images/services-heart-mockup.jpeg';
+import Circle from '@/assets/images/services-circle-icon.svg';
 
 const serviceItemData = [
     {title: 'УЗД діагностика', text: `УЗД - це безпечний, неінвазивний метод дослідження,
@@ -14,31 +16,84 @@ const serviceItemData = [
           використовуємо передові методи та сучасне обладнання для отримання точних результатів, 
           необхідних для правильного діагностування та лікування`},
 ]
+
+const servicesDescription ='Ми знаходимо індивідуальний підхід до кожного пацієнта, забезпечуючи ' +
+  'комплексне обстеження та ефективне лікування за допомогою сучасного обладнання та доказових методів' +
+  ' медицини. Наша мета - зробити все для підтримки Вашого здоров\'я.'
 ---
-<div class="container mx-auto px-[1.2rem]">
-    <div class="flex flex-col">
-        <div class="overflow-hidden mx-auto w-full h-[23.375rem] lg:h-[33.75rem] lg:w-full">
-            <img class="object-cover w-full h-full" src={ClinicViewImg.src} alt="" />
-        </div>
-        <div class="flex flex-col xl:grid xl:grid-cols-3 xl:grid-rows-1 xl:gap-[1.88rem]">
-            <div class="pt-[2.5rem]">
-                <div class="text-[1.75rem] font-semibold">{serviceItemData[0].title}</div>
-                <div class="pt-[1.9rem] text-[#444] font-medium">
-                    {serviceItemData[0].text}
-                </div>
+<>
+    <div class="container mx-auto px-[1.2rem]">
+        <div class="flex flex-col">
+            <div class="overflow-hidden mx-auto w-full h-[23.375rem] lg:h-[33.75rem] lg:w-full">
+                <img class="object-cover w-full h-full" src={ClinicViewImg.src} alt="" />
             </div>
-            <div class="pt-[2.5rem]">
-                <div class="text-[1.75rem] font-semibold">{serviceItemData[1].title}</div>
-                <div class="pt-[1.9rem] text-[#444] font-medium">
-                    {serviceItemData[1].text}
+            <div class="flex flex-col xl:grid xl:grid-cols-3 xl:grid-rows-1 xl:gap-[1.88rem]">
+                <div class="pt-[2.5rem]">
+                    <div class="text-[1.75rem] font-semibold">{serviceItemData[0].title}</div>
+                    <div class="pt-[1.9rem] text-[#444] font-medium">
+                        {serviceItemData[0].text}
+                    </div>
                 </div>
-            </div>
-            <div class="pt-[2.5rem]">
-                <div class="text-[1.75rem] font-semibold">{serviceItemData[2].title}</div>
-                <div class="pt-[1.9rem] text-[#444] font-medium">
-                    {serviceItemData[2].text}
+                <div class="pt-[2.5rem]">
+                    <div class="text-[1.75rem] font-semibold">{serviceItemData[1].title}</div>
+                    <div class="pt-[1.9rem] text-[#444] font-medium">
+                        {serviceItemData[1].text}
+                    </div>
+                </div>
+                <div class="pt-[2.5rem]">
+                    <div class="text-[1.75rem] font-semibold">{serviceItemData[2].title}</div>
+                    <div class="pt-[1.9rem] text-[#444] font-medium">
+                        {serviceItemData[2].text}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div class="container mx-auto py-[10rem] px-[1.2rem]">
+        <div class="text-[1.875rem] font-semibold tracking-[0.09375rem] pb-[1.69rem]">Послуги</div>
+        <p class="max-w-[47.125rem] pb-[2.5rem]">{servicesDescription}</p>
+        <div class="flex flex-col gap-[1.88rem] xl:flex-row xl:items-center">
+            <div class="h-[23.375rem] xl:h-[21.25rem] xl:grow">
+                <img class="object-cover w-full h-full" src={HeartMockupImg.src} alt="" />
+            </div>
+            <div class="flex flex-col gap-[1.88rem] text-[0.75rem] font-semibold pt-[1.88rem] xl:pt-0">
+                <div class="flex items-center">
+                    <img class="object-cover" src={Circle.src} alt="" />
+                    <div class="pl-[0.94rem]">загальноклінічні дослідження</div>
+                </div>
+                <div class="flex items-center">
+                    <img class="object-cover" src={Circle.src} alt="" />
+                    <div class="pl-[0.94rem]">функціональна діагностика</div>
+                </div>
+                <div class="flex items-center">
+                    <img class="object-cover" src={Circle.src} alt="" />
+                    <div class="pl-[0.94rem]">маркери анемії, вітаміни</div>
+                </div>
+                <div class="flex items-center">
+                    <img class="object-cover" src={Circle.src} alt="" />
+                    <div class="pl-[0.94rem]">консультації спеціалістів</div>
+                </div>
+                <div class="flex items-center">
+                    <img class="object-cover" src={Circle.src} alt="" />
+                    <div class="pl-[0.94rem]">онкологічна панель</div>
+                </div>
+                <div class="flex items-center">
+                    <img class="object-cover" src={Circle.src} alt="" />
+                    <div class="pl-[0.94rem]">УЗД діагностика</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</>
+
+
+
+
+
+
+
+
+
+
+
+
