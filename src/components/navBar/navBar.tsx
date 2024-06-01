@@ -47,15 +47,11 @@ export default () => {
       submenu: [
         {
           title: 'УЗД діагностика',
-          href: '/'
+          href: '/ultrasound',
         },
         {
           title: 'Консультації спеціалістів',
-          href: '/'
-        },
-        {
-          title: 'Аналізи',
-          href: '/'
+          href: '/',
         },
       ],
     },
