@@ -2,10 +2,8 @@ import ActionButton from '../actionButton/actionButton';
 import ActionButtonMinor from '../actionButtonMinor/actionButtonMinor';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow';
 import './hero.css';
-// @ts-ignore
-import { gsap } from 'gsap/dist/gsap';
-// @ts-ignore
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {createSignal} from 'solid-js';
 
 gsap.registerPlugin(ScrollTrigger);
