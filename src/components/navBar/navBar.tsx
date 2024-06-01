@@ -51,7 +51,7 @@ export default () => {
         },
         {
           title: 'Консультації спеціалістів',
-          href: '/',
+          href: '/appointments',
         },
       ],
     },

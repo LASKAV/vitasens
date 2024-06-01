@@ -1,0 +1,33 @@
+---
+import SecondaryLayout from '../layouts/SecondaryLayout.astro';
+import AppointmentImg from 'public/assets/images/service-appointments.jpg'
+
+const appointmentsDescription =
+  'Наші досвідчені лікарі надають індивідуальні поради та розробляють ' +
+  'персоналізовані плани лікування, щоб забезпечити найкращий результат ' +
+  'для кожного пацієнта.'
+---
+
+<SecondaryLayout title="Консультації">
+    <div class="container mx-auto px-5 py-[3.44rem] xl:px-0">
+        <div class="flex flex-col items-end">
+            <div class="text-right text-tiffany-light text-[1.875rem] font-semibold pb-5">Консультації</div>
+            <p class="text-right text-[#929292] pb-[1.88rem] max-w-[24.56rem]">{appointmentsDescription}</p>
+        </div>
+        <div class="h-[32.5rem]">
+            <img class="object-cover w-full h-full drop-shadow-[-8px_8px_0px_rgba(70,208,208,1)]" src={AppointmentImg.src} alt="" />
+        </div>
+        <div class="pt-[3.75rem]">
+            <div class="text-tiffany-light text-[1.25rem] font-semibold pb-[2.5rem]">Консультації лікарів</div>
+            <div class="text-[#444] font-medium flex flex-col gap-4 pb-[2.5rem]">
+                <div>Консультація гастроентеролога</div>
+                <div>Консультація невропатолога</div>
+                <div>Консультація ендокринолог</div>
+                <div>Консультація кардіолога</div>
+            </div>
+            <button class="px-[4rem] py-[1rem] text-white text-[1.25rem] rounded-[0.625rem] bg-tiffany-light">
+                Детальніше
+            </button>
+        </div>
+    </div>
+</SecondaryLayout>
