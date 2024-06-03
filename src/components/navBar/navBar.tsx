@@ -24,16 +24,7 @@ const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
 
 let burgerMenuRef: SVGSVGElement;
 
-const openContactUsModal = () => {
-  setContactUsModalOpen(true);
-}
-
-const closeContactUsModalOpen = () => {
-  setContactUsModalOpen(false);
-}
-
-export default () => {
-  let menuItems: NavBarItem[] =
+export const menuItems: NavBarItem[] =
   [
     {
       title: 'Головна',
@@ -50,7 +41,7 @@ export default () => {
           href: '/ultrasound',
         },
         {
-          title: 'Консультації спеціалістів',
+          title: 'Консультації',
           href: '/appointments',
         },
       ],
@@ -76,10 +67,12 @@ export default () => {
       img: '/assets/images/phone-icon.svg',
       action: () => {
         setMobileMenuOpen(false);
-        openContactUsModal();
+        setContactUsModalOpen(true);
       },
     },
   ];
+
+export default () => {
 
   createEffect(() => {
     if (!isMobileMenuOpen()) {
@@ -138,7 +131,7 @@ export default () => {
           </div>
         </div>
       </div>
-      <ContactUsModal isOpen={isContactUsModalOpen()} onClose={closeContactUsModalOpen}/>
+      <ContactUsModal isOpen={isContactUsModalOpen()} onClose={() => setContactUsModalOpen(false)}/>
       <MobileMenu isOpen={isMobileMenuOpen()} onClose={() => setMobileMenuOpen(false)} menuItems={menuItems}/>
       <BookConsultationFlow isOpen={isBookingModalOpen()} onClose={() => setBookingModalOpen(false)} />
     </>

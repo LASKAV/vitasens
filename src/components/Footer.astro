@@ -1,12 +1,53 @@
 ---
-import instagramIcon from '@/assets/images/instagram-icon.svg';
-import facebookIcon from '@/assets/images/facebook-icon.png';
+import { menuItems } from './navBar/navBar';
 import clockFilledIcon from '@/assets/images/clock-filled-icon.svg';
 import envelopeFilledIcon from '@/assets/images/envelope-filled-icon.svg';
 import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
+import LogoImg from 'public/assets/images/logo-high-res.jpeg';
+
+const socialMediaLinks = [
+  {
+    title: 'Instagram',
+    href: '/',
+  },
+  {
+    title: 'Facebook',
+    href: '/',
+  },
+  {
+    title: 'Telegram',
+    href: '/'
+  }
+]
+
+const registeredNurseLinks = [
+  {
+    name: 'Саморукова Вікторія',
+    href: '/',
+  },
+  {
+    name: 'Дукова Ольга',
+    href: '/',
+  },
+  {
+    name: 'Хоміна Ольга',
+    href: '/',
+  },
+  {
+    name: 'Гвоздяниця Анастасія',
+    href: '/',
+  },
+  {
+    name: 'Кудінова Наталія',
+    href: '/',
+  },
+]
+
+const currentYear = new Date().getFullYear();
+
 ---
 
-<div class='mx-auto max-w-[100rem] pb-[10rem] xl:pb-[1.56rem]'>
+<div class='mx-auto max-w-[100rem] pb-[2.56rem] xl:pb-[1.56rem]'>
   <div
     class='flex flex-col xl:flex-row justify-center gap-7 bg-[#020202]/70 py-10 text-xs leading-normal tracking-[0.6px] text-white'
   >
@@ -38,13 +79,58 @@ import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
       allowfullscreen=''
       loading='lazy'
       referrerpolicy='no-referrer-when-downgrade'></iframe>
-    <div class='flex gap-7 self-end'>
-      <a href=''>
-        <img class='h-[1.5625rem] w-[1.5625rem] xl:h-[3.125rem] xl:w-[3.125rem]' src={instagramIcon.src} alt='' />
-      </a>
-      <a href=''>
-        <img class='h-[1.5625rem] w-[1.5625rem] xl:h-[3.125rem] xl:w-[3.125rem]' src={facebookIcon.src} alt='' />
-      </a>
-    </div>
   </div>
+    <div class="container mx-auto pt-[1.88rem] pb-[8.7rem] pl-7 flex flex-wrap gap-[1.5rem] tracking-[0.04375rem] xl:max-w-[1240px] lg:justify-between">
+      <div>
+        <div class="text-[#444] font-medium">Навігація</div>
+        {
+          menuItems.map(menuItem => (
+            <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
+                <a href={menuItem.href} onclick={menuItem.action}>{menuItem.title}</a>
+                {
+                  menuItem.submenu && menuItem.submenu.map(submenuItem => (
+                    <div class="pl-5 pt-[0.31rem]">
+                        <a href={submenuItem.href}>{submenuItem.title}</a>
+                    </div>
+                  ))
+                }
+            </div>
+          ))
+        }
+      </div>
+      <div class="flex flex-col gap-[1.5rem] md:flex-row xl:gap-[5rem]">
+        <div class="pb-6">
+          <div class="text-[#444] font-medium">Соціальні мережі</div>
+          {
+            socialMediaLinks.map(socialMedia => (
+              <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
+                <a href={socialMedia.href}>{socialMedia.title}</a>
+              </div>
+            ))
+          }
+        </div>
+        <div>
+          <div class="text-[#444] font-medium">Лікарі</div>
+          {
+            registeredNurseLinks.map(rnLink => (
+              <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
+                <a href={rnLink.href}>{rnLink.name}</a>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div>
+        <div class="text-[#444] font-medium">NDA</div>
+        <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
+          <a href="/">Політика конфіденційності</a>
+        </div>
+      </div>
+      <div class="hidden lg:block w-[5rem] h-[5rem] self-end">
+          <img class="object-cover w-full h-full" src={LogoImg.src} alt="" />
+      </div>
+    </div>
+    <div class="text-[#444] text-center font-light tracking-[0.05rem]">
+      {currentYear} © Всі права захищені VitaSens.com
+    </div>
 </div>
