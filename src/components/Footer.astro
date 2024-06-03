@@ -3,6 +3,7 @@ import { menuItems } from './navBar/navBar';
 import clockFilledIcon from '@/assets/images/clock-filled-icon.svg';
 import envelopeFilledIcon from '@/assets/images/envelope-filled-icon.svg';
 import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
+import LogoImg from 'public/assets/images/logo-high-res.jpeg';
 
 const socialMediaLinks = [
   {
@@ -77,12 +78,12 @@ const registeredNurseLinks = [
       loading='lazy'
       referrerpolicy='no-referrer-when-downgrade'></iframe>
   </div>
-    <div class="container mx-auto pt-[1.88rem] pb-[10rem] pl-7 flex flex-wrap gap-[1.5rem] tracking-[0.04375rem]">
+    <div class="container mx-auto pt-[1.88rem] pb-[10rem] pl-7 flex flex-wrap gap-[1.5rem] tracking-[0.04375rem] xl:max-w-[1240px] lg:justify-between">
       <div>
         <div class="text-[#444] font-medium">Навігація</div>
         {
           menuItems.map(menuItem => (
-            <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem]">
+            <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
                 <a href={menuItem.href} onclick={menuItem.action}>{menuItem.title}</a>
                 {
                   menuItem.submenu && menuItem.submenu.map(submenuItem => (
@@ -95,12 +96,12 @@ const registeredNurseLinks = [
           ))
         }
       </div>
-      <div class="flex-col gap-[1.5rem]">
+      <div class="flex flex-col gap-[1.5rem] md:flex-row xl:gap-[5rem]">
         <div class="pb-6">
           <div class="text-[#444] font-medium">Соціальні мережі</div>
           {
             socialMediaLinks.map(socialMedia => (
-              <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem]">
+              <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
                 <a href={socialMedia.href}>{socialMedia.title}</a>
               </div>
             ))
@@ -110,7 +111,7 @@ const registeredNurseLinks = [
           <div class="text-[#444] font-medium">Лікарі</div>
           {
             registeredNurseLinks.map(rnLink => (
-              <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem]">
+              <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
                 <a href={rnLink.href}>{rnLink.name}</a>
               </div>
             ))
@@ -119,9 +120,12 @@ const registeredNurseLinks = [
       </div>
       <div>
         <div class="text-[#444] font-medium">NDA</div>
-        <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem]">
+        <div class="pl-5 pt-[1.88rem] text-[#B6B6B6] text-[0.875rem] xl:text-[1rem]">
           <a href="/">Політика конфіденційності</a>
         </div>
+      </div>
+      <div class="hidden lg:block w-[5rem] h-[5rem] self-end">
+          <img class="object-cover w-full h-full" src={LogoImg.src} alt="" />
       </div>
     </div>
 </div>
