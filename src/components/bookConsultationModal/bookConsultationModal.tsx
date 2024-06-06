@@ -34,7 +34,7 @@ export default (props: BookConsultationModalProps) => {
             ref={containerRef}
             class='fixed left-0 top-0 z-[10000] hidden h-full w-full items-center justify-center bg-vs-gray/40 px-5 backdrop-blur-md lg:flex'
           >
-            <div class='flex h-[50rem] overflow-hidden rounded-[2.5rem] bg-white lg:container lg:rounded-[3.5rem]'>
+            <div class='flex h-[50rem] overflow-hidden rounded-[2.5rem] bg-white lg:w-[73.8rem] lg:rounded-[3.5rem]'>
               <div class='hidden w-[50%] grow-0 overflow-hidden lg:block lg:grow '>
                 <img
                   class='h-full w-full object-cover'

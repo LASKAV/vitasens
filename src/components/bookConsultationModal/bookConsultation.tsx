@@ -25,23 +25,25 @@ export default (props: BookConsultationModalProps) => {
           <div class='flex flex-col pt-[1.25rem]'>
             <label for='booking-name'>Імʼя</label>
             <input
-              class='h-[3rem] rounded-[0.625rem] bg-[#D9D9D9] pl-4 outline-none drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'
+              class='h-[3rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6]'
               type='text'
+              placeholder='Євген Вітасенс'
               id='booking-name'
             />
           </div>
           <div class='flex flex-col pt-[1.25rem]'>
             <label for='booking-phone'>Номер телефону</label>
             <input
-              class='h-[3rem] rounded-[0.625rem] bg-[#D9D9D9] pl-4 outline-none drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'
+              class='h-[3rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6]'
               type='text'
+              placeholder='0505820003'
               id='booking-phone'
             />
           </div>
           <div class='flex flex-col pt-[1.25rem]'>
             <label for='booking-service'>Послуги</label>
             <input
-              class='h-[3rem] rounded-[0.625rem] bg-[#D9D9D9] pl-4 outline-none drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'
+              class='h-[3rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 outline-none drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]'
               type='text'
               id='booking-service'
             />
