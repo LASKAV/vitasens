@@ -1,6 +1,4 @@
 import CloseModal from '@/assets/images/close-modal-icon.svg';
-import ActionButton from '@/components/actionButton/actionButton.tsx';
-import ActionButtonMinor from '@/components/actionButtonMinor/actionButtonMinor.tsx';
 import Clock from '@/assets/images/clock-icon.svg';
 import Phone from '@/assets/images/phone-filled-tiffany-icon.svg';
 import Email from '@/assets/images/email-filled-tiffany-icon.svg';
@@ -15,80 +13,84 @@ export default (props: BookConsultationModalProps) => {
       >
         <img src={CloseModal.src} alt='' />
       </div>
-      <div class='mx-auto lg:max-w-[24rem]'>
-        <div class='mx-auto flex justify-center pb-[0.8rem] pt-[0rem] text-[1.5rem] font-semibold tracking-[0.075rem] [text-shadow:1px_2px_4px_rgba(0,0,0,0.25)]'>
+      <div class='mx-auto max-w-[20.225rem] lg:max-w-[20.225rem]'>
+        <div class='mx-auto flex justify-center pt-[0rem] text-[1.5rem] font-semibold tracking-[0.075rem] [text-shadow:1px_2px_4px_rgba(0,0,0,0.25)]'>
           <span class='text-black'>
             Запис на&nbsp;<span class='text-tiffany'>консультацію</span>
           </span>
         </div>
         <form id='bookingModal' method='post' class='flex flex-col'>
-          <div class='flex flex-col pt-[1.25rem]'>
-            <label for='booking-name'>Імʼя</label>
+          <div class='flex flex-col pt-[1.31rem]'>
+            <label class='pb-[0.62rem] text-[#111]' for='booking-name'>
+              Імʼя
+            </label>
             <input
-              class='h-[3rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6]'
+              class='h-[2.68rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6]'
               type='text'
               placeholder='Євген Вітасенс'
               id='booking-name'
             />
           </div>
-          <div class='flex flex-col pt-[1.25rem]'>
-            <label for='booking-phone'>Номер телефону</label>
+          <div class='flex flex-col pt-[0.62rem] lg:pt-[1.25rem]'>
+            <label class='pb-[0.62rem] text-[#111]' for='booking-phone'>
+              Номер телефону
+            </label>
             <input
-              class='h-[3rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6]'
+              class='h-[2.68rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6]'
               type='text'
               placeholder='0505820003'
               id='booking-phone'
             />
           </div>
-          <div class='flex flex-col pt-[1.25rem]'>
-            <label for='booking-service'>Послуги</label>
+          <div class='flex flex-col pt-[0.62rem] lg:pt-[1.25rem]'>
+            <label class='pb-[0.62rem] text-[#111]' for='booking-service'>
+              Послуги
+            </label>
             <input
-              class='h-[3rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 outline-none drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]'
+              class='h-[2.68rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 outline-none drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]'
               type='text'
               id='booking-service'
             />
           </div>
-          <div class='flex flex-row items-center justify-center pt-[1.25rem]'>
+          <div class='flex flex-row items-center justify-center pt-[0.94rem] lg:pt-[1.56rem]'>
             <input
-              class='mr-2 h-[0.8125rem] bg-[#D9D9D9] drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'
+              class='mr-2 h-[0.8125rem] bg-[#D9D9D9]'
               type='checkbox'
               id='booking-policy'
             />
-            <label class='text-[0.6875rem]' for='booking-policy'>
+            <label class='text-[0.6875rem] font-bold' for='booking-policy'>
               Я згоден (на) з{' '}
               <a href='/' class='text-tiffany'>
                 політикою конфіденційності
               </a>
             </label>
           </div>
-          <div class='flex justify-end pb-[2.43rem] pt-[2rem]'>
-            <div class='hidden lg:block'>
-              <ActionButton text='Відправити' action={props.onRequestSuccess} />
-            </div>
-            <div class='block lg:hidden'>
-              <ActionButtonMinor
-                text='Відправити'
-                action={props.onRequestSuccess}
-              />
-            </div>
+          <div class='flex justify-end py-[2.2rem] lg:pt-[1.88rem]'>
+            <button
+              type='button'
+              onClick={props.onRequestSuccess}
+              class='rounded-[0.625rem] border-[5px] border-tiffany-light bg-white px-[3.12rem] py-[0.75rem] text-[0.875rem] font-bold tracking-[0.04375rem] text-[#66B0B0] transition-all duration-300 hover:border-[#4ABCBC] hover:bg-[#4ABCBC] hover:text-white lg:px-[2.06rem]'
+            >
+              Відправити
+            </button>
           </div>
-          <div class='flex border-b drop-shadow-[0px_4px_4px_rgba(0,0,0,0.5)]'></div>
-          <div class='grid grid-cols-2 grid-rows-2 gap-[1.2rem] pt-8 text-[0.75rem]'>
-            <div class='flex flex-col items-center gap-6'>
+          <div class='flex border-b drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)]'></div>
+          <div class='grid grid-cols-2 grid-rows-2 gap-[1.2rem] gap-y-[2.38rem] pt-8 text-[0.75rem] tracking-[0.0375rem]'>
+            <div class='flex flex-col items-center gap-[0.94rem]'>
               <img class='h-6 w-6' src={Clock.src} alt='Working schedule' />
-              <div class='text-center'>
+              <div class='text-center font-medium text-[#111]'>
                 Понеділок - пʼятниця: <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;9:00 - 18:00
               </div>
             </div>
-            <div class='flex flex-col items-center gap-6'>
+            <div class='flex flex-col items-center gap-[0.94rem]'>
               <img class='h-6 w-6' src={Phone.src} alt='Phone' />
-              <div>
+              <div class='font-medium text-[#111]'>
                 +38<span class='text-tiffany-light'>093</span> 432 00 22 <br />{' '}
                 +38<span class='text-tiffany-light'>096</span> 432 00 22
               </div>
             </div>
-            <div class='col-span-2 flex flex-col items-center gap-6'>
+            <div class='col-span-2 flex flex-col items-center gap-[0.94rem] font-medium text-[#111]'>
               <img class='h-[1.5rem]' src={Email.src} alt='email' />
               <div>klinikavitasens@gmail.com</div>
             </div>

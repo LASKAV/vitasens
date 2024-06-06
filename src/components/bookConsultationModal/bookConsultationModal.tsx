@@ -42,7 +42,7 @@ export default (props: BookConsultationModalProps) => {
                   alt=''
                 />
               </div>
-              <div class='w-[50%] grow px-5 py-[2.12rem]'>
+              <div class='w-[50%] grow px-8 py-8'>
                 <BookConsultation
                   isOpen={props.isOpen}
                   onClose={props.onClose}
@@ -51,7 +51,7 @@ export default (props: BookConsultationModalProps) => {
               </div>
             </div>
           </div>
-          <div class='fixed left-0 top-0 z-[10000] h-full max-h-[58.5rem] w-full overflow-y-auto bg-white px-5 pt-[2rem] lg:hidden'>
+          <div class='fixed left-0 top-0 z-[10000] h-full max-h-[58.5rem] w-full overflow-y-auto bg-white px-[1.62rem] pt-[2.1rem] lg:hidden'>
             <BookConsultation
               isOpen={props.isOpen}
               onClose={props.onClose}
