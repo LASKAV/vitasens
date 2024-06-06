@@ -1,22 +1,21 @@
 import Background from '@/assets/images/booking-modal-picture.jpeg';
 import BookConsultation from './bookConsultation';
-import {createEffect} from 'solid-js';
+import { createEffect } from 'solid-js';
 
 export type BookConsultationModalProps = {
   onRequestSuccess?: () => void;
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
 let containerRef: HTMLDivElement;
 
 export default (props: BookConsultationModalProps) => {
-
   const handleOutsideClick = (event: MouseEvent) => {
-    if (event?.target === containerRef){
+    if (event?.target === containerRef) {
       props.onClose();
     }
-  }
+  };
 
   createEffect(() => {
     if (props.isOpen) {
@@ -31,21 +30,36 @@ export default (props: BookConsultationModalProps) => {
     <>
       {props.isOpen && (
         <>
-          <div ref={containerRef} class="fixed hidden justify-center items-center top-0 left-0 w-full h-full bg-vs-gray/40 z-[10000] backdrop-blur-md px-5 lg:flex">
-            <div class="flex bg-white h-[50rem] rounded-[2.5rem] lg:rounded-[3.5rem] overflow-hidden lg:container">
-              <div class="hidden lg:block overflow-hidden grow-0 lg:grow w-[50%] ">
-                <img class="object-cover w-full h-full" src={Background.src} alt=""/>
+          <div
+            ref={containerRef}
+            class='fixed left-0 top-0 z-[10000] hidden h-full w-full items-center justify-center bg-vs-gray/40 px-5 backdrop-blur-md lg:flex'
+          >
+            <div class='flex h-[50rem] overflow-hidden rounded-[2.5rem] bg-white lg:container lg:rounded-[3.5rem]'>
+              <div class='hidden w-[50%] grow-0 overflow-hidden lg:block lg:grow '>
+                <img
+                  class='h-full w-full object-cover'
+                  src={Background.src}
+                  alt=''
+                />
               </div>
-              <div class="grow w-[50%] px-5 py-[2.12rem]">
-                <BookConsultation isOpen={props.isOpen} onClose={props.onClose} onRequestSuccess={props.onRequestSuccess}/>
+              <div class='w-[50%] grow px-5 py-[2.12rem]'>
+                <BookConsultation
+                  isOpen={props.isOpen}
+                  onClose={props.onClose}
+                  onRequestSuccess={props.onRequestSuccess}
+                />
               </div>
             </div>
           </div>
-          <div class="fixed overflow-y-auto top-0 left-0 w-full h-full max-h-[58.5rem] bg-white z-[10000] px-5 pt-[2rem] lg:hidden">
-            <BookConsultation isOpen={props.isOpen} onClose={props.onClose} onRequestSuccess={props.onRequestSuccess} />
+          <div class='fixed left-0 top-0 z-[10000] h-full max-h-[58.5rem] w-full overflow-y-auto bg-white px-5 pt-[2rem] lg:hidden'>
+            <BookConsultation
+              isOpen={props.isOpen}
+              onClose={props.onClose}
+              onRequestSuccess={props.onRequestSuccess}
+            />
           </div>
         </>
       )}
     </>
-  )
-}
+  );
+};
