@@ -11,6 +11,9 @@ const doctors = await fetchApi<RegisteredNurse[]>({
 ---
 
 <SecondaryLayout title='Лікарі'>
+  <script>
+    console.log('path 1');
+  </script>
   <div
     class="mt-[1.94rem] flex min-h-[8.8125rem] flex-col items-center bg-[url('/assets/images/doctors-header-bg.png')] bg-cover pb-[1.25rem] pt-[0.62rem] text-center lg:mt-[3.62rem]"
   >
