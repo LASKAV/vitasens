@@ -32,7 +32,7 @@ export default (props: DoctorsShowcaseTileProps) => {
         >
           <img
             class='h-full w-full object-cover'
-            src='/assets/images/expand-view-icon.svg'
+            src='/src/assets/images/expand-view-icon.svg'
             alt='ceo'
           />
         </button>
