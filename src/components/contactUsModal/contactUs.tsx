@@ -11,7 +11,7 @@ export default (props: ContactUsModalProps) => {
         <div class='select-none text-tiffany'>
           <div class='flex items-center gap-4'>
             <div>
-              <img src='/assets/images/logo.png' alt='Logo' />
+              <img src='/src/assets/images/logo.png' alt='Logo' />
             </div>
             <div class='text-2xl leading-normal'>VitaSens</div>
           </div>

@@ -1,9 +1,10 @@
 ---
-import Logo from '../components/Logo.astro';
+import Logo from '../components/logo/logo';
 import ChevronIcon from '@/assets/images/chevron-right-icon.svg';
 import FemaleDoctorStock from '@/assets/images/stock-female-doctor-404.svg';
 import Background from '@/assets/images/404-background-rect.svg';
 import BackgroundMobile from '@/assets/images/404-background-rect-mobile.svg';
+import { Image } from 'astro:assets';
 
 const { title } = Astro.props;
 ---
@@ -14,9 +15,13 @@ const { title } = Astro.props;
     <meta charset='UTF-8' />
     <meta name='description' content='Astro description' />
     <meta name='viewport' content='width=device-width' />
-    <link rel='icon' type='image/svg+xml' href='/assets/images/favicon.svg' />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/src/assets/images/favicon.svg'
+    />
     <meta name='generator' content={Astro.generator} />
-    <link href='/assets/styles/main.css' rel='stylesheet' />
+    <link href='/src/assets/styles/main.css' rel='stylesheet' />
     <link rel='preconnect' href='https://fonts.googleapis.com' />
     <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
     <link
@@ -29,15 +34,15 @@ const { title } = Astro.props;
     <div
       class='absolute right-[-1rem] top-[20.38rem] z-[-2] w-[23rem] lg:right-[21rem] lg:top-[20.75rem] lg:w-auto'
     >
-      <img class='flex object-fill' src={FemaleDoctorStock.src} alt='' />
+      <Image class='flex object-fill' src={FemaleDoctorStock} alt='' />
     </div>
     <div class='absolute right-0 top-0 z-[-1] hidden h-full lg:block'>
-      <img class='h-full object-cover' src={Background.src} alt='' />
+      <Image class='h-full object-cover' src={Background} alt='' />
     </div>
     <div
       class='absolute right-[-1rem] top-[7.7rem] z-[-1] block h-[70%] lg:hidden'
     >
-      <img class='flex h-full object-fill' src={BackgroundMobile.src} alt='' />
+      <Image class='flex h-full object-fill' src={BackgroundMobile} alt='' />
     </div>
 
     <div
