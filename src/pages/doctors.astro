@@ -4,10 +4,16 @@ import SecondaryLayout from '../layouts/SecondaryLayout.astro';
 import DoctorsShowcase from '../components/doctorsShowcase/doctorsShowcase';
 import fetchApi from '../lib/strapi';
 
-const doctors = await fetchApi<RegisteredNurse[]>({
-  endpoint: 'doctors',
-  wrappedByKey: 'data',
-});
+let doctors;
+
+try {
+  doctors = await fetchApi<RegisteredNurse[]>({
+    endpoint: 'doctors',
+    wrappedByKey: 'data',
+  });
+} catch (e) {
+  console.error('err', e);
+}
 ---
 
 <SecondaryLayout title='Лікарі'>
