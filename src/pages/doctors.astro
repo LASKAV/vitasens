@@ -11,8 +11,11 @@ const doctors = await fetchApi<RegisteredNurse[]>({
 ---
 
 <SecondaryLayout title='Лікарі'>
+  <script>
+    console.log('path 1');
+  </script>
   <div
-    class="mt-[1.94rem] flex min-h-[8.8125rem] flex-col items-center bg-[url('/assets/images/doctors-header-bg.png')] bg-cover pb-[1.25rem] pt-[0.62rem] text-center lg:mt-[3.62rem]"
+    class="mt-[1.94rem] flex min-h-[8.8125rem] flex-col items-center bg-[url('/src/assets/images/doctors-header-bg.png')] bg-cover pb-[1.25rem] pt-[0.62rem] text-center lg:mt-[3.62rem]"
   >
     <div
       class='mt-[1.25rem] text-[1.5rem] font-semibold text-tiffany-light lg:mt-[0.62rem] lg:text-[2.25rem]'
@@ -29,7 +32,7 @@ const doctors = await fetchApi<RegisteredNurse[]>({
   </div>
   <DoctorsShowcase rnInfo={doctors} client:only='solid-js' />
   <div
-    class="relative bottom-0 mt-[5rem] h-[10rem] w-full bg-[url('/assets/images/vitasens-doctors-footer-pattern-mobile.png')] bg-repeat-x md:absolute md:h-[12rem] md:bg-[url('/assets/images/vitasens-doctors-footer-pattern.png')]"
+    class="relative bottom-0 mt-[5rem] h-[10rem] w-full bg-[url('/src/assets/images/vitasens-doctors-footer-pattern-mobile.png')] bg-repeat-x md:absolute md:h-[12rem] md:bg-[url('/src/assets/images/vitasens-doctors-footer-pattern.png')]"
     slot='footer'
   >
   </div>
