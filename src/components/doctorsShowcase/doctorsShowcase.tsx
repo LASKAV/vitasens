@@ -12,7 +12,7 @@ import DoctorTile from './doctorsShowcaseTile.tsx';
 import DoctorDetailsModal from './doctorDetailsModal';
 
 type DoctorShowcaseProps = {
-  rnInfo: RegisteredNurse[] | undefined;
+  rnInfo?: RegisteredNurse[];
 };
 
 export default (props: DoctorShowcaseProps) => {
@@ -54,11 +54,13 @@ export default (props: DoctorShowcaseProps) => {
           )}
         </For>
       </div>
-      <DoctorDetailsModal
-        isOpen={isDetailsModalOpen()}
-        info={props.rnInfo ? props.rnInfo[selectedRnNumber()] : undefined}
-        onClose={closeModal}
-      />
+      {props.rnInfo && (
+        <DoctorDetailsModal
+          isOpen={isDetailsModalOpen()}
+          info={props.rnInfo[selectedRnNumber()]}
+          onClose={closeModal}
+        />
+      )}
     </>
   );
 };

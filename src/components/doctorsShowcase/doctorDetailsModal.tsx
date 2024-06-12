@@ -5,7 +5,7 @@ import Details from './doctorDetails.tsx';
 export type DoctorDetailsModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  info: RegisteredNurse | undefined;
+  info: RegisteredNurse;
 };
 
 let containerRef: HTMLDivElement;
