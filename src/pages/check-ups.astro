@@ -1,17 +1,44 @@
 ---
 import SecondaryLayout from '../layouts/SecondaryLayout.astro';
 import CheckUpSlider from '../components/checkUpSlider/checkUpSlider';
+import type { CheckUp } from '@/types/CheckUp.ts';
+import fetchApi from '../lib/strapi';
 
 import Star1 from '@/assets/images/background-rect-checkups-star1.svg';
 import Star2 from '@/assets/images/background-rect-checkups-star2.svg';
+
+let checkups;
+
+try {
+  checkups = await fetchApi<CheckUp[]>({
+    endpoint: 'services',
+    wrappedByKey: 'data',
+    query: {
+      'filters[type][$eq]': 'checkup',
+    },
+  });
+} catch (e) {
+  console.error('err', e);
+}
 ---
 
-
-<SecondaryLayout title="Чек-апи">
-    <div class="flex justify-center pt-[2.25rem] pb-[2.56rem] lg:pb-[4.5rem]">
-        <p class="px-[2.9rem] py-[2.41rem] bg-tiffany-light/20 font-semibold text-tiffany-light text-[2.5rem] rounded-full w-fit">Чек-апи</p>
-    </div>
-    <CheckUpSlider client:only="solid-js" />
-    <img class="absolute right-0 top-[13rem] w-[3.5rem] h-[7.5rem] lg:w-[8rem] lg:h-[15rem]" src={Star2.src} alt="" />
-    <img class="absolute bottom-0 w-[3.5rem] h-[7.5rem] lg:w-[8rem] lg:h-[15rem]" src={Star1.src} alt="" />
+<SecondaryLayout title='Чек-апи'>
+  <div class='flex justify-center pb-[2.56rem] pt-[2.25rem] lg:pb-[4.5rem]'>
+    <p
+      class='w-fit rounded-full bg-tiffany-light/20 px-[2.9rem] py-[2.41rem] text-[2.5rem] font-semibold text-tiffany-light'
+    >
+      Чек-апи
+    </p>
+  </div>
+  <CheckUpSlider client:only='solid-js' />
+  <img
+    class='absolute right-0 top-[13rem] h-[7.5rem] w-[3.5rem] lg:h-[15rem] lg:w-[8rem]'
+    src={Star2.src}
+    alt=''
+  />
+  <img
+    class='absolute bottom-0 h-[7.5rem] w-[3.5rem] lg:h-[15rem] lg:w-[8rem]'
+    src={Star1.src}
+    alt=''
+  />
 </SecondaryLayout>
