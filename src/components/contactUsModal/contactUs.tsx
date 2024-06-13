@@ -2,6 +2,7 @@ import CloseModal from '@/assets/images/close-modal-icon.svg';
 import Clock from '@/assets/images/clock-icon.svg';
 import Phone from '@/assets/images/phone-filled-tiffany-icon.svg';
 import Email from '@/assets/images/email-filled-tiffany-icon.svg';
+import Logo from '@/assets/images/logo.png';
 import type { ContactUsModalProps } from '@/components/contactUsModal/contactUsModal.tsx';
 
 export default (props: ContactUsModalProps) => {
@@ -11,7 +12,7 @@ export default (props: ContactUsModalProps) => {
         <div class='select-none text-tiffany'>
           <div class='flex items-center gap-4'>
             <div>
-              <img src='/src/assets/images/logo.png' alt='Logo' />
+              <img src={Logo.src} alt='Logo' />
             </div>
             <div class='text-2xl leading-normal'>VitaSens</div>
           </div>

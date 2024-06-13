@@ -1,6 +1,8 @@
 import ActionButton from '../actionButton/actionButton';
 import ActionButtonMinor from '../actionButtonMinor/actionButtonMinor';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow';
+import HeroBgElementIcon from '@/assets/images/hero-bg-element.png';
+import CeoOfClinicImage from '@/assets/images/ceo.png';
 import './hero.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -38,36 +40,28 @@ export default () => {
         <div class='relative left-[-2.5rem] top-[1rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:left-[1.5rem]'>
           <img
             class='h-[80%] rotate-[-36deg] lg:h-[100%]'
-            src='/src/assets/images/hero-bg-element.png'
-            alt='hero'
+            src={HeroBgElementIcon.src}
+            alt=''
           />
         </div>
         <div class='relative left-[50.12rem] top-[15.5rem] hidden h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:block'>
-          <img
-            class='rotate-[-36deg]'
-            src='/src/assets/images/hero-bg-element.png'
-            alt='hero'
-          />
+          <img class='rotate-[-36deg]' src={HeroBgElementIcon.src} alt='' />
         </div>
         <div class='absolute right-[4.21rem] top-[0.5rem] hidden h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:block'>
-          <img
-            class='rotate-[-36deg]'
-            src='/src/assets/images/hero-bg-element.png'
-            alt='hero'
-          />
+          <img class='rotate-[-36deg]' src={HeroBgElementIcon.src} alt='' />
         </div>
         <div class='absolute left-[2.5rem] top-[41rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:left-[11.42rem]'>
           <img
             class='h-[80%] rotate-[27deg] lg:h-full'
-            src='/src/assets/images/hero-bg-element.png'
-            alt='hero'
+            src={HeroBgElementIcon.src}
+            alt=''
           />
         </div>
         <div class='absolute right-[-2.5rem] top-[36.19rem] h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:right-[11.53rem] lg:top-[41.19rem]'>
           <img
             class='h-[80%] rotate-[57deg] lg:h-full'
-            src='/src/assets/images/hero-bg-element.png'
-            alt='hero'
+            src={HeroBgElementIcon.src}
+            alt=''
           />
         </div>
       </div>
@@ -108,11 +102,7 @@ export default () => {
         </div>
       </div>
       <div class='absolute right-0 top-[12.62rem] hidden h-[36.87rem] w-[37.68rem] overflow-hidden rounded-l-[5rem] shadow-[8.7px_8.7px_4px_0px_rgba(0,0,0,0.35)] xl:flex 2xl:top-24 2xl:rounded-r-[5rem]'>
-        <img
-          class='w-full object-cover'
-          src='/src/assets/images/ceo.png'
-          alt='ceo'
-        />
+        <img class='w-full object-cover' src={CeoOfClinicImage.src} alt='ceo' />
       </div>
     </div>
   );

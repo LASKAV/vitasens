@@ -1,4 +1,5 @@
 import type { RegisteredNurse } from '@/types/RegisteredNurse.ts';
+import CeoOfClinicImage from '@/assets/images/expand-view-icon.svg';
 
 type DoctorsShowcaseTileProps = {
   info: RegisteredNurse;
@@ -14,7 +15,7 @@ export default (props: DoctorsShowcaseTileProps) => {
           <img
             class='h-full w-full select-none object-cover'
             src={props.info.rnPhotoLink}
-            alt='ceo'
+            alt=''
           />
         </div>
         <div class='pl-[0.5rem] pt-[0.62rem]'>
@@ -32,7 +33,7 @@ export default (props: DoctorsShowcaseTileProps) => {
         >
           <img
             class='h-full w-full object-cover'
-            src='/src/assets/images/expand-view-icon.svg'
+            src={CeoOfClinicImage.src}
             alt='ceo'
           />
         </button>
