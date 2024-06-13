@@ -8,39 +8,13 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 import './checkUpSlider.css';
+import type { CheckUp } from '@/types/CheckUp.ts';
 
-type CheckUp = {
-  imageUrl: string;
+type CheckUpSliderProps = {
+  checkUps?: CheckUp[];
 };
 
-export default () => {
-  let checkUps: CheckUp[] = [
-    {
-      imageUrl: '/src/assets/images/check-up-male.jpeg',
-    },
-    {
-      imageUrl: '/src/assets/images/check-up-neurological.jpeg',
-    },
-    {
-      imageUrl: '/src/assets/images/check-up-endocrinology.jpeg',
-    },
-    {
-      imageUrl: '/src/assets/images/check-up-gastroenterology.jpeg',
-    },
-    {
-      imageUrl: '/src/assets/images/check-up-cardiology-no-labs.jpeg',
-    },
-    {
-      imageUrl: '/src/assets/images/check-up-overall.jpeg',
-    },
-    {
-      imageUrl: '/src/assets/images/check-up-cardiology-with-labs.jpeg',
-    },
-    {
-      imageUrl: '/src/assets/images/check-up-female.jpeg',
-    },
-  ];
-
+export default (props: CheckUpSliderProps) => {
   return (
     <>
       <div class='pb-16 md:container md:mx-auto'>
@@ -64,7 +38,7 @@ export default () => {
           }}
           class='swiper_checkup_container'
         >
-          <For each={checkUps}>
+          <For each={props.checkUps}>
             {(checkUp: CheckUp) => (
               <SwiperSlide class='swiper_checkup_slide'>
                 <div class='absolute z-10 h-full w-full bg-vs-gray/0 transition-all duration-300'>
