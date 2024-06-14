@@ -47,7 +47,7 @@ export default (props: DoctorShowcaseProps) => {
           </For>
         </Swiper>
       </div>
-      <div class='hidden gap-[0rem] pt-16 lg:container lg:mx-auto lg:flex'>
+      <div class='hidden gap-[0rem] pt-16 lg:container lg:mx-auto lg:flex lg:flex-wrap lg:gap-[2.12rem]'>
         <For each={props.rnInfo}>
           {(info: RegisteredNurse, i) => (
             <DoctorTile info={info} onOpen={openModal} index={i()} />
