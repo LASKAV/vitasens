@@ -24,6 +24,10 @@ const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
 
 let burgerMenuRef: SVGSVGElement;
 
+type NavProps = {
+  currentPage: string;
+};
+
 export const menuItems: NavBarItem[] = [
   {
     title: 'Головна',
@@ -71,7 +75,7 @@ export const menuItems: NavBarItem[] = [
   },
 ];
 
-export default () => {
+export default (props: NavProps) => {
   createEffect(() => {
     if (!isMobileMenuOpen()) {
       burgerMenuRef.classList.remove('open');
@@ -96,7 +100,14 @@ export default () => {
                     onClick={menuItem.action}
                     class='item-container underline-half flex text-[#B6B6B6] hover:text-tiffany-light'
                   >
-                    <a class='pr-[0.31rem]' href={menuItem.href}>
+                    <a
+                      class={
+                        menuItem.href === props.currentPage
+                          ? 'pr-[0.31rem] text-tiffany-light'
+                          : 'pr-[0.31rem]'
+                      }
+                      href={menuItem.href}
+                    >
                       {menuItem.title}
                     </a>
                     <Show when={menuItem.submenu}>
@@ -113,11 +124,18 @@ export default () => {
                       <div class='drop-down-menu absolute h-0 w-[25rem] overflow-hidden bg-white py-0  transition-all duration-300'>
                         <For each={menuItem.submenu}>
                           {(submenuItem: NavBarSubmenuItem) => (
-                            <a href={submenuItem.href}>
-                              <div class='text-[#B6B6B6] hover:text-tiffany-light'>
+                            <div class=''>
+                              <a
+                                class={
+                                  submenuItem.href === props.currentPage
+                                    ? 'text-tiffany-light'
+                                    : 'text-[#B6B6B6] hover:text-tiffany-light'
+                                }
+                                href={submenuItem.href}
+                              >
                                 {submenuItem.title}
-                              </div>
-                            </a>
+                              </a>
+                            </div>
                           )}
                         </For>
                       </div>
