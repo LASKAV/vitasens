@@ -1,5 +1,5 @@
 import Logo from '../logo/logo.tsx';
-import {createEffect, createSignal, For, Show} from 'solid-js';
+import { createEffect, createSignal, For, Show } from 'solid-js';
 import ContactUsModal from '@/components/contactUsModal/contactUsModal';
 import MobileMenu from './mobileMenu';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
@@ -11,12 +11,12 @@ export type NavBarItem = {
   img: string;
   submenu?: NavBarSubmenuItem[];
   action?: () => void;
-}
+};
 
 export type NavBarSubmenuItem = {
   title: string;
-  href: string
-}
+  href: string;
+};
 
 const [isContactUsModalOpen, setContactUsModalOpen] = createSignal(false);
 const [isMobileMenuOpen, setMobileMenuOpen] = createSignal(false);
@@ -24,56 +24,58 @@ const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
 
 let burgerMenuRef: SVGSVGElement;
 
-export const menuItems: NavBarItem[] =
-  [
-    {
-      title: 'Головна',
-      href: '/',
-      img: '/assets/images/house-icon.svg',
-    },
-    {
-      title: 'Послуги',
-      href: 'javascript:void(0);',
-      img: '/assets/images/document-icon.svg',
-      submenu: [
-        {
-          title: 'УЗД діагностика',
-          href: '/ultrasound',
-        },
-        {
-          title: 'Консультації',
-          href: '/appointments',
-        },
-      ],
-    },
-    {
-      title: 'Чек-апи',
-      href: '/check-ups',
-      img: '/assets/images/list-icon.svg',
-    },
-    {
-      title: 'Вартість',
-      href: '/prices',
-      img: '/assets/images/price-icon.svg',
-    },
-    {
-      title: 'Лікарі',
-      href: '/doctors',
-      img: '/assets/images/doctors-icon.svg',
-    },
-    {
-      title: 'Контакти',
-      href: 'javascript:void(0);',
-      img: '/assets/images/phone-icon.svg',
-      action: () => {
-        setMobileMenuOpen(false);
-        setContactUsModalOpen(true);
+type NavProps = {
+  currentPage: string;
+};
+
+export const menuItems: NavBarItem[] = [
+  {
+    title: 'Головна',
+    href: '/',
+    img: '/assets/images/house-icon.svg',
+  },
+  {
+    title: 'Послуги',
+    href: 'javascript:void(0);',
+    img: '/assets/images/document-icon.svg',
+    submenu: [
+      {
+        title: 'УЗД діагностика',
+        href: '/ultrasound',
       },
+      {
+        title: 'Консультації',
+        href: '/appointments',
+      },
+    ],
+  },
+  {
+    title: 'Чек-апи',
+    href: '/check-ups',
+    img: '/assets/images/list-icon.svg',
+  },
+  {
+    title: 'Вартість',
+    href: '/prices',
+    img: '/assets/images/price-icon.svg',
+  },
+  {
+    title: 'Лікарі',
+    href: '/doctors',
+    img: '/assets/images/doctors-icon.svg',
+  },
+  {
+    title: 'Контакти',
+    href: 'javascript:void(0);',
+    img: '/assets/images/phone-icon.svg',
+    action: () => {
+      setMobileMenuOpen(false);
+      setContactUsModalOpen(true);
     },
-  ];
+  },
+];
 
-export default () => {
-
+export default (props: NavProps) => {
   createEffect(() => {
     if (!isMobileMenuOpen()) {
       burgerMenuRef.classList.remove('open');
@@ -84,56 +86,133 @@ export default () => {
 
   return (
     <>
-      <div class="h-[2.62rem] w-full bg-white z-[9999]">
-
-      </div>
-      <div
-        class="sticky top-0 select-none text-tiffany bg-white z-[9999]"
-      >
-        <div class="container flex justify-between mx-auto">
-          <div class="w-[19.5rem] pl-5 xl:p-0">
+      <div class='z-[9999] h-[2.62rem] w-full bg-white'></div>
+      <div class='sticky top-0 z-[9999] select-none bg-white text-tiffany'>
+        <div class='container mx-auto flex justify-between'>
+          <div class='w-[19.5rem] pl-5 xl:p-0'>
             <Logo />
           </div>
-          <div class="hidden xl:flex items-center w-full">
-            <div class="flex justify-center gap-[2.5rem] w-full">
-              <For each={menuItems}>{(menuItem: NavBarItem) =>
-                <div onClick={menuItem.action} class="item-container flex text-[#B6B6B6] hover:text-tiffany-light underline-half">
-                  <a class="pr-[0.31rem]" href={menuItem.href}>{menuItem.title}</a>
-                  <Show when={menuItem.submenu}>
-                    <svg class="inline fill-[#B6B6B6] chevron-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="8" viewBox="0 0 12 8" fill="none">
-                      <path d="M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z" />
-                    </svg>
-                    <div class="absolute overflow-hidden w-[25rem] py-0 bg-white transition-all duration-300  h-0 drop-down-menu">
-                      <For each={menuItem.submenu}>{(submenuItem: NavBarSubmenuItem) =>
-                        <a href={submenuItem.href}>
-                          <div class="text-[#B6B6B6] hover:text-tiffany-light">{submenuItem.title}</div>
-                        </a>
-                      }</For>
-                    </div>
-                  </Show>
-                </div>
-              }</For>
+          <div class='hidden w-full items-center xl:flex'>
+            <div class='flex w-full justify-center gap-[2.5rem]'>
+              <For each={menuItems}>
+                {(menuItem: NavBarItem) => (
+                  <div
+                    onClick={menuItem.action}
+                    class='item-container underline-half flex text-[#B6B6B6] hover:text-tiffany-light'
+                  >
+                    <a
+                      class={
+                        menuItem.href === props.currentPage
+                          ? 'pr-[0.31rem] text-tiffany-light'
+                          : 'pr-[0.31rem]'
+                      }
+                      href={menuItem.href}
+                    >
+                      {menuItem.title}
+                    </a>
+                    <Show when={menuItem.submenu}>
+                      <svg
+                        class='chevron-icon inline fill-[#B6B6B6]'
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='12'
+                        height='8'
+                        viewBox='0 0 12 8'
+                        fill='none'
+                      >
+                        <path d='M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z' />
+                      </svg>
+                      <div class='drop-down-menu absolute h-0 w-[25rem] overflow-hidden bg-white py-0  transition-all duration-300'>
+                        <For each={menuItem.submenu}>
+                          {(submenuItem: NavBarSubmenuItem) => (
+                            <div class=''>
+                              <a
+                                class={
+                                  submenuItem.href === props.currentPage
+                                    ? 'text-tiffany-light'
+                                    : 'text-[#B6B6B6] hover:text-tiffany-light'
+                                }
+                                href={submenuItem.href}
+                              >
+                                {submenuItem.title}
+                              </a>
+                            </div>
+                          )}
+                        </For>
+                      </div>
+                    </Show>
+                  </div>
+                )}
+              </For>
             </div>
             <div>
-              <button onClick={() => setBookingModalOpen(true)} class="font-medium bg-white tracking-[0.04375rem] text-[0.875rem] text-tiffany-light border-[3px] border-[#8AD4D4] rounded-[0.9375rem] px-[0.94rem] py-[0.7rem] transition-all duration-300 hover:bg-[#4ABCBC] hover:text-white hover:border-[#4ABCBC]">
+              <button
+                onClick={() => setBookingModalOpen(true)}
+                class='rounded-[0.9375rem] border-[3px] border-[#8AD4D4] bg-white px-[0.94rem] py-[0.7rem] text-[0.875rem] font-medium tracking-[0.04375rem] text-tiffany-light transition-all duration-300 hover:border-[#4ABCBC] hover:bg-[#4ABCBC] hover:text-white'
+              >
                 Консультація
               </button>
             </div>
           </div>
-          <div onClick={() => {
-            setMobileMenuOpen(!isMobileMenuOpen());
-          }} class="pr-5 pt-2 xl:hidden">
-            <svg ref={burgerMenuRef} id="burger-icon" class="" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="#FFF">
-              <line x1="11.5" y1="13.5" x2="38.5" y2="13.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
-              <line x1="11.5" y1="23.5" x2="38.5" y2="23.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
-              <line x1="11.5" y1="33.5" x2="38.5" y2="33.5" stroke="#4ABCBC" stroke-width="3" stroke-linecap="round"/>
+          <div
+            onClick={() => {
+              setMobileMenuOpen(!isMobileMenuOpen());
+            }}
+            class='pr-5 pt-2 xl:hidden'
+          >
+            <svg
+              ref={burgerMenuRef}
+              id='burger-icon'
+              class=''
+              xmlns='http://www.w3.org/2000/svg'
+              width='50'
+              height='50'
+              viewBox='0 0 50 50'
+              fill='#FFF'
+            >
+              <line
+                x1='11.5'
+                y1='13.5'
+                x2='38.5'
+                y2='13.5'
+                stroke='#4ABCBC'
+                stroke-width='3'
+                stroke-linecap='round'
+              />
+              <line
+                x1='11.5'
+                y1='23.5'
+                x2='38.5'
+                y2='23.5'
+                stroke='#4ABCBC'
+                stroke-width='3'
+                stroke-linecap='round'
+              />
+              <line
+                x1='11.5'
+                y1='33.5'
+                x2='38.5'
+                y2='33.5'
+                stroke='#4ABCBC'
+                stroke-width='3'
+                stroke-linecap='round'
+              />
             </svg>
           </div>
         </div>
       </div>
-      <ContactUsModal isOpen={isContactUsModalOpen()} onClose={() => setContactUsModalOpen(false)}/>
-      <MobileMenu isOpen={isMobileMenuOpen()} onClose={() => setMobileMenuOpen(false)} menuItems={menuItems}/>
-      <BookConsultationFlow isOpen={isBookingModalOpen()} onClose={() => setBookingModalOpen(false)} />
+      <ContactUsModal
+        isOpen={isContactUsModalOpen()}
+        onClose={() => setContactUsModalOpen(false)}
+      />
+      <MobileMenu
+        isOpen={isMobileMenuOpen()}
+        onClose={() => setMobileMenuOpen(false)}
+        menuItems={menuItems}
+      />
+      <BookConsultationFlow
+        isOpen={isBookingModalOpen()}
+        onClose={() => setBookingModalOpen(false)}
+      />
     </>
-  )
-}
+  );
+};
