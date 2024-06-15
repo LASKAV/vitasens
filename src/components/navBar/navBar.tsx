@@ -102,7 +102,8 @@ export default (props: NavProps) => {
                   >
                     <a
                       class={
-                        menuItem.href === props.currentPage
+                        menuItem.href.replaceAll('/', '') ===
+                        props.currentPage.replaceAll('/', '')
                           ? 'pr-[0.31rem] text-tiffany-light'
                           : 'pr-[0.31rem]'
                       }
@@ -127,7 +128,8 @@ export default (props: NavProps) => {
                             <div class=''>
                               <a
                                 class={
-                                  submenuItem.href === props.currentPage
+                                  submenuItem.href.replaceAll('/', '') ===
+                                  props.currentPage.replaceAll('/', '')
                                     ? 'text-tiffany-light'
                                     : 'text-[#B6B6B6] hover:text-tiffany-light'
                                 }
