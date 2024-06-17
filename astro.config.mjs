@@ -12,7 +12,7 @@ export default defineConfig({
     enabled: false
   },
   adapter: vercel({
-    imageService: true,
-    devImageService: 'squoosh',
+    // imageService: true,
+    // devImageService: 'squoosh',
   })
 });
