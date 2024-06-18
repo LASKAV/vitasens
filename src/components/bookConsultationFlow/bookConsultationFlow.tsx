@@ -5,7 +5,7 @@ import { createSignal } from 'solid-js';
 type BookConsultationFlowProps = {
   isOpen: boolean;
   onClose: () => void;
-  serviceTypeId?: string;
+  serviceTypeId?: number;
   serviceType?: string;
 };
 

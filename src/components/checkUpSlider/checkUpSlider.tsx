@@ -17,6 +17,14 @@ type CheckUpSliderProps = {
 
 export default (props: CheckUpSliderProps) => {
   const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
+  const [checkUpTitle, setCheckUpTitle] = createSignal('');
+  const [checkUpId, setCheckUpId] = createSignal(0);
+
+  const openCheckUpModal = (id: number, title: string) => {
+    setCheckUpTitle(title);
+    setCheckUpId(id);
+    setBookingModalOpen(true);
+  };
 
   return (
     <>
@@ -51,7 +59,7 @@ export default (props: CheckUpSliderProps) => {
                       <button
                         onClick={() => {
                           console.log('click');
-                          setBookingModalOpen(true);
+                          openCheckUpModal(checkUp.id, checkUp.name);
                         }}
                         class='rounded-[0.625rem] bg-tiffany-light px-[1.35rem] py-[0.72rem] text-white opacity-100'
                       >
@@ -69,6 +77,8 @@ export default (props: CheckUpSliderProps) => {
       <BookConsultationFlow
         isOpen={isBookingModalOpen()}
         onClose={() => setBookingModalOpen(false)}
+        serviceType={checkUpTitle()}
+        serviceTypeId={checkUpId()}
       />
     </>
   );
