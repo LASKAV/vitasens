@@ -1,5 +1,5 @@
 import type { RegisteredNurse } from '@/types/RegisteredNurse.ts';
-import CeoOfClinicImage from '@/assets/images/expand-view-icon.svg';
+import ExpandView from '@/assets/images/expand-view-icon.svg';
 
 type DoctorsShowcaseTileProps = {
   info: RegisteredNurse;
@@ -33,7 +33,7 @@ export default (props: DoctorsShowcaseTileProps) => {
         >
           <img
             class='h-full w-full object-cover'
-            src={CeoOfClinicImage.src}
+            src={ExpandView.src}
             alt='ceo'
           />
         </button>

@@ -1,5 +1,5 @@
 export type CheckUp = {
-  id: string;
+  id: number;
   name: string;
   imageUrl: string;
 };
