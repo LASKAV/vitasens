@@ -61,5 +61,5 @@
 }
 
 .swiper_checkup_slide.swiper-slide-active > div > div {
-    @apply hover:opacity-100;
+    @apply block hover:opacity-100;
 }
