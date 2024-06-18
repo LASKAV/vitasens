@@ -6,6 +6,8 @@ export type BookConsultationModalProps = {
   onRequestSuccess?: () => void;
   isOpen: boolean;
   onClose: () => void;
+  serviceTypeId?: number;
+  serviceType?: string;
 };
 
 let containerRef: HTMLDivElement;
@@ -47,6 +49,8 @@ export default (props: BookConsultationModalProps) => {
                   isOpen={props.isOpen}
                   onClose={props.onClose}
                   onRequestSuccess={props.onRequestSuccess}
+                  serviceTypeId={props.serviceTypeId}
+                  serviceType={props.serviceType}
                 />
               </div>
             </div>
@@ -56,6 +60,8 @@ export default (props: BookConsultationModalProps) => {
               isOpen={props.isOpen}
               onClose={props.onClose}
               onRequestSuccess={props.onRequestSuccess}
+              serviceTypeId={props.serviceTypeId}
+              serviceType={props.serviceType}
             />
           </div>
         </>

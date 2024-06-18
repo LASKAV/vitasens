@@ -57,10 +57,9 @@ export default (props: CheckUpSliderProps) => {
                   <div class='absolute hidden h-full w-full opacity-0 transition-all duration-300'>
                     <div class='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
                       <button
-                        onClick={() => {
-                          console.log('click');
-                          openCheckUpModal(checkUp.id, checkUp.name);
-                        }}
+                        onClick={() =>
+                          openCheckUpModal(checkUp.id, checkUp.name)
+                        }
                         class='rounded-[0.625rem] bg-tiffany-light px-[1.35rem] py-[0.72rem] text-white opacity-100'
                       >
                         Записатися

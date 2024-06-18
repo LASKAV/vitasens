@@ -29,6 +29,7 @@ export default (props: BookConsultationModalProps) => {
               type='text'
               placeholder='Євген Вітасенс'
               id='booking-name'
+              required
             />
           </div>
           <div class='flex flex-col pt-[0.62rem] lg:pt-[1.25rem]'>
@@ -36,10 +37,12 @@ export default (props: BookConsultationModalProps) => {
               Номер телефону
             </label>
             <input
-              class='h-[2.68rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6]'
-              type='text'
+              class='h-[2.68rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 tracking-[0.05rem] outline-none placeholder:text-[#B6B6B6] disabled:text-[#111]'
+              type='tel'
               placeholder='0505820003'
+              size='10'
               id='booking-phone'
+              required
             />
           </div>
           <div class='flex flex-col pt-[0.62rem] lg:pt-[1.25rem]'>
@@ -47,9 +50,11 @@ export default (props: BookConsultationModalProps) => {
               Послуги
             </label>
             <input
-              class='h-[2.68rem] rounded-[0.625rem] bg-[#ECECEC] pl-4 outline-none drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]'
+              class='h-[2.68rem] overflow-ellipsis rounded-[0.625rem] bg-[#ECECEC] pl-4 outline-none drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]'
               type='text'
+              value={props.serviceType}
               id='booking-service'
+              disabled
             />
           </div>
           <div class='flex flex-row items-center justify-center pt-[0.94rem] lg:pt-[1.56rem]'>

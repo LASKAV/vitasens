@@ -23,6 +23,8 @@ export default (props: BookConsultationFlowProps) => {
         isOpen={props.isOpen}
         onClose={props.onClose}
         onRequestSuccess={onRequestSuccess}
+        serviceTypeId={props.serviceTypeId}
+        serviceType={props.serviceType}
       />
       <SuccessModal
         isOpen={isSuccessModalOpen()}
