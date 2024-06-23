@@ -3,7 +3,7 @@ import BookConsultation from './bookConsultation';
 import { createEffect } from 'solid-js';
 
 export type BookConsultationModalProps = {
-  onRequestSuccess?: () => void;
+  onRequestSuccess: () => void;
   isOpen: boolean;
   onClose: () => void;
   serviceTypeId?: number;
