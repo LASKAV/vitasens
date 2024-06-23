@@ -2,9 +2,52 @@ import CloseModal from '@/assets/images/close-modal-icon.svg';
 import Clock from '@/assets/images/clock-icon.svg';
 import Phone from '@/assets/images/phone-filled-tiffany-icon.svg';
 import Email from '@/assets/images/email-filled-tiffany-icon.svg';
-import type { BookConsultationModalProps } from '@/components/bookConsultationModal/bookConsultationModal.tsx';
+import type { BookConsultationModalProps } from '@/components/bookConsultationModal/bookConsultationModal';
+import { createSignal } from 'solid-js';
+import { fetchApiPost } from '@/lib/strapi';
+
+export type FormData = {
+  name: string;
+  phone: string;
+  serviceId: number | undefined;
+};
 
 export default (props: BookConsultationModalProps) => {
+  const [isSubmitButtonDisabled, setSubmitButtonDisabled] =
+    createSignal<boolean>(false);
+  const [formData, setFormData] = createSignal<FormData>({
+    name: '',
+    phone: '',
+    serviceId: props.serviceTypeId,
+  });
+
+  const handleChange = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    setFormData({
+      ...formData(),
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmit = (e: Event) => {
+    e.preventDefault();
+    setSubmitButtonDisabled(true);
+
+    fetchApiPost<string>({
+      endpoint: 'create-order',
+      payload: JSON.stringify(formData()),
+    })
+      .then(() => {
+        props.onRequestSuccess();
+      })
+      .catch(e => {
+        console.error('err', e);
+      })
+      .finally(() => {
+        setSubmitButtonDisabled(false);
+      });
+  };
+
   return (
     <>
       <div
@@ -19,7 +62,12 @@ export default (props: BookConsultationModalProps) => {
             Запис на&nbsp;<span class='text-tiffany'>консультацію</span>
           </span>
         </div>
-        <form id='bookingModal' method='post' class='flex flex-col'>
+        <form
+          onSubmit={handleSubmit}
+          id='bookingModal'
+          method='post'
+          class='flex flex-col'
+        >
           <div class='flex flex-col pt-[1.31rem]'>
             <label class='pb-[0.62rem] text-[#111]' for='booking-name'>
               Імʼя
@@ -29,6 +77,8 @@ export default (props: BookConsultationModalProps) => {
               type='text'
               placeholder='Євген Вітасенс'
               id='booking-name'
+              name='name'
+              onInput={handleChange}
               required
             />
           </div>
@@ -42,6 +92,8 @@ export default (props: BookConsultationModalProps) => {
               placeholder='0505820003'
               size='10'
               id='booking-phone'
+              name='phone'
+              onInput={handleChange}
               required
             />
           </div>
@@ -62,6 +114,7 @@ export default (props: BookConsultationModalProps) => {
               class='mr-2 h-[0.8125rem] bg-[#D9D9D9]'
               type='checkbox'
               id='booking-policy'
+              required
             />
             <label class='text-[0.6875rem] font-bold' for='booking-policy'>
               Я згоден (на) з{' '}
@@ -72,9 +125,9 @@ export default (props: BookConsultationModalProps) => {
           </div>
           <div class='flex justify-end py-[2.2rem] lg:pt-[1.88rem]'>
             <button
-              type='button'
-              onClick={props.onRequestSuccess}
-              class='rounded-[0.625rem] border-[5px] border-tiffany-light bg-white px-[3.12rem] py-[0.75rem] text-[0.875rem] font-bold tracking-[0.04375rem] text-[#66B0B0] transition-all duration-300 hover:border-[#4ABCBC] hover:bg-[#4ABCBC] hover:text-white lg:px-[2.06rem]'
+              disabled={isSubmitButtonDisabled()}
+              type='submit'
+              class='rounded-[0.625rem] border-[5px] border-tiffany-light bg-white px-[3.12rem] py-[0.75rem] text-[0.875rem] font-bold tracking-[0.04375rem] text-[#66B0B0] transition-all duration-300 hover:border-[#4ABCBC] hover:bg-[#4ABCBC] hover:text-white disabled:border-vs-gray disabled:bg-vs-gray lg:px-[2.06rem]'
             >
               Відправити
             </button>
