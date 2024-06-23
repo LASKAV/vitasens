@@ -42,6 +42,7 @@ export default (props: CheckUpSliderProps) => {
           observer={true}
           slideToClickedSlide={true}
           preventClicksPropagation={true}
+          initialSlide={3}
           coverflowEffect={{
             rotate: 0,
             stretch: 0,

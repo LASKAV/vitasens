@@ -5,6 +5,11 @@ interface Props {
   wrappedByList?: boolean;
 }
 
+interface PostDataProps {
+  endpoint: string;
+  payload: string;
+}
+
 /**
  * Fetches data from the Strapi API
  * @param endpoint - The endpoint to fetch from
@@ -23,7 +28,7 @@ export default async function fetchApi<T>({
     endpoint = endpoint.slice(1);
   }
 
-  const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}`);
+  const url = new URL(`${import.meta.env.PUBLIC_STRAPI_URL}/api/${endpoint}`);
 
   if (query) {
     Object.entries(query).forEach(([key, value]) => {
@@ -48,4 +53,38 @@ export default async function fetchApi<T>({
   }
 
   return data as T;
+}
+
+export async function fetchApiPost<T>({
+  endpoint,
+  payload,
+}: PostDataProps): Promise<T> {
+  if (endpoint.startsWith('/')) {
+    endpoint = endpoint.slice(1);
+  }
+
+  console.log('payload', payload);
+
+  const url = new URL(`${import.meta.env.PUBLIC_STRAPI_URL}/api/${endpoint}`);
+  console.log('url', url.toString());
+
+  const res: Response = await fetch(url.toString(), {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: payload,
+  });
+  const result: any = await res.json();
+
+  console.log('res', result);
+  console.log('res', result.ok);
+  console.log('res', result.status);
+
+  if (!result.ok) {
+    throw new Error(res.statusText);
+  }
+
+  return JSON.stringify(result.body) as T;
 }
