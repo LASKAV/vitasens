@@ -10,6 +10,9 @@ try {
   doctors = await fetchApi<RegisteredNurse[]>({
     endpoint: 'doctors',
     wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+    },
   });
 } catch (e) {
   console.error('err', e);
