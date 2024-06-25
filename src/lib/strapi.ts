@@ -63,10 +63,7 @@ export async function fetchApiPost<T>({
     endpoint = endpoint.slice(1);
   }
 
-  console.log('payload', payload);
-
   const url = new URL(`${import.meta.env.PUBLIC_STRAPI_URL}/api/${endpoint}`);
-  console.log('url', url.toString());
 
   const res: Response = await fetch(url.toString(), {
     method: 'POST',
@@ -78,11 +75,7 @@ export async function fetchApiPost<T>({
   });
   const result: any = await res.json();
 
-  console.log('res', result);
-  console.log('res', result.ok);
-  console.log('res', result.status);
-
-  if (!result.ok) {
+  if (!res.ok) {
     throw new Error(res.statusText);
   }
 
