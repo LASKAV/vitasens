@@ -1,26 +1,27 @@
-import {Swiper, SwiperSlide} from 'swiper/solid';
+import { Swiper, SwiperSlide } from 'swiper/solid';
 // @ts-ignore
-import {Navigation, Scrollbar} from 'swiper';
+import { Navigation, Scrollbar } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import {For} from 'solid-js';
+import { For } from 'solid-js';
 
-import './pricesSlider.css'
+import './pricesSlider.css';
 import PricesInfoCard from '@/components/pricesSlider/pricesInfoCard';
+import ServicePriceModal from '@/components/servicePriceModal/servicePriceModal';
 
 export type PricesInfoType = {
   name: string;
   text: string;
   services: string[];
-}
+};
 
 export default () => {
   let pricesData: PricesInfoType[] = [
     {
       name: 'Послуги',
-      text: 'Ми знаходимо індивідуальний підхід до кожного пацієнта, забезпечуючи комплексне обстеження та ефективне лікування за допомогою сучасного обладнання та доказових методів медицини. Наша мета - зробити все  для підтримки Вашого здоров\'я.',
+      text: "Ми знаходимо індивідуальний підхід до кожного пацієнта, забезпечуючи комплексне обстеження та ефективне лікування за допомогою сучасного обладнання та доказових методів медицини. Наша мета - зробити все  для підтримки Вашого здоров'я.",
       services: [
         'консультації спеціалістів',
         'УЗД діагностика',
@@ -37,31 +38,44 @@ export default () => {
         'онкологічна панель',
       ],
     },
-  ]
+  ];
 
   return (
     <>
-      <div class="pt-[5rem] pb-[6rem] md:hidden">
+      <div class='pb-[6rem] pt-[5rem] md:hidden'>
         <Swiper
           modules={[Navigation, Scrollbar]}
           spaceBetween={50}
           slidesPerView={1}
           scrollbar={{ draggable: false }}
           centeredSlides={true}
-          class="swiper_price_container"
+          class='swiper_price_container'
         >
-          <For each={pricesData}>{(priceData: PricesInfoType) =>
-            <SwiperSlide class="swiper_price_slide">
-              <PricesInfoCard name={priceData.name} text={priceData.text} services={priceData.services} />
-            </SwiperSlide>
-          }</For>
+          <For each={pricesData}>
+            {(priceData: PricesInfoType) => (
+              <SwiperSlide class='swiper_price_slide'>
+                <PricesInfoCard
+                  name={priceData.name}
+                  text={priceData.text}
+                  services={priceData.services}
+                />
+              </SwiperSlide>
+            )}
+          </For>
         </Swiper>
       </div>
-      <div class="hidden pt-[5rem] md:flex md:justify-center md:items-stretch md:gap-[9rem] drop-shadow-[10px_10px_0px_rgba(70,208,208,1)]">
-        <For each={pricesData}>{(priceData: PricesInfoType) =>
-          <PricesInfoCard name={priceData.name} text={priceData.text} services={priceData.services} />
-        }</For>
+      <div class='hidden pt-[5rem] drop-shadow-[10px_10px_0px_rgba(70,208,208,1)] md:flex md:items-stretch md:justify-center md:gap-[9rem]'>
+        <For each={pricesData}>
+          {(priceData: PricesInfoType) => (
+            <PricesInfoCard
+              name={priceData.name}
+              text={priceData.text}
+              services={priceData.services}
+            />
+          )}
+        </For>
       </div>
+      <ServicePriceModal isOpen={true} />
     </>
-  )
-}
+  );
+};
