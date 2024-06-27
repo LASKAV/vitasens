@@ -12,6 +12,7 @@ export default {
                 dark: '#247B7B',
                 darkest: '#0D5C63',
             },
+            transparent: 'transparent',
         },
 		fontFamily: {
 			montserrat: ["Montserrat", "sans-serif"],
