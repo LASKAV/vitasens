@@ -5,38 +5,53 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { For } from 'solid-js';
+import { createSignal, For } from 'solid-js';
 
 import './pricesSlider.css';
 import PricesInfoCard from '@/components/pricesSlider/pricesInfoCard';
 import ServicePriceModal from '@/components/servicePriceModal/servicePriceModal';
+import type { Service } from '@/types/Service.ts';
 
 export type PricesInfoType = {
   name: string;
   text: string;
-  services: string[];
+  keyPoints: string[];
+  services: Service[];
+  onButtonClick: () => void;
 };
 
-export default () => {
+type ServiceSliderProps = {
+  services: Service[];
+};
+
+const [isServicePriceModalOpen, setServicePriceModalOpen] = createSignal(false);
+
+export default (props: ServiceSliderProps) => {
   let pricesData: PricesInfoType[] = [
     {
       name: 'Послуги',
       text: "Ми знаходимо індивідуальний підхід до кожного пацієнта, забезпечуючи комплексне обстеження та ефективне лікування за допомогою сучасного обладнання та доказових методів медицини. Наша мета - зробити все  для підтримки Вашого здоров'я.",
-      services: [
+      keyPoints: [
         'консультації спеціалістів',
         'УЗД діагностика',
         'функціональна діагностика',
       ],
+      services: [...props.services],
+      onButtonClick: () => {
+        setServicePriceModalOpen(true);
+      },
     },
     {
       name: 'Аналізи',
       text: 'Разом з нашими партнерами - лабораторією ProLab, ми забезпечуємо нашим пацієнтам швидку та надійну лабораторну діагностику. Ми використовуємо передові методи та сучасне обладнання для отримання точних результатів, необхідних для правильного діагностування та лікування',
-      services: [
+      keyPoints: [
         'загальноклінічні дослідження',
         'маркери анемії, вітаміни',
         'функціональна діагностика',
         'онкологічна панель',
       ],
+      services: [...props.services],
+      onButtonClick: () => {},
     },
   ];
 
@@ -58,6 +73,8 @@ export default () => {
                   name={priceData.name}
                   text={priceData.text}
                   services={priceData.services}
+                  keyPoints={priceData.keyPoints}
+                  onButtonClick={priceData.onButtonClick}
                 />
               </SwiperSlide>
             )}
@@ -71,11 +88,17 @@ export default () => {
               name={priceData.name}
               text={priceData.text}
               services={priceData.services}
+              keyPoints={priceData.keyPoints}
+              onButtonClick={priceData.onButtonClick}
             />
           )}
         </For>
       </div>
-      <ServicePriceModal isOpen={true} />
+      <ServicePriceModal
+        isOpen={isServicePriceModalOpen()}
+        onClose={() => setServicePriceModalOpen(false)}
+        services={pricesData[0].services}
+      />
     </>
   );
 };

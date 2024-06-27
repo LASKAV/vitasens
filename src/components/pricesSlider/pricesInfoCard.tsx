@@ -11,17 +11,20 @@ export default (props: PricesInfoType) => {
           {props.text}
         </div>
         <div class='min-h-[17rem]'>
-          <For each={props.services}>
-            {(service: string) => (
+          <For each={props.keyPoints}>
+            {(keyPoint: string) => (
               <div class='flex items-center py-[0.94rem]'>
                 <img class='pr-[0.94rem]' src={ServicePoint.src} alt='' />
-                <div class='text-[0.75rem]'>{service}</div>
+                <div class='text-[0.75rem]'>{keyPoint}</div>
               </div>
             )}
           </For>
         </div>
         <div class='flex items-center justify-center'>
-          <button class='relative bottom-[0] max-w-[20rem] rounded-[0.625rem] bg-tiffany-light px-[5rem] py-[1.13rem] text-[1.25rem] text-white'>
+          <button
+            onClick={props.onButtonClick}
+            class='relative bottom-[0] max-w-[20rem] rounded-[0.625rem] bg-tiffany-light px-[5rem] py-[1.13rem] text-[1.25rem] text-white'
+          >
             Переглянути
           </button>
         </div>

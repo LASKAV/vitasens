@@ -1,13 +1,32 @@
 import Logo from '@/components/logo/logo';
+import { createEffect, For } from 'solid-js';
+import type { Service } from '@/types/Service.ts';
 
 type ServicePriceModalProps = {
   isOpen: boolean;
-  onClose?: () => void;
+  onClose: () => void;
+  services: Service[];
 };
 
 let containerRef: HTMLDivElement;
 
 export default (props: ServicePriceModalProps) => {
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (event?.target === containerRef) {
+      props.onClose();
+    }
+  };
+
+  createEffect(() => {
+    if (props.isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('click', handleOutsideClick);
+    } else {
+      document.body.style.overflow = '';
+      document.removeEventListener('click', handleOutsideClick);
+    }
+  });
+
   return (
     <>
       {props.isOpen && (
@@ -30,25 +49,22 @@ export default (props: ServicePriceModalProps) => {
                 <div class='text-tiffany-dark'>ВАРТІСТЬ</div>
               </div>
               <div class='flex w-full flex-col'>
-                <div class='flex w-full items-center justify-between px-6'>
-                  <div>
-                    Ехокардіографія ( УЗД серця) зі скринінгом ЩЗ та сонних
-                    артерій
-                  </div>
-                  <div class='flex min-w-[9rem] items-center justify-end'>
-                    <div class='px-3'>1800 ГРН</div>
-                    <button class='text-[3rem]'>+</button>
-                  </div>
-                </div>
-                <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
-                <div class='flex w-full items-center justify-between px-6'>
-                  <div>ЕКГ з розшифровкою</div>
-                  <div class='flex w-[9rem] items-center justify-end'>
-                    <div class='px-3'>1800 ГРН</div>
-                    <button class='text-[3rem]'>+</button>
-                  </div>
-                </div>
-                <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
+                <For each={props.services}>
+                  {(service: Service) => (
+                    <>
+                      <div class='flex w-full items-center justify-between px-6 text-tiffany-dark'>
+                        <div>{service.name}</div>
+                        <div class='flex min-w-[9rem] items-center justify-end'>
+                          <div class='px-3 font-semibold'>
+                            {service.price} ГРН
+                          </div>
+                          <button class='text-[3rem]'>+</button>
+                        </div>
+                      </div>
+                      <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
+                    </>
+                  )}
+                </For>
               </div>
             </div>
           </div>
