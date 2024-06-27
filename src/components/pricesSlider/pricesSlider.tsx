@@ -11,6 +11,7 @@ import './pricesSlider.css';
 import PricesInfoCard from '@/components/pricesSlider/pricesInfoCard';
 import ServicePriceModal from '@/components/servicePriceModal/servicePriceModal';
 import type { Service } from '@/types/Service.ts';
+import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
 
 export type PricesInfoType = {
   name: string;
@@ -23,6 +24,9 @@ export type PricesInfoType = {
 type ServiceSliderProps = {
   services: Service[];
 };
+const [serviceTitle, setServiceTitle] = createSignal('');
+const [serviceId, setServiceId] = createSignal(0);
+const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
 
 const [isServicePriceModalOpen, setServicePriceModalOpen] = createSignal(false);
 
@@ -54,6 +58,13 @@ export default (props: ServiceSliderProps) => {
       onButtonClick: () => {},
     },
   ];
+
+  const openBookingModal = (id: number, title: string) => {
+    setServiceTitle(title);
+    setServiceId(id);
+    setServicePriceModalOpen(false);
+    setBookingModalOpen(true);
+  };
 
   return (
     <>
@@ -98,6 +109,14 @@ export default (props: ServiceSliderProps) => {
         isOpen={isServicePriceModalOpen()}
         onClose={() => setServicePriceModalOpen(false)}
         services={pricesData[0].services}
+        action={openBookingModal}
+      />
+
+      <BookConsultationFlow
+        isOpen={isBookingModalOpen()}
+        onClose={() => setBookingModalOpen(false)}
+        serviceType={serviceTitle()}
+        serviceTypeId={serviceId()}
       />
     </>
   );

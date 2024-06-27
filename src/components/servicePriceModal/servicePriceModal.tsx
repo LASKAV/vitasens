@@ -6,6 +6,7 @@ type ServicePriceModalProps = {
   isOpen: boolean;
   onClose: () => void;
   services: Service[];
+  action: (id: number, title: string) => void;
 };
 
 let containerRef: HTMLDivElement;
@@ -58,7 +59,14 @@ export default (props: ServicePriceModalProps) => {
                           <div class='px-3 font-semibold'>
                             {service.price} ГРН
                           </div>
-                          <button class='text-[3rem]'>+</button>
+                          <button
+                            onClick={() => {
+                              props.action(service.id, service.name);
+                            }}
+                            class='text-[3rem]'
+                          >
+                            +
+                          </button>
                         </div>
                       </div>
                       <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
