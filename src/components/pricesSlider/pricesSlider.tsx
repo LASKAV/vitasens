@@ -22,7 +22,7 @@ export type PricesInfoType = {
 };
 
 type ServiceSliderProps = {
-  services: Service[];
+  services?: Service[];
 };
 const [serviceTitle, setServiceTitle] = createSignal('');
 const [serviceId, setServiceId] = createSignal(0);
@@ -40,7 +40,7 @@ export default (props: ServiceSliderProps) => {
         'УЗД діагностика',
         'функціональна діагностика',
       ],
-      services: [...props.services],
+      services: !!props.services ? [...props.services] : [],
       onButtonClick: () => {
         setServicePriceModalOpen(true);
       },
@@ -54,7 +54,7 @@ export default (props: ServiceSliderProps) => {
         'функціональна діагностика',
         'онкологічна панель',
       ],
-      services: [...props.services],
+      services: !!props.services ? [...props.services] : [],
       onButtonClick: () => {},
     },
   ];
