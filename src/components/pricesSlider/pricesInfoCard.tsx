@@ -1,4 +1,4 @@
-import type { PricesInfoType } from '@/components/pricesSlider/pricesSlider.tsx';
+import type { PricesInfoType } from '@/components/pricesSlider/pricesSlider';
 import { For } from 'solid-js';
 import ServicePoint from '@/assets/images/prices-point-icon.svg';
 
