@@ -5,7 +5,8 @@ import { createSignal } from 'solid-js';
 type BookConsultationFlowProps = {
   isOpen: boolean;
   onClose: () => void;
-  serviceTypeId?: number;
+  serviceId?: number;
+  service?: string;
   serviceType?: string;
 };
 
@@ -23,7 +24,8 @@ export default (props: BookConsultationFlowProps) => {
         isOpen={props.isOpen}
         onClose={props.onClose}
         onRequestSuccess={onRequestSuccess}
-        serviceTypeId={props.serviceTypeId}
+        serviceId={props.serviceId}
+        service={props.service}
         serviceType={props.serviceType}
       />
       <SuccessModal

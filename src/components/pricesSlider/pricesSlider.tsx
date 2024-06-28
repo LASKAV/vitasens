@@ -12,6 +12,7 @@ import PricesInfoCard from '@/components/pricesSlider/pricesInfoCard';
 import ServicePriceModal from '@/components/servicePriceModal/servicePriceModal';
 import type { Service } from '@/types/Service.ts';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 export type PricesInfoType = {
   name: string;
@@ -115,8 +116,9 @@ export default (props: ServiceSliderProps) => {
       <BookConsultationFlow
         isOpen={isBookingModalOpen()}
         onClose={() => setBookingModalOpen(false)}
-        serviceType={serviceTitle()}
-        serviceTypeId={serviceId()}
+        service={serviceTitle()}
+        serviceId={serviceId()}
+        serviceType={ServiceType.Service}
       />
     </>
   );

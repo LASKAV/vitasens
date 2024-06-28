@@ -11,11 +11,8 @@ let checkups;
 
 try {
   checkups = await fetchApi<CheckUp[]>({
-    endpoint: 'services',
+    endpoint: 'checkups',
     wrappedByKey: 'data',
-    query: {
-      'filters[type][$eq]': 'checkup',
-    },
   });
 } catch (e) {
   console.error('err', e);
