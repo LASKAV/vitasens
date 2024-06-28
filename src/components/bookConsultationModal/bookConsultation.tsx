@@ -10,6 +10,7 @@ export type FormData = {
   name: string;
   phone: string;
   serviceId: number | undefined;
+  serviceType: string | undefined;
 };
 
 export default (props: BookConsultationModalProps) => {
@@ -18,7 +19,8 @@ export default (props: BookConsultationModalProps) => {
   const [formData, setFormData] = createSignal<FormData>({
     name: '',
     phone: '',
-    serviceId: props.serviceTypeId,
+    serviceId: props.serviceId,
+    serviceType: props.serviceType,
   });
 
   const handleChange = (e: Event) => {
@@ -104,7 +106,7 @@ export default (props: BookConsultationModalProps) => {
             <input
               class='h-[2.68rem] overflow-ellipsis rounded-[0.625rem] bg-[#ECECEC] pl-4 outline-none drop-shadow-[2px_2px_0px_rgba(0,0,0,0.25)]'
               type='text'
-              value={props.serviceType}
+              value={props.service}
               id='booking-service'
               disabled
             />
