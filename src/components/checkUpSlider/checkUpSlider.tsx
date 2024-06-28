@@ -10,6 +10,7 @@ import 'swiper/css/scrollbar';
 import './checkUpSlider.css';
 import type { CheckUp } from '@/types/CheckUp.ts';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type CheckUpSliderProps = {
   checkUps?: CheckUp[];
@@ -77,8 +78,9 @@ export default (props: CheckUpSliderProps) => {
       <BookConsultationFlow
         isOpen={isBookingModalOpen()}
         onClose={() => setBookingModalOpen(false)}
-        serviceType={checkUpTitle()}
-        serviceTypeId={checkUpId()}
+        service={checkUpTitle()}
+        serviceId={checkUpId()}
+        serviceType={ServiceType.CheckUp}
       />
     </>
   );
