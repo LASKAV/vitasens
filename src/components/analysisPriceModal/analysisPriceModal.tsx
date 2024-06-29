@@ -1,5 +1,8 @@
 import LogoHighRes from '@/assets/images/logo-high-res.jpeg';
-import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory.ts';
+import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory';
+import type { Analysis } from '@/types/Analysis';
+import { For, Show } from 'solid-js';
+import type { AnalysisSubCategory } from '@/types/AnalysisSubCategory';
 
 type AnalysisPriceModalProps = {
   isOpen: boolean;
@@ -55,35 +58,90 @@ export default (props: AnalysisPriceModalProps) => {
                 </div>
               </div>
               <div class='flex w-full flex-col py-4'>
-                <div class='w-full rounded-[1rem] border border-tiffany-dark py-2 text-center text-[1rem] font-bold italic text-tiffany-dark lg:pl-[7.5rem] lg:text-left lg:text-[1.25rem]'>
-                  ГЕМАТОЛОГІЧНІ ДОСЛІДЖЕННЯ
-                </div>
-                {/*<div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>*/}
-                {/*  <div class='grow'>M1</div>*/}
-                {/*  <div class='grow-[2]'>ф+чорн</div>*/}
-                {/*  <div class='w-[7.5rem] grow-[3] text-left font-normal'>*/}
-                {/*    Загальний аналіз крові (ЗАК розгорнутий+ШОЕ+лейкоцитарна*/}
-                {/*    підрахунок) формула, ручний*/}
-                {/*  </div>*/}
-                {/*  <div class='grow-[2] text-[1rem]'>1</div>*/}
-                {/*  <div class='grow text-[1rem]'>220</div>*/}
-                {/*</div>*/}
-                {/*<hr class='h-0.5 border-t-0 bg-tiffany-dark' />*/}
-                <div class='w-full rounded-[1rem] py-6 text-center text-[1rem] font-extrabold text-tiffany-dark lg:pl-[7.5rem] lg:text-left lg:text-[1.25rem]'>
-                  Клінічний аналіз крові
-                </div>
-
-                <div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>
-                  <div class='grow'>M1</div>
-                  <div class='grow-[2]'>ф+чорн</div>
-                  <div class='w-[7.5rem] grow-[3] text-left font-normal'>
-                    Загальний аналіз крові (ЗАК розгорнутий+ШОЕ+лейкоцитарна
-                    підрахунок) формула, ручний
-                  </div>
-                  <div class='grow-[2] text-[1rem]'>1</div>
-                  <div class='grow text-[1rem]'>220</div>
-                </div>
-                <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
+                <For each={props.superCategories}>
+                  {(superCategory: AnalysisSuperCategory) => (
+                    <>
+                      <div class='mt-[1.5rem] w-full rounded-[1rem] border border-tiffany-dark py-2 text-center text-[1rem] font-bold italic text-tiffany-dark lg:pl-[7.5rem] lg:text-left lg:text-[1.25rem]'>
+                        {superCategory.Title}
+                      </div>
+                      <For each={superCategory.Analyses}>
+                        {(analyse: Analysis, analyseIndex) => (
+                          <>
+                            <div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>
+                              <div class='grow'>{analyse.AnalysisCode}</div>
+                              <div class='grow-[2]'>
+                                {analyse.AnalysisTestTubeColor}
+                              </div>
+                              <div class='w-[7.5rem] grow-[3] text-left font-normal'>
+                                {analyse.AnalysisTitle}
+                              </div>
+                              <div class='grow-[2] text-[1rem]'>
+                                {analyse.AnalysisEtaDays}
+                              </div>
+                              <div class='grow text-[1rem]'>
+                                {analyse.AnalysisPrice}
+                              </div>
+                            </div>
+                            <Show
+                              when={
+                                superCategory.AnalysisSubCategories.length >
+                                  0 ||
+                                analyseIndex() <
+                                  superCategory.Analyses.length - 1
+                              }
+                            >
+                              <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
+                            </Show>
+                          </>
+                        )}
+                      </For>
+                      <For each={superCategory.AnalysisSubCategories}>
+                        {(subCategory: AnalysisSubCategory, subCatIndex) => (
+                          <>
+                            <div class='w-full rounded-[1rem] py-6 text-center text-[1rem] font-extrabold text-tiffany-dark lg:pl-[7.5rem] lg:text-left lg:text-[1.25rem]'>
+                              {subCategory.Title}
+                            </div>
+                            <For each={subCategory.Analyses}>
+                              {(analysis: Analysis, analysisIndex) => (
+                                <>
+                                  <div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>
+                                    <div class='grow'>
+                                      {analysis.AnalysisCode}
+                                    </div>
+                                    <div class='grow-[2]'>
+                                      {analysis.AnalysisTestTubeColor}
+                                    </div>
+                                    <div class='w-[7.5rem] grow-[3] text-left font-normal'>
+                                      {analysis.AnalysisTitle}
+                                    </div>
+                                    <div class='grow-[2] text-[1rem]'>
+                                      {analysis.AnalysisEtaDays}
+                                    </div>
+                                    <div class='grow text-[1rem]'>
+                                      {analysis.AnalysisPrice}
+                                    </div>
+                                  </div>
+                                  <Show
+                                    when={
+                                      subCatIndex() <
+                                        superCategory.AnalysisSubCategories
+                                          .length -
+                                          1 ||
+                                      analysisIndex() <
+                                        subCategory.Analyses.length - 1
+                                    }
+                                  >
+                                    <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
+                                  </Show>
+                                </>
+                              )}
+                            </For>
+                          </>
+                        )}
+                      </For>
+                    </>
+                  )}
+                </For>
               </div>
             </div>
           </div>
