@@ -10,7 +10,7 @@ import Rect2 from '@/assets/images/prices-background-rect2.svg';
 import type { AnalysisSuperCategory } from '../types/AnalysisSuperCategory';
 
 let services;
-let categories: AnalysisSuperCategory[];
+let categories;
 
 try {
   services = await fetchApi<Service[]>({
