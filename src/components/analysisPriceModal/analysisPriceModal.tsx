@@ -1,17 +1,36 @@
 import LogoHighRes from '@/assets/images/logo-high-res.jpeg';
 import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory';
 import type { Analysis } from '@/types/Analysis';
-import { For, Show } from 'solid-js';
+import { createEffect, For, Show } from 'solid-js';
 import type { AnalysisSubCategory } from '@/types/AnalysisSubCategory';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type AnalysisPriceModalProps = {
   isOpen: boolean;
+  onClose: () => void;
   superCategories: AnalysisSuperCategory[];
+  action: (id: number, title: string, type: ServiceType) => void;
 };
 
 let containerRef: HTMLDivElement;
 
 export default (props: AnalysisPriceModalProps) => {
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (event?.target === containerRef) {
+      props.onClose();
+    }
+  };
+
+  createEffect(() => {
+    if (props.isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('click', handleOutsideClick);
+    } else {
+      document.body.style.overflow = '';
+      document.removeEventListener('click', handleOutsideClick);
+    }
+  });
+
   return (
     <>
       {props.isOpen && (
@@ -67,7 +86,16 @@ export default (props: AnalysisPriceModalProps) => {
                       <For each={superCategory.Analyses}>
                         {(analyse: Analysis, analyseIndex) => (
                           <>
-                            <div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>
+                            <div
+                              onClick={() => {
+                                props.action(
+                                  analyse.id,
+                                  analyse.AnalysisTitle,
+                                  ServiceType.Analysis
+                                );
+                              }}
+                              class='flex w-full cursor-pointer justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'
+                            >
                               <div class='grow'>{analyse.AnalysisCode}</div>
                               <div class='grow-[2]'>
                                 {analyse.AnalysisTestTubeColor}
@@ -104,7 +132,16 @@ export default (props: AnalysisPriceModalProps) => {
                             <For each={subCategory.Analyses}>
                               {(analysis: Analysis, analysisIndex) => (
                                 <>
-                                  <div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>
+                                  <div
+                                    onClick={() => {
+                                      props.action(
+                                        analysis.id,
+                                        analysis.AnalysisTitle,
+                                        ServiceType.Analysis
+                                      );
+                                    }}
+                                    class='flex w-full cursor-pointer justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'
+                                  >
                                     <div class='grow'>
                                       {analysis.AnalysisCode}
                                     </div>
