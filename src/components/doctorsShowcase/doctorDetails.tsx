@@ -25,7 +25,7 @@ export default (props: DetailsProps) => {
         src={props.details.info.rnPhotoLink}
         alt=''
       />
-      <div class='h-full border-l-[0.625rem] border-tiffany-light bg-white pt-[1.25rem]'>
+      <div class='border-l-[0.625rem] border-tiffany-light bg-white pt-[1.25rem] md:h-full'>
         <div class='w-full text-center font-semibold'>
           {props.details.info.lastName} {props.details.info.firstName}{' '}
           {props.details.info.middleName}
@@ -65,7 +65,7 @@ export default (props: DetailsProps) => {
                 ServiceType.Appointment
               );
             }}
-            class='bottom-[1.25rem] right-[1.25rem] skew-x-[-20deg] border border-tiffany-light px-[0.88rem] py-[0.69rem] text-[0.85rem] font-medium transition-all duration-300 hover:bg-tiffany-light hover:text-white'
+            class='bottom-[1.25rem] right-[1.93rem] skew-x-[-20deg] border border-tiffany-light bg-white px-[0.88rem] py-[0.63rem] text-[0.75rem] font-medium transition-all duration-300 hover:bg-tiffany-light hover:text-white'
           >
             <div class='skew-x-[20deg]'>Консультація</div>
           </button>
