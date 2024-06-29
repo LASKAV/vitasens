@@ -10,6 +10,8 @@ import './doctorsShowcase.css';
 import { createSignal, For } from 'solid-js';
 import DoctorTile from './doctorsShowcaseTile.tsx';
 import DoctorDetailsModal from './doctorDetailsModal';
+import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type DoctorShowcaseProps = {
   rnInfo?: RegisteredNurse[];
@@ -20,6 +22,11 @@ export default (props: DoctorShowcaseProps) => {
 
   const [isDetailsModalOpen, setDetailsModalOpen] = createSignal(false);
 
+  const [serviceTitle, setServiceTitle] = createSignal('');
+  const [serviceId, setServiceId] = createSignal(0);
+  const [serviceType, setServiceType] = createSignal('');
+  const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
+
   const openModal = (index: number) => {
     setSelectedRnNumber(index);
     setDetailsModalOpen(true);
@@ -29,9 +36,17 @@ export default (props: DoctorShowcaseProps) => {
     setDetailsModalOpen(false);
   };
 
+  const openBookingModal = (id: number, title: string, type: ServiceType) => {
+    setServiceType(type);
+    setServiceTitle(title);
+    setServiceId(id);
+    setBookingModalOpen(true);
+    setDetailsModalOpen(false);
+  };
+
   return (
     <>
-      <div class='pt-[3.3rem] lg:hidden'>
+      <div class='py-[3.3rem] lg:hidden'>
         <Swiper
           modules={[Navigation, Scrollbar]}
           spaceBetween={50}
@@ -41,24 +56,44 @@ export default (props: DoctorShowcaseProps) => {
           <For each={props.rnInfo}>
             {(info: RegisteredNurse, i) => (
               <SwiperSlide class='py-4'>
-                <DoctorTile info={info} onOpen={openModal} index={i()} />
+                <DoctorTile
+                  onButtonClick={openBookingModal}
+                  info={info}
+                  onOpen={openModal}
+                  index={i()}
+                />
               </SwiperSlide>
             )}
           </For>
         </Swiper>
       </div>
-      <div class='hidden gap-[0rem] pt-16 lg:container lg:mx-auto lg:flex lg:flex-wrap lg:gap-[2.12rem]'>
+      <div class='hidden gap-[0rem] py-16 lg:container lg:mx-auto lg:flex lg:flex-wrap lg:gap-[2.12rem]'>
         <For each={props.rnInfo}>
           {(info: RegisteredNurse, i) => (
-            <DoctorTile info={info} onOpen={openModal} index={i()} />
+            <DoctorTile
+              onButtonClick={openBookingModal}
+              info={info}
+              onOpen={openModal}
+              index={i()}
+            />
           )}
         </For>
       </div>
+
+      <BookConsultationFlow
+        isOpen={isBookingModalOpen()}
+        onClose={() => setBookingModalOpen(false)}
+        service={serviceTitle()}
+        serviceId={serviceId()}
+        serviceType={serviceType()}
+      />
+
       {props.rnInfo && (
         <DoctorDetailsModal
           isOpen={isDetailsModalOpen()}
           info={props.rnInfo[selectedRnNumber()]}
           onClose={closeModal}
+          action={openBookingModal}
         />
       )}
     </>

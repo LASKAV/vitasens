@@ -1,5 +1,7 @@
+import type { Appointment } from '@/types/Appointment';
+
 export type RegisteredNurse = {
-  id?: number;
+  id: number;
   firstName: string;
   lastName: string;
   middleName: string;
@@ -10,4 +12,5 @@ export type RegisteredNurse = {
   serviceAppointmentPrice?: number;
   outOfOfficeAppointmentPrice?: number;
   rnPhotoLink: string;
+  appointment: Appointment;
 };

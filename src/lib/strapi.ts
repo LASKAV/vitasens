@@ -130,30 +130,27 @@ function unwrapSuperCategory(
       subItem.Analyses = unwrapObject(wrappedByKey, subItem.Analyses);
     });
   });
-  // console.log('array', array);
   return array;
 }
 
-function unwrapObject(wrappedByKey: string, data: any): any {
+export function unwrapObject(wrappedByKey: string, data: any): any {
   if (data) {
-    data = data[wrappedByKey];
-    return data?.map((item: any) => {
+    if (data[wrappedByKey] instanceof Array) {
+      data = data[wrappedByKey];
+      return data?.map((item: any) => {
+        return {
+          id: item.id,
+          ...item.attributes,
+        };
+      });
+    } else if (data[wrappedByKey] instanceof Object) {
+      data = data[wrappedByKey];
       return {
-        id: item.id,
-        ...item.attributes,
+        id: data.id,
+        ...data.attributes,
       };
-    });
+    }
   } else {
     return {};
   }
 }
-
-// function unwrapObject(wrappedByKey: string, data: any): any {
-//   data = data[wrappedByKey];
-//   return data?.map((item: any) => {
-//     return {
-//       id: item.id,
-//       ...item.attributes,
-//     };
-//   });
-// }

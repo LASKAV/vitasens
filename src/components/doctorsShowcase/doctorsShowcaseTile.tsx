@@ -1,9 +1,11 @@
 import type { RegisteredNurse } from '@/types/RegisteredNurse.ts';
 import ExpandView from '@/assets/images/expand-view-icon.svg';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type DoctorsShowcaseTileProps = {
   info: RegisteredNurse;
   onOpen: (i: number) => void;
+  onButtonClick: (id: number, title: string, type: ServiceType) => void;
   index: number;
 };
 
@@ -24,7 +26,16 @@ export default (props: DoctorsShowcaseTileProps) => {
           </div>
           <div class='text-[0.75rem]'>{props.info.position}</div>
         </div>
-        <button class='absolute bottom-2 left-2 rounded-full border-[2px] border-tiffany-light px-2 py-1 text-[0.75rem] hover:bg-tiffany-light hover:text-white'>
+        <button
+          onClick={() => {
+            props.onButtonClick(
+              props.info.appointment.id,
+              props.info.appointment.name,
+              ServiceType.Appointment
+            );
+          }}
+          class='absolute bottom-2 left-2 rounded-full border-[2px] border-tiffany-light px-2 py-1 text-[0.75rem] hover:bg-tiffany-light hover:text-white'
+        >
           консультація
         </button>
         <button

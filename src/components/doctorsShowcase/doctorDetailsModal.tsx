@@ -1,11 +1,13 @@
 import { createEffect } from 'solid-js';
 import type { RegisteredNurse } from '@/types/RegisteredNurse.ts';
 import Details from './doctorDetails.tsx';
+import type { ServiceType } from '@/enums/serviceType.enum.ts';
 
 export type DoctorDetailsModalProps = {
   isOpen: boolean;
   onClose: () => void;
   info: RegisteredNurse;
+  action: (id: number, title: string, type: ServiceType) => void;
 };
 
 let containerRef: HTMLDivElement;
