@@ -1,4 +1,5 @@
 ---
+import { fetchAnalyseDataAndUnwrap } from '../lib/strapi';
 import fetchApi from '../lib/strapi';
 import type { Service } from '../types/Service';
 import SecondaryLayout from '../layouts/SecondaryLayout.astro';
@@ -6,8 +7,10 @@ import PricesSlider from '../components/pricesSlider/pricesSlider';
 
 import Rect1 from '@/assets/images/prices-background-rect1.svg';
 import Rect2 from '@/assets/images/prices-background-rect2.svg';
+import { AnalysisSuperCategory } from '../types/AnalysisSuperCategory';
 
 let services;
+let categories: AnalysisSuperCategory[];
 
 try {
   services = await fetchApi<Service[]>({
@@ -20,10 +23,28 @@ try {
 } catch (e) {
   console.error('err', e);
 }
+
+try {
+  categories = await fetchAnalyseDataAndUnwrap({
+    endpoint: 'analysis-super-categories',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+      'populate[AnalysisSubCategories][populate][0]': 'Analyses',
+      populate: 'Analyses',
+    },
+  });
+} catch (e) {
+  console.error('err', e);
+}
 ---
 
 <SecondaryLayout title='Вартість'>
-  <PricesSlider services={services} client:only='solid-js' />
+  <PricesSlider
+    services={services}
+    categories={categories}
+    client:only='solid-js'
+  />
   <img
     class='absolute right-0 top-0 z-[-1] hidden xl:block'
     src={Rect2.src}
