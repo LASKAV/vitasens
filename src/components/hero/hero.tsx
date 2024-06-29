@@ -44,7 +44,7 @@ export default () => {
             alt=''
           />
         </div>
-        <div class='relative left-[50.12rem] top-[15.5rem] hidden h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:block'>
+        <div class='relative left-[43.12rem] top-[9.5rem] hidden h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:block'>
           <img class='rotate-[-36deg]' src={HeroBgElementIcon.src} alt='' />
         </div>
         <div class='absolute right-[4.21rem] top-[0.5rem] hidden h-36 w-36 drop-shadow-[6px_5px_4px_rgba(0,0,0,0.25)] lg:block'>
@@ -65,7 +65,7 @@ export default () => {
           />
         </div>
       </div>
-      <div class='z-[1] px-4 pb-[15rem] pt-[10rem] lg:px-[7.25rem]'>
+      <div class='z-[1] px-4 pb-[15rem] pt-[10rem] lg:px-[3.25rem]'>
         <div class='pb-4'>
           <span class='text-[2.25rem] text-[#4ABCBC] [text-shadow:3px_4px_4px_rgba(36,123,123,0.40)] lg:text-[4.375rem]'>
             Ваше здоров’я
@@ -82,7 +82,7 @@ export default () => {
           <span class='branding-letter'>s</span>
         </div>
         <div class='max-w-[43.56rem] text-pretty py-[2.19rem]'>
-          <span class='text-5 font-medium italic leading-[1.52419rem] text-[#111] [text-shadow:0px_4px_4px_rgba(0,0,0,0.25)]'>
+          <span class='text-[1.25rem] font-medium italic leading-[1.52419rem] tracking-[0.15rem] text-[#444]'>
             Клініка VitaSens - коли все в одному місці і без черг. Аналізи, УЗД
             діагностика, консультація лікарів, а також - спеціально розроблені
             чек-апи для усіх систем організму.
