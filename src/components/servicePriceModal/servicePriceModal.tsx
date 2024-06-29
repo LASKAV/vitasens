@@ -1,12 +1,13 @@
 import Logo from '@/components/logo/logo';
 import { createEffect, For } from 'solid-js';
 import type { Service } from '@/types/Service.ts';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type ServicePriceModalProps = {
   isOpen: boolean;
   onClose: () => void;
   services: Service[];
-  action: (id: number, title: string) => void;
+  action: (id: number, title: string, type: ServiceType) => void;
 };
 
 let containerRef: HTMLDivElement;
@@ -61,7 +62,11 @@ export default (props: ServicePriceModalProps) => {
                           </div>
                           <button
                             onClick={() => {
-                              props.action(service.id, service.name);
+                              props.action(
+                                service.id,
+                                service.name,
+                                ServiceType.Service
+                              );
                             }}
                             class='text-[3rem]'
                           >
