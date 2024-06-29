@@ -10,9 +10,11 @@ import { createSignal, For } from 'solid-js';
 import './pricesSlider.css';
 import PricesInfoCard from '@/components/pricesSlider/pricesInfoCard';
 import ServicePriceModal from '@/components/servicePriceModal/servicePriceModal';
+import AnalysisPriceModal from '@/components/analysisPriceModal/analysisPriceModal';
 import type { Service } from '@/types/Service.ts';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
 import { ServiceType } from '@/enums/serviceType.enum.ts';
+import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory.ts';
 
 export type PricesInfoType = {
   name: string;
@@ -24,6 +26,7 @@ export type PricesInfoType = {
 
 type ServiceSliderProps = {
   services?: Service[];
+  categories?: AnalysisSuperCategory[];
 };
 const [serviceTitle, setServiceTitle] = createSignal('');
 const [serviceId, setServiceId] = createSignal(0);
@@ -111,6 +114,10 @@ export default (props: ServiceSliderProps) => {
         onClose={() => setServicePriceModalOpen(false)}
         services={pricesData[0].services}
         action={openBookingModal}
+      />
+      <AnalysisPriceModal
+        isOpen={true}
+        superCategories={props.categories ? props.categories : []}
       />
 
       <BookConsultationFlow
