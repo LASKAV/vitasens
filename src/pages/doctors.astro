@@ -2,17 +2,21 @@
 import type { RegisteredNurse } from '@/types/RegisteredNurse.ts';
 import SecondaryLayout from '../layouts/SecondaryLayout.astro';
 import DoctorsShowcase from '../components/doctorsShowcase/doctorsShowcase';
-import fetchApi from '../lib/strapi';
+import fetchApi, { unwrapObject } from '../lib/strapi';
 
 let doctors;
 
 try {
-  doctors = await fetchApi<RegisteredNurse[]>({
+  doctors = await fetchApi<any[]>({
     endpoint: 'doctors',
     wrappedByKey: 'data',
     query: {
       'sort[id]': 'asc',
+      populate: 'appointment',
     },
+  });
+  doctors.forEach(doctor => {
+    doctor.appointment = unwrapObject('data', doctor.appointment);
   });
 } catch (e) {
   console.error('err', e);
@@ -37,9 +41,4 @@ try {
     </div>
   </div>
   <DoctorsShowcase rnInfo={doctors} client:only='solid-js' />
-  <div
-    class="relative bottom-0 mt-[5rem] h-[10rem] w-full bg-[url('/src/assets/images/vitasens-doctors-footer-pattern-mobile.png')] bg-repeat-x md:hidden md:h-[12rem] md:bg-[url('/src/assets/images/vitasens-doctors-footer-pattern.png')]"
-    slot='footer'
-  >
-  </div>
 </SecondaryLayout>
