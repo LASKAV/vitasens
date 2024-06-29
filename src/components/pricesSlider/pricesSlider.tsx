@@ -12,9 +12,9 @@ import PricesInfoCard from '@/components/pricesSlider/pricesInfoCard';
 import ServicePriceModal from '@/components/servicePriceModal/servicePriceModal';
 import AnalysisPriceModal from '@/components/analysisPriceModal/analysisPriceModal';
 import type { Service } from '@/types/Service.ts';
-import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
+import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow';
 import { ServiceType } from '@/enums/serviceType.enum.ts';
-import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory.ts';
+import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory';
 
 export type PricesInfoType = {
   name: string;
