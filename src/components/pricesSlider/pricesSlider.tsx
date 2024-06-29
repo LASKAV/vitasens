@@ -30,9 +30,11 @@ type ServiceSliderProps = {
 };
 const [serviceTitle, setServiceTitle] = createSignal('');
 const [serviceId, setServiceId] = createSignal(0);
+const [serviceType, setServiceType] = createSignal('');
 const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
 
 const [isServicePriceModalOpen, setServicePriceModalOpen] = createSignal(false);
+const [isAnalysesModalOpen, setAnalysesModalOpen] = createSignal(false);
 
 export default (props: ServiceSliderProps) => {
   let pricesData: PricesInfoType[] = [
@@ -59,11 +61,14 @@ export default (props: ServiceSliderProps) => {
         'онкологічна панель',
       ],
       services: !!props.services ? [...props.services] : [],
-      onButtonClick: () => {},
+      onButtonClick: () => {
+        setAnalysesModalOpen(true);
+      },
     },
   ];
 
-  const openBookingModal = (id: number, title: string) => {
+  const openBookingModal = (id: number, title: string, type: ServiceType) => {
+    setServiceType(type);
     setServiceTitle(title);
     setServiceId(id);
     setServicePriceModalOpen(false);
@@ -112,12 +117,14 @@ export default (props: ServiceSliderProps) => {
       <ServicePriceModal
         isOpen={isServicePriceModalOpen()}
         onClose={() => setServicePriceModalOpen(false)}
-        services={pricesData[0].services}
+        services={props.services ? [...props.services] : []}
         action={openBookingModal}
       />
       <AnalysisPriceModal
-        isOpen={true}
+        isOpen={isAnalysesModalOpen()}
+        onClose={() => setAnalysesModalOpen(false)}
         superCategories={props.categories ? props.categories : []}
+        action={openBookingModal}
       />
 
       <BookConsultationFlow
@@ -125,7 +132,7 @@ export default (props: ServiceSliderProps) => {
         onClose={() => setBookingModalOpen(false)}
         service={serviceTitle()}
         serviceId={serviceId()}
-        serviceType={ServiceType.Service}
+        serviceType={serviceType()}
       />
     </>
   );

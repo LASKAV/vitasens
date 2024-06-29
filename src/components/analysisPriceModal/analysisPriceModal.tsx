@@ -1,17 +1,36 @@
 import LogoHighRes from '@/assets/images/logo-high-res.jpeg';
 import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory';
 import type { Analysis } from '@/types/Analysis';
-import { For, Show } from 'solid-js';
+import { createEffect, For, Show } from 'solid-js';
 import type { AnalysisSubCategory } from '@/types/AnalysisSubCategory';
+import type { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type AnalysisPriceModalProps = {
   isOpen: boolean;
+  onClose: () => void;
   superCategories: AnalysisSuperCategory[];
+  action: (id: number, title: string, type: ServiceType) => void;
 };
 
 let containerRef: HTMLDivElement;
 
 export default (props: AnalysisPriceModalProps) => {
+  const handleOutsideClick = (event: MouseEvent) => {
+    if (event?.target === containerRef) {
+      props.onClose();
+    }
+  };
+
+  createEffect(() => {
+    if (props.isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('click', handleOutsideClick);
+    } else {
+      document.body.style.overflow = '';
+      document.removeEventListener('click', handleOutsideClick);
+    }
+  });
+
   return (
     <>
       {props.isOpen && (
