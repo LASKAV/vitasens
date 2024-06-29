@@ -1,6 +1,7 @@
 import type { DoctorDetailsModalProps } from '@/components/doctorsShowcase/doctorDetailsModal.tsx';
 import CollapseViewIcon from '@/assets/images/collapse-view-icon.svg';
 import { Show } from 'solid-js';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type DetailsProps = {
   details: DoctorDetailsModalProps;
@@ -56,7 +57,16 @@ export default (props: DetailsProps) => {
           <div class='bottom-[1.25rem] left-[1.25rem] font-bold'>
             {props.details.info.position}
           </div>
-          <button class='bottom-[1.25rem] right-[1.25rem] skew-x-[-20deg] border border-tiffany-light px-[0.88rem] py-[0.69rem] text-[0.85rem] font-medium transition-all duration-300 hover:bg-tiffany-light hover:text-white'>
+          <button
+            onClick={() => {
+              props.details.action(
+                props.details.info.appointment.id,
+                props.details.info.appointment.name,
+                ServiceType.Appointment
+              );
+            }}
+            class='bottom-[1.25rem] right-[1.25rem] skew-x-[-20deg] border border-tiffany-light px-[0.88rem] py-[0.69rem] text-[0.85rem] font-medium transition-all duration-300 hover:bg-tiffany-light hover:text-white'
+          >
             <div class='skew-x-[20deg]'>Консультація</div>
           </button>
         </div>
