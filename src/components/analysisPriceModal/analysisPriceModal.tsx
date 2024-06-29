@@ -58,9 +58,32 @@ export default (props: AnalysisPriceModalProps) => {
                 <div class='w-full rounded-[1rem] border border-tiffany-dark py-2 text-center text-[1rem] font-bold italic text-tiffany-dark lg:pl-[7.5rem] lg:text-left lg:text-[1.25rem]'>
                   ГЕМАТОЛОГІЧНІ ДОСЛІДЖЕННЯ
                 </div>
-                <div class='w-full rounded-[1rem] py-2 text-center text-[1rem] font-extrabold text-tiffany-dark lg:pl-[7.5rem] lg:text-left lg:text-[1.25rem]'>
+                {/*<div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>*/}
+                {/*  <div class='grow'>M1</div>*/}
+                {/*  <div class='grow-[2]'>ф+чорн</div>*/}
+                {/*  <div class='w-[7.5rem] grow-[3] text-left font-normal'>*/}
+                {/*    Загальний аналіз крові (ЗАК розгорнутий+ШОЕ+лейкоцитарна*/}
+                {/*    підрахунок) формула, ручний*/}
+                {/*  </div>*/}
+                {/*  <div class='grow-[2] text-[1rem]'>1</div>*/}
+                {/*  <div class='grow text-[1rem]'>220</div>*/}
+                {/*</div>*/}
+                {/*<hr class='h-0.5 border-t-0 bg-tiffany-dark' />*/}
+                <div class='w-full rounded-[1rem] py-6 text-center text-[1rem] font-extrabold text-tiffany-dark lg:pl-[7.5rem] lg:text-left lg:text-[1.25rem]'>
                   Клінічний аналіз крові
                 </div>
+
+                <div class='flex w-full justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'>
+                  <div class='grow'>M1</div>
+                  <div class='grow-[2]'>ф+чорн</div>
+                  <div class='w-[7.5rem] grow-[3] text-left font-normal'>
+                    Загальний аналіз крові (ЗАК розгорнутий+ШОЕ+лейкоцитарна
+                    підрахунок) формула, ручний
+                  </div>
+                  <div class='grow-[2] text-[1rem]'>1</div>
+                  <div class='grow text-[1rem]'>220</div>
+                </div>
+                <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
               </div>
             </div>
           </div>
