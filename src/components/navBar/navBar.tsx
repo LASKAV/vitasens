@@ -27,8 +27,8 @@ let burgerMenuRef: SVGSVGElement;
 
 type NavProps = {
   currentPage: string;
-  serviceId: number;
-  service: string;
+  serviceId?: number;
+  service?: string;
 };
 
 export const menuItems: NavBarItem[] = [
