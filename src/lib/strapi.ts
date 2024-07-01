@@ -47,13 +47,7 @@ export default async function fetchApi<T>({
   let data = await res.json();
 
   if (wrappedByKey) {
-    data = data[wrappedByKey];
-    data = data.map((item: any) => {
-      return {
-        id: item.id,
-        ...item.attributes,
-      };
-    });
+    data = unwrapObject(wrappedByKey, data);
   }
 
   if (wrappedByList) {
@@ -63,6 +57,12 @@ export default async function fetchApi<T>({
   return data as T;
 }
 
+/**
+ * Fetches data from the Strapi API
+ * @param endpoint - The endpoint to fetch from
+ * @param payload - The request body
+ * @returns
+ */
 export async function fetchApiPost<T>({
   endpoint,
   payload,
@@ -90,6 +90,13 @@ export async function fetchApiPost<T>({
   return JSON.stringify(result.body) as T;
 }
 
+/**
+ * Fetches data from the Strapi API
+ * @param endpoint - The endpoint to fetch from
+ * @param query - The query parameters to add to the url
+ * @param wrappedByKey - The key to unwrap the response from
+ * @returns
+ */
 export async function fetchAnalyseDataAndUnwrap({
   endpoint,
   query,
