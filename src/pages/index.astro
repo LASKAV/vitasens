@@ -1,12 +1,29 @@
 ---
+import fetchApi from '../lib/strapi';
+import type { Appointment } from '../types/Appointment';
 import MainLayout from '../layouts/MainLayout.astro';
 import Hero from '../components/hero/hero.tsx';
 import About from '../components/about/about.astro';
 import Services from '../components/services/services.astro';
+
+let defaultAppointmentId: number = import.meta.env.DEFAULT_APPOINTMENT_ID;
+let appointment;
+try {
+  appointment = await fetchApi<Appointment>({
+    endpoint: 'appointments/' + defaultAppointmentId,
+    wrappedByKey: 'data',
+  });
+} catch (e) {
+  console.error(e);
+}
 ---
 
-<MainLayout title="Vita Sens">
-    <Hero client:only="solid-js" />
-    <About />
-    <Services />
+<MainLayout title='Vita Sens'>
+  <Hero
+    serviceId={appointment?.id}
+    service={appointment?.name}
+    client:only='solid-js'
+  />
+  <About />
+  <Services />
 </MainLayout>

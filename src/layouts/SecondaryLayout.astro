@@ -2,7 +2,10 @@
 import '@fontsource-variable/montserrat';
 import '@/assets/styles/main.css';
 import Favicon from '@/assets/images/favicon.svg';
-import NavBar from '../components/navBar/navBar';
+import NavBar from '@/components/navBar/navBar';
+import fetchApi from '@/lib/strapi';
+import { type Appointment } from '../types/Appointment';
+
 interface Props {
   title: string;
 }
@@ -10,6 +13,17 @@ interface Props {
 const { title } = Astro.props;
 
 const pathname = new URL(Astro.request.url).pathname;
+
+let defaultAppointmentId: number = import.meta.env.DEFAULT_APPOINTMENT_ID;
+let appointment;
+try {
+  appointment = await fetchApi<Appointment>({
+    endpoint: 'appointments/' + defaultAppointmentId,
+    wrappedByKey: 'data',
+  });
+} catch (e) {
+  console.error(e);
+}
 ---
 
 <!doctype html>
@@ -29,7 +43,12 @@ const pathname = new URL(Astro.request.url).pathname;
     <title>{title}</title>
   </head>
   <body class='font-montserrat'>
-    <NavBar currentPage={pathname} client:only='solid-js' />
+    <NavBar
+      currentPage={pathname}
+      serviceId={appointment?.id}
+      service={appointment?.name}
+      client:only='solid-js'
+    />
 
     <main>
       <slot />
