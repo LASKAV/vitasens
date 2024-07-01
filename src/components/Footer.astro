@@ -4,21 +4,22 @@ import clockFilledIcon from '@/assets/images/clock-filled-icon.svg';
 import envelopeFilledIcon from '@/assets/images/envelope-filled-icon.svg';
 import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
 import LogoImg from '@/assets/images/logo-high-res.jpeg';
+import { type SocialMedia } from '@/types/SocialMedia';
+import fetchApi from '@/lib/strapi';
 
-const socialMediaLinks = [
-  {
-    title: 'Instagram',
-    href: '/',
-  },
-  {
-    title: 'Facebook',
-    href: '/',
-  },
-  {
-    title: 'Telegram',
-    href: '/',
-  },
-];
+let socialMedias;
+
+try {
+  socialMedias = await fetchApi<SocialMedia[]>({
+    endpoint: 'social-medias',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+    },
+  });
+} catch (e) {
+  console.error(e);
+}
 
 const registeredNurseLinks = [
   {
@@ -108,9 +109,11 @@ const currentYear = new Date().getFullYear();
       <div class='pb-6'>
         <div class='font-medium text-[#444]'>Соціальні мережі</div>
         {
-          socialMediaLinks.map(socialMedia => (
+          socialMedias?.map(socialMedia => (
             <div class='pl-5 pt-[1.88rem] text-[0.875rem] text-[#B6B6B6] xl:text-[1rem]'>
-              <a href={socialMedia.href}>{socialMedia.title}</a>
+              <a href={socialMedia.link ? socialMedia.link : '/'}>
+                {socialMedia.title}
+              </a>
             </div>
           ))
         }
