@@ -4,6 +4,7 @@ import ContactUsModal from '@/components/contactUsModal/contactUsModal';
 import MobileMenu from './mobileMenu';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow.tsx';
 import './navBar.css';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 export type NavBarItem = {
   title: string;
@@ -26,6 +27,8 @@ let burgerMenuRef: SVGSVGElement;
 
 type NavProps = {
   currentPage: string;
+  serviceId: number;
+  service: string;
 };
 
 export const menuItems: NavBarItem[] = [
@@ -214,6 +217,9 @@ export default (props: NavProps) => {
       <BookConsultationFlow
         isOpen={isBookingModalOpen()}
         onClose={() => setBookingModalOpen(false)}
+        serviceId={props.serviceId}
+        service={props.service}
+        serviceType={ServiceType.Appointment}
       />
     </>
   );

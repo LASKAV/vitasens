@@ -7,6 +7,12 @@ import './hero.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { createSignal } from 'solid-js';
+import { ServiceType } from '@/enums/serviceType.enum.ts';
+
+type HeroProps = {
+  serviceId?: number;
+  service?: string;
+};
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,12 +32,15 @@ const gsapParallax = (element: HTMLDivElement) => {
 
 const [isBookingModalOpen, setBookingModalOpen] = createSignal(false);
 
-export default () => {
+export default (props: HeroProps) => {
   return (
     <div class='lg:container lg:mx-auto 2xl:relative'>
       <BookConsultationFlow
         isOpen={isBookingModalOpen()}
         onClose={() => setBookingModalOpen(false)}
+        serviceId={props.serviceId}
+        service={props.service}
+        serviceType={ServiceType.Appointment}
       />
       <div
         ref={gsapParallax}

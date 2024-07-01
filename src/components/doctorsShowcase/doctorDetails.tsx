@@ -57,6 +57,9 @@ export default (props: DetailsProps) => {
           <div class='bottom-[1.25rem] left-[1.25rem] font-bold'>
             {props.details.info.position}
           </div>
+          <div class='absolute bottom-[1rem] right-[1.73rem] skew-x-[-20deg] border border-tiffany-light bg-white px-[0.88rem] py-[0.63rem] text-[0.75rem] font-medium transition-all duration-300'>
+            <div class='skew-x-[20deg]'>Консультація</div>
+          </div>
           <button
             onClick={() => {
               props.details.action(
@@ -65,7 +68,7 @@ export default (props: DetailsProps) => {
                 ServiceType.Appointment
               );
             }}
-            class='bottom-[1.25rem] right-[1.93rem] skew-x-[-20deg] border border-tiffany-light bg-white px-[0.88rem] py-[0.63rem] text-[0.75rem] font-medium transition-all duration-300 hover:bg-tiffany-light hover:text-white'
+            class='absolute bottom-[1.25rem] right-[1.93rem] skew-x-[-20deg] border border-tiffany-light bg-white px-[0.88rem] py-[0.63rem] text-[0.75rem] font-medium transition-all duration-300 hover:bg-tiffany-light hover:text-white'
           >
             <div class='skew-x-[20deg]'>Консультація</div>
           </button>
