@@ -19,3 +19,43 @@
 .swiper {
     height: 24rem;
 }
+
+.btn {
+    transform: skew(-20deg);
+    background: transparent;
+    cursor: pointer;
+    position: relative;
+    width: 150px;
+    height: 58px;
+    border: 0;
+    color: #123440;
+ }
+
+.btn__text {
+    @apply hover:bg-tiffany-light;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 11px;
+    bottom: 11px;
+    left: 0;
+    font-size: 16px;
+    background-color: #ffffff;
+    border: 2px solid #46D0D0;
+}
+
+.btn::before {
+    content: "";
+    position: absolute;
+    border: 2px solid #46D0D0;
+    top: 7px;
+    right: 0;
+    bottom: 0;
+    left: 7px;
+}
+
+.btn:active .btn__text {
+    transform: translateX(9px) translateY(9px);
+}
