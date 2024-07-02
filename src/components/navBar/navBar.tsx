@@ -125,7 +125,7 @@ export default (props: NavProps) => {
                       >
                         <path d='M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z' />
                       </svg>
-                      <div class='drop-down-menu absolute h-0 w-[25rem] overflow-hidden bg-white py-0  transition-all duration-300'>
+                      <div class='drop-down-menu absolute h-0 w-[25rem] overflow-hidden py-0  transition-all duration-300'>
                         <For each={menuItem.submenu}>
                           {(submenuItem: NavBarSubmenuItem) => (
                             <div class=''>
