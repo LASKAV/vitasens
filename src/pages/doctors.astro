@@ -4,7 +4,11 @@ import DoctorsShowcase from '../components/doctorsShowcase/doctorsShowcase';
 import fetchApi, { unwrapObject } from '../lib/strapi';
 
 let doctors;
-let doctorIdToShow = parseInt(Astro.url.searchParams.get('id'));
+let doctorIdToShow;
+
+if (Astro.url.searchParams.get('id')) {
+  doctorIdToShow = parseInt(Astro.url.searchParams.get('id'));
+}
 
 try {
   doctors = await fetchApi<any[]>({
