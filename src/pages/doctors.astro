@@ -7,7 +7,7 @@ let doctors;
 let doctorIdToShow;
 
 if (Astro.url.searchParams.get('id')) {
-  doctorIdToShow = parseInt(Astro.url.searchParams.get('id'));
+  doctorIdToShow = parseInt(Astro.url.searchParams.get('id') as string);
 }
 
 try {
