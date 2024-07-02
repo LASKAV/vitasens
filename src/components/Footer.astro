@@ -4,44 +4,48 @@ import clockFilledIcon from '@/assets/images/clock-filled-icon.svg';
 import envelopeFilledIcon from '@/assets/images/envelope-filled-icon.svg';
 import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
 import LogoImg from '@/assets/images/logo-high-res.jpeg';
+import { type SocialMedia } from '@/types/SocialMedia';
+import fetchApi from '@/lib/strapi';
+import { RegisteredNurse } from '@/types/RegisteredNurse';
 
-const socialMediaLinks = [
-  {
-    title: 'Instagram',
-    href: '/',
-  },
-  {
-    title: 'Facebook',
-    href: '/',
-  },
-  {
-    title: 'Telegram',
-    href: '/',
-  },
-];
+type DoctorLinkType = {
+  name: string;
+  href: string;
+};
 
-const registeredNurseLinks = [
-  {
-    name: 'Саморукова Вікторія',
-    href: '/',
-  },
-  {
-    name: 'Дукова Ольга',
-    href: '/',
-  },
-  {
-    name: 'Хоміна Ольга',
-    href: '/',
-  },
-  {
-    name: 'Гвоздяниця Анастасія',
-    href: '/',
-  },
-  {
-    name: 'Кудінова Наталія',
-    href: '/',
-  },
-];
+let socialMedias;
+let registeredNurses;
+
+try {
+  socialMedias = await fetchApi<SocialMedia[]>({
+    endpoint: 'social-medias',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+    },
+  });
+} catch (e) {
+  console.error(e);
+}
+
+try {
+  registeredNurses = await fetchApi<RegisteredNurse[]>({
+    endpoint: 'doctors',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+    },
+  });
+} catch (e) {
+  console.error(e);
+}
+
+const registeredNurseLinks: DoctorLinkType[] = registeredNurses?.map(item => {
+  return {
+    name: `${item.firstName} ${item.lastName}`,
+    href: '/doctors?id=' + item.id,
+  };
+});
 
 const currentYear = new Date().getFullYear();
 ---
@@ -108,9 +112,14 @@ const currentYear = new Date().getFullYear();
       <div class='pb-6'>
         <div class='font-medium text-[#444]'>Соціальні мережі</div>
         {
-          socialMediaLinks.map(socialMedia => (
+          socialMedias?.map(socialMedia => (
             <div class='pl-5 pt-[1.88rem] text-[0.875rem] text-[#B6B6B6] xl:text-[1rem]'>
-              <a href={socialMedia.href}>{socialMedia.title}</a>
+              <a
+                href={socialMedia.link ? socialMedia.link : '/'}
+                target='_blank'
+              >
+                {socialMedia.title}
+              </a>
             </div>
           ))
         }
@@ -118,7 +127,7 @@ const currentYear = new Date().getFullYear();
       <div>
         <div class='font-medium text-[#444]'>Лікарі</div>
         {
-          registeredNurseLinks.map(rnLink => (
+          registeredNurseLinks?.map(rnLink => (
             <div class='pl-5 pt-[1.88rem] text-[0.875rem] text-[#B6B6B6] xl:text-[1rem]'>
               <a href={rnLink.href}>{rnLink.name}</a>
             </div>

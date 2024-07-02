@@ -7,7 +7,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import './doctorsShowcase.css';
-import { createSignal, For } from 'solid-js';
+import { createSignal, For, onMount } from 'solid-js';
 import DoctorTile from './doctorsShowcaseTile.tsx';
 import DoctorDetailsModal from './doctorDetailsModal';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow';
@@ -15,6 +15,7 @@ import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type DoctorShowcaseProps = {
   rnInfo?: RegisteredNurse[];
+  idToOpen?: number | undefined;
 };
 
 export default (props: DoctorShowcaseProps) => {
@@ -43,6 +44,17 @@ export default (props: DoctorShowcaseProps) => {
     setBookingModalOpen(true);
     setDetailsModalOpen(false);
   };
+
+  onMount(() => {
+    if (props.idToOpen && props.rnInfo) {
+      let doctorIndexToOpen = props.rnInfo.findIndex(
+        item => item.id === props.idToOpen
+      );
+      if (doctorIndexToOpen >= 0) {
+        openModal(doctorIndexToOpen);
+      }
+    }
+  });
 
   return (
     <>

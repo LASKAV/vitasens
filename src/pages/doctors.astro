@@ -4,6 +4,7 @@ import DoctorsShowcase from '../components/doctorsShowcase/doctorsShowcase';
 import fetchApi, { unwrapObject } from '../lib/strapi';
 
 let doctors;
+let doctorIdToShow = parseInt(Astro.url.searchParams.get('id'));
 
 try {
   doctors = await fetchApi<any[]>({
@@ -39,5 +40,9 @@ try {
       підхід до кожного пацієнта.
     </div>
   </div>
-  <DoctorsShowcase rnInfo={doctors} client:only='solid-js' />
+  <DoctorsShowcase
+    rnInfo={doctors}
+    idToOpen={doctorIdToShow}
+    client:only='solid-js'
+  />
 </SecondaryLayout>
