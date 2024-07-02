@@ -6,8 +6,15 @@ import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
 import LogoImg from '@/assets/images/logo-high-res.jpeg';
 import { type SocialMedia } from '@/types/SocialMedia';
 import fetchApi from '@/lib/strapi';
+import { RegisteredNurse } from '@/types/RegisteredNurse';
+
+type DoctorLinkType = {
+  name: string;
+  href: string;
+};
 
 let socialMedias;
+let registeredNurses;
 
 try {
   socialMedias = await fetchApi<SocialMedia[]>({
@@ -21,28 +28,24 @@ try {
   console.error(e);
 }
 
-const registeredNurseLinks = [
-  {
-    name: 'Саморукова Вікторія',
-    href: '/',
-  },
-  {
-    name: 'Дукова Ольга',
-    href: '/',
-  },
-  {
-    name: 'Хоміна Ольга',
-    href: '/',
-  },
-  {
-    name: 'Гвоздяниця Анастасія',
-    href: '/',
-  },
-  {
-    name: 'Кудінова Наталія',
-    href: '/',
-  },
-];
+try {
+  registeredNurses = await fetchApi<RegisteredNurse[]>({
+    endpoint: 'doctors',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+    },
+  });
+} catch (e) {
+  console.error(e);
+}
+
+const registeredNurseLinks: DoctorLinkType[] = registeredNurses?.map(item => {
+  return {
+    name: `${item.firstName} ${item.lastName}`,
+    href: '/doctors?id=' + item.id,
+  };
+});
 
 const currentYear = new Date().getFullYear();
 ---
@@ -111,7 +114,10 @@ const currentYear = new Date().getFullYear();
         {
           socialMedias?.map(socialMedia => (
             <div class='pl-5 pt-[1.88rem] text-[0.875rem] text-[#B6B6B6] xl:text-[1rem]'>
-              <a href={socialMedia.link ? socialMedia.link : '/'}>
+              <a
+                href={socialMedia.link ? socialMedia.link : '/'}
+                target='_blank'
+              >
                 {socialMedia.title}
               </a>
             </div>
@@ -121,7 +127,7 @@ const currentYear = new Date().getFullYear();
       <div>
         <div class='font-medium text-[#444]'>Лікарі</div>
         {
-          registeredNurseLinks.map(rnLink => (
+          registeredNurseLinks?.map(rnLink => (
             <div class='pl-5 pt-[1.88rem] text-[0.875rem] text-[#B6B6B6] xl:text-[1rem]'>
               <a href={rnLink.href}>{rnLink.name}</a>
             </div>
