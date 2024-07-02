@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-import { createSignal, For } from 'solid-js';
+import { createSignal, For, onMount } from 'solid-js';
 
 import './pricesSlider.css';
 import PricesInfoCard from '@/components/pricesSlider/pricesInfoCard';
@@ -25,6 +25,7 @@ export type PricesInfoType = {
 };
 
 type ServiceSliderProps = {
+  openUrlParam?: string;
   services?: Service[];
   categories?: AnalysisSuperCategory[];
 };
@@ -75,6 +76,21 @@ export default (props: ServiceSliderProps) => {
     setBookingModalOpen(true);
   };
 
+  onMount(() => {
+    if (props.openUrlParam) {
+      switch (props.openUrlParam as string) {
+        case 'ultrasound': {
+          setServicePriceModalOpen(true);
+          break;
+        }
+        case 'appointments': {
+          setServicePriceModalOpen(true);
+          break;
+        }
+      }
+    }
+  });
+
   return (
     <>
       <div class='pb-[6rem] pt-[5rem] md:hidden'>
@@ -119,6 +135,7 @@ export default (props: ServiceSliderProps) => {
         onClose={() => setServicePriceModalOpen(false)}
         services={props.services ? [...props.services] : []}
         action={openBookingModal}
+        openUrlParam={props.openUrlParam}
       />
       <AnalysisPriceModal
         isOpen={isAnalysesModalOpen()}

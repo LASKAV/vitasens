@@ -42,6 +42,7 @@ try {
   <PricesSlider
     services={services}
     categories={categories}
+    openUrlParam={Astro.url.searchParams.get('open') as string}
     client:only='solid-js'
   />
   <img
