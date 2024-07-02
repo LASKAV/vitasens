@@ -6,7 +6,7 @@ import phoneFilledIcon from '@/assets/images/phone-filled-icon.svg';
 import LogoImg from '@/assets/images/logo-high-res.jpeg';
 import { type SocialMedia } from '@/types/SocialMedia';
 import fetchApi from '@/lib/strapi';
-import { RegisteredNurse } from '@/types/RegisteredNurse';
+import { type RegisteredNurse } from '@/types/RegisteredNurse';
 
 type DoctorLinkType = {
   name: string;
@@ -40,12 +40,13 @@ try {
   console.error(e);
 }
 
-const registeredNurseLinks: DoctorLinkType[] = registeredNurses?.map(item => {
-  return {
-    name: `${item.firstName} ${item.lastName}`,
-    href: '/doctors?id=' + item.id,
-  };
-});
+const registeredNurseLinks: DoctorLinkType[] | undefined =
+  registeredNurses?.map(item => {
+    return {
+      name: `${item.firstName} ${item.lastName}`,
+      href: '/doctors?id=' + item.id,
+    } as DoctorLinkType;
+  });
 
 const currentYear = new Date().getFullYear();
 ---
