@@ -14,6 +14,7 @@ import { ServiceType } from '@/enums/serviceType.enum.ts';
 
 type CheckUpSliderProps = {
   checkUps?: CheckUp[];
+  referrerUrl?: string;
 };
 
 export default (props: CheckUpSliderProps) => {
@@ -81,6 +82,7 @@ export default (props: CheckUpSliderProps) => {
         service={checkUpTitle()}
         serviceId={checkUpId()}
         serviceType={ServiceType.CheckUp}
+        referrerUrl={props.referrerUrl}
       />
     </>
   );

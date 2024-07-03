@@ -47,6 +47,7 @@ try {
   <DoctorsShowcase
     rnInfo={doctors}
     idToOpen={doctorIdToShow}
+    referrerUrl={Astro.url.href}
     client:only='solid-js'
   />
 </SecondaryLayout>

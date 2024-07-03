@@ -27,7 +27,11 @@ try {
       Чек-апи
     </p>
   </div>
-  <CheckUpSlider checkUps={checkups} client:only='solid-js' />
+  <CheckUpSlider
+    checkUps={checkups}
+    referrerUrl={Astro.url.href}
+    client:only='solid-js'
+  />
   <img
     class='absolute right-0 top-[13rem] h-[7.5rem] w-[3.5rem] lg:h-[15rem] lg:w-[8rem]'
     src={Star2.src}

@@ -16,6 +16,7 @@ import { ServiceType } from '@/enums/serviceType.enum.ts';
 type DoctorShowcaseProps = {
   rnInfo?: RegisteredNurse[];
   idToOpen?: number | undefined;
+  referrerUrl?: string;
 };
 
 export default (props: DoctorShowcaseProps) => {
@@ -98,6 +99,7 @@ export default (props: DoctorShowcaseProps) => {
         service={serviceTitle()}
         serviceId={serviceId()}
         serviceType={serviceType()}
+        referrerUrl={props.referrerUrl}
       />
 
       {props.rnInfo && (
