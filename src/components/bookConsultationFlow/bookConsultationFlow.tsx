@@ -8,6 +8,7 @@ type BookConsultationFlowProps = {
   serviceId?: number;
   service?: string;
   serviceType?: string;
+  referrerUrl?: string;
 };
 
 const [isSuccessModalOpen, setSuccessModalOpen] = createSignal(false);
@@ -27,6 +28,7 @@ export default (props: BookConsultationFlowProps) => {
         serviceId={props.serviceId}
         service={props.service}
         serviceType={props.serviceType}
+        referrerUrl={props.referrerUrl}
       />
       <SuccessModal
         isOpen={isSuccessModalOpen()}
