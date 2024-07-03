@@ -11,6 +11,7 @@ export type FormData = {
   phone: string;
   serviceId: number | undefined;
   serviceType: string | undefined;
+  referrerUrl?: string;
 };
 
 export default (props: BookConsultationModalProps) => {
@@ -21,6 +22,7 @@ export default (props: BookConsultationModalProps) => {
     phone: '',
     serviceId: props.serviceId,
     serviceType: props.serviceType,
+    referrerUrl: props.referrerUrl,
   });
 
   const handleChange = (e: Event) => {

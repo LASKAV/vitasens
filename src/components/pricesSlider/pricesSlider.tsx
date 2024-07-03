@@ -28,6 +28,7 @@ type ServiceSliderProps = {
   openUrlParam?: string;
   services?: Service[];
   categories?: AnalysisSuperCategory[];
+  referrerUrl?: string;
 };
 const [serviceTitle, setServiceTitle] = createSignal('');
 const [serviceId, setServiceId] = createSignal(0);
@@ -150,6 +151,7 @@ export default (props: ServiceSliderProps) => {
         service={serviceTitle()}
         serviceId={serviceId()}
         serviceType={serviceType()}
+        referrerUrl={props.referrerUrl}
       />
     </>
   );

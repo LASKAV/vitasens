@@ -9,6 +9,7 @@ export type BookConsultationModalProps = {
   serviceId?: number;
   service?: string;
   serviceType?: string;
+  referrerUrl?: string;
 };
 
 let containerRef: HTMLDivElement;
@@ -53,6 +54,7 @@ export default (props: BookConsultationModalProps) => {
                   serviceId={props.serviceId}
                   service={props.service}
                   serviceType={props.serviceType}
+                  referrerUrl={props.referrerUrl}
                 />
               </div>
             </div>

@@ -43,6 +43,7 @@ try {
     services={services}
     categories={categories}
     openUrlParam={Astro.url.searchParams.get('open') as string}
+    referrerUrl={Astro.url.href}
     client:only='solid-js'
   />
   <img
