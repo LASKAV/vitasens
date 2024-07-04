@@ -55,7 +55,12 @@ export default (props: CheckUpSliderProps) => {
         >
           <For each={props.checkUps}>
             {(checkUp: CheckUp) => (
-              <SwiperSlide class='swiper_checkup_slide'>
+              <SwiperSlide
+                ref={el => {
+                  el.style.filter = `drop-shadow(15px 10px 0px ${checkUp.holderShadowColorHex})`;
+                }}
+                class='swiper_checkup_slide'
+              >
                 <div class='absolute z-10 h-full w-full bg-vs-gray/0 transition-all duration-300'>
                   <div class='absolute hidden h-full w-full opacity-0 transition-all duration-300'>
                     <div class='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
