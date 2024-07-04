@@ -122,7 +122,7 @@ export default (props: BookConsultationModalProps) => {
             />
             <label class='text-[0.6875rem] font-bold' for='booking-policy'>
               Я згоден (на) з{' '}
-              <a href='/' class='text-tiffany'>
+              <a href='/privacy-policy' class='text-tiffany'>
                 політикою конфіденційності
               </a>
             </label>
