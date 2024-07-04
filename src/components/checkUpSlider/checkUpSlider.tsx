@@ -70,7 +70,11 @@ export default (props: CheckUpSliderProps) => {
                     </div>
                   </div>
                 </div>
-                <img class='object-cover' src={checkUp.imageUrl} alt='' />
+                <img
+                  class='h-full w-full object-cover'
+                  src={checkUp.imageUrl}
+                  alt=''
+                />
               </SwiperSlide>
             )}
           </For>
