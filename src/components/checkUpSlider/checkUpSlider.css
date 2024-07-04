@@ -21,9 +21,8 @@
 }
 
 .swiper-wrapper > .swiper-slide.swiper_checkup_slide {
-    filter: drop-shadow(15px 10px 0px rgba(56,60,131,0.25));
-    width: 25rem;
-    height: 36rem;
+    width: 25.7rem;
+    height: 36.25rem;
     position: relative;
     bottom: 0;
     overflow: hidden;
