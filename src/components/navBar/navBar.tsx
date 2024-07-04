@@ -152,7 +152,7 @@ export default (props: NavProps) => {
             <div>
               <button
                 onClick={() => setBookingModalOpen(true)}
-                class='rounded-[0.9375rem] border-[3px] border-[#8AD4D4] bg-white px-[0.94rem] py-[0.7rem] text-[0.875rem] font-medium tracking-[0.04375rem] text-tiffany-light drop-shadow-[2px_2px_0px_rgba(70,208,208,1)] transition-all duration-300 hover:border-[#4ABCBC] hover:bg-[#4ABCBC] hover:text-white'
+                class='rounded-[0.9375rem] border-[3px] border-tiffany-light bg-white px-[0.94rem] py-[0.7rem] text-[0.875rem] font-medium tracking-[0.04375rem] text-tiffany-light drop-shadow-[2px_2px_0px_rgba(70,208,208,1)] transition-all duration-300 hover:border-tiffany-light hover:bg-tiffany-light hover:text-white'
               >
                 Консультація
               </button>
