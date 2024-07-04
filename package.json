@@ -18,6 +18,7 @@
     "@fontsource-variable/montserrat": "^5.0.18",
     "astro": "^4.5.15",
     "gsap": "^3.12.5",
+    "marked": "^13.0.2",
     "solid-js": "^1.8.16",
     "swiper": "8.4.7",
     "tailwindcss": "^3.4.3",
