@@ -1,0 +1,29 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { marked } from 'marked';
+import fetchApi from '../lib/strapi';
+
+let policy;
+let content;
+
+try {
+  policy = await fetchApi<any>({
+    endpoint: 'privacy-policy',
+    wrappedByKey: 'data',
+  });
+  content = marked.parse(policy.Content, {
+    gfm: true,
+    breaks: true,
+  });
+} catch (e) {
+  console.error('err', e);
+}
+---
+
+<MainLayout title='Політика конфіденційності'>
+  <div class='container mx-auto pb-[7rem]'>
+    <h1 class='py-12 text-[2.5rem] text-tiffany-light'>{policy.Title}</h1>
+
+    <Fragment set:html={content} />
+  </div>
+</MainLayout>

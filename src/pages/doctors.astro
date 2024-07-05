@@ -1,0 +1,53 @@
+---
+import SecondaryLayout from '../layouts/SecondaryLayout.astro';
+import DoctorsShowcase from '../components/doctorsShowcase/doctorsShowcase';
+import fetchApi, { unwrapObject } from '../lib/strapi';
+
+let doctors;
+let doctorIdToShow;
+
+if (Astro.url.searchParams.get('id')) {
+  doctorIdToShow = parseInt(Astro.url.searchParams.get('id') as string);
+}
+
+try {
+  doctors = await fetchApi<any[]>({
+    endpoint: 'doctors',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+      populate: 'appointment',
+    },
+  });
+  doctors.forEach(doctor => {
+    doctor.appointment = unwrapObject('data', doctor.appointment);
+  });
+} catch (e) {
+  console.error('err', e);
+}
+---
+
+<SecondaryLayout title='Лікарі'>
+  <div
+    class="mt-[1.94rem] flex min-h-[8.8125rem] flex-col items-center bg-[url('/src/assets/images/doctors-header-bg.png')] bg-cover pb-[1.25rem] pt-[0.62rem] text-center lg:mt-[3.62rem]"
+  >
+    <div
+      class='mt-[1.25rem] text-[1.5rem] font-semibold text-tiffany-light lg:mt-[0.62rem] lg:text-[2.25rem]'
+    >
+      Наша команда
+    </div>
+    <div
+      class='mt-[1rem] max-w-[25.625rem] px-[0.63rem] text-[0.6875rem] text-black lg:mt-[0.5rem] lg:max-w-[35.375rem] lg:text-[0.875rem]'
+    >
+      Команда VitaSens - це досвідчені лікарі і професіонали своєї справи. Наші
+      лікарі керуються лише принципами доказової медицини і мають індивідуальний
+      підхід до кожного пацієнта.
+    </div>
+  </div>
+  <DoctorsShowcase
+    rnInfo={doctors}
+    idToOpen={doctorIdToShow}
+    referrerUrl={Astro.url.href}
+    client:only='solid-js'
+  />
+</SecondaryLayout>

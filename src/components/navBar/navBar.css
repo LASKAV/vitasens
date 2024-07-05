@@ -1,19 +1,49 @@
-.nav-menu {
-    @apply flex justify-between m-auto max-w-[100rem] text-[#4ABCBC] select-none;
+.underline-half {
+    display: inline-block;
+    position: relative;
 }
 
-.nav-menu-logo {
-    @apply flex items-center gap-4;
+.underline-half::after {
+    @apply hover:w-[50%] transition-all duration-300;
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transform: translateX(-50%);
 }
 
-.nav-menu-controls {
-    @apply flex justify-between items-center font-normal;
+.chevron-icon {
+    transition: all 0.3s ease;
 }
 
-.nav-menu-item {
-    @apply border-4 hover:shadow-[0px_0px_5px_5px_rgba(74,188,188,1)] hover:border-[#4ABCBC] mx-6 my-3 w-[8.75rem] h-11 rounded-2xl border-white border-solid transition-all duration-300 cursor-pointer font-medium;
+.item-container:hover .chevron-icon {
+    @apply fill-tiffany-light rotate-[180deg];
 }
 
-.nav-menu-item div {
-    @apply flex justify-center gap-[0.31rem] mt-[0.42rem];
+.item-container:hover .drop-down-menu {
+    @apply h-auto py-2;
+}
+
+#burger-icon {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#burger-icon line {
+    transition: transform 0.3s ease;
+}
+
+#burger-icon.open line:nth-child(1) {
+    transform: translateY(-3px) translateX(16px) rotate(45deg);
+}
+
+#burger-icon.open line:nth-child(2) {
+    opacity: 0;
+}
+
+#burger-icon.open line:nth-child(3) {
+    transform: translateY(18px) translateX(-17px) rotate(-45deg);
 }

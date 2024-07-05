@@ -2,7 +2,27 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+        colors: {
+            white: '#FFFFFF',
+            black: '#000000',
+            'vs-gray': '#D9D9D9',
+            tiffany: {
+                light: '#46D0D0',
+                DEFAULT: '#4ABCBC',
+                dark: '#247B7B',
+                darkest: '#0D5C63',
+            },
+            transparent: 'transparent',
+        },
+		fontFamily: {
+			montserrat: ["Montserrat", "sans-serif"],
+			suave: ["Suave", "sans-serif"],
+		},
+		extend: {
+            gridTemplateColumns: {
+                'analyse': '1fr 2fr 6fr 1fr 2fr',
+            }
+        },
 	},
 	plugins: [],
 }

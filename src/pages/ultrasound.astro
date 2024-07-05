@@ -1,0 +1,82 @@
+---
+import SecondaryLayout from '../layouts/SecondaryLayout.astro';
+import DiagnosticsUltrasoundImg from '@/assets/images/service-ultrasound.jpeg';
+import DiagnosticsUltrasoundImg2 from '@/assets/images/service-ultrasound-2.jpeg';
+
+const ultrasoundDiagnosticsText =
+  'УЗД - це безпечний, неінвазивний метод дослідження, ' +
+  'який дозволяє отримати детальні зображення внутрішніх ' +
+  'органів та тканин за допомогою високочастотних звукових хвиль.\n' +
+  'В нашій клініці деякі види УЗД проводиться як дорослим, так і дітям';
+
+const ultrasoundDeviceDescription =
+  'Апарат Philips ClearVue 350 створено з орієнтацією на ' +
+  'проведення досліджень у різних галузях медицини.\n' +
+  'Функція iSCAN відповідає за швидке поліпшення параметрів сканування в ' +
+  'двовимірному і доплерівському режимах, а також сприяє скороченню тривалості сканування.\n' +
+  'Датчик із вбудованими функціями візуалізації забезпечує отримання високоякісних зображень.';
+---
+
+<SecondaryLayout title='УЗД'>
+  <div
+    class='container mx-auto px-6 pb-[9rem] pt-[3.44rem] xl:flex xl:flex-row-reverse xl:justify-between xl:px-0'
+  >
+    <div class='pb-[3.75rem] xl:flex-1 xl:pb-0'>
+      <div class='pb-[1.87rem] text-[1.875rem] text-tiffany-light'>
+        <div class='font-semibold'>Ультразвукова</div>
+        <div class='font-medium'>діагностика</div>
+      </div>
+      <div
+        class='h-[31.625rem] drop-shadow-[10px_10px_0px_rgba(70,208,208,1)] xl:h-[38.56rem] xl:w-[37rem]'
+      >
+        <img
+          class='h-full w-full object-cover'
+          src={DiagnosticsUltrasoundImg.src}
+          alt=''
+        />
+      </div>
+    </div>
+    <div class='flex flex-col xl:flex-auto xl:justify-between'>
+      <div>
+        <div class='pb-4 text-[1.875rem] text-tiffany-light'>
+          УЗД діагностика
+        </div>
+        <p class='max-w-[29rem] pb-[2rem] text-[#444]'>
+          {ultrasoundDiagnosticsText}
+        </p>
+        <a href='/prices?open=ultrasound'>
+          <button
+            class='rounded-[0.625rem] bg-tiffany-light px-[6.25rem] py-[1rem] text-[1.25rem] text-white'
+          >
+            Детальніше
+          </button>
+        </a>
+      </div>
+      <div class='pt-[3.75rem]'>
+        <div class='pb-[1.5rem] text-[1.25rem] leading-6 text-tiffany-light'>
+          <div class='font-semibold'>Апарат для досліджень</div>
+          <div class='font-medium'>Philips ClearVue 350</div>
+        </div>
+        <div class='flex xl:items-end xl:gap-[5rem]'>
+          <div>
+            <div class='pb-[1.25rem] text-[1.25rem] text-tiffany-light'>
+              Особливості
+            </div>
+            <p class='max-w-[21rem] text-[#929292]'>
+              {ultrasoundDeviceDescription}
+            </p>
+          </div>
+          <div
+            class='hidden drop-shadow-[10px_10px_0px_rgba(70,208,208,1)] xl:block xl:h-[17.375rem] xl:w-[12rem]'
+          >
+            <img
+              class='h-full w-full object-cover'
+              src={DiagnosticsUltrasoundImg2.src}
+              alt=''
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</SecondaryLayout>

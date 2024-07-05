@@ -1,0 +1,77 @@
+---
+import Logo from '../components/logo/logo';
+import ChevronIcon from '@/assets/images/chevron-right-icon.svg';
+import FemaleDoctorStock from '@/assets/images/stock-female-doctor-404.svg';
+import Background from '@/assets/images/404-background-rect.svg';
+import BackgroundMobile from '@/assets/images/404-background-rect-mobile.svg';
+import { Image } from 'astro:assets';
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='description' content='Astro description' />
+    <meta name='viewport' content='width=device-width' />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/src/assets/images/favicon.svg'
+    />
+    <meta name='generator' content={Astro.generator} />
+    <link href='/src/assets/styles/main.css' rel='stylesheet' />
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'
+      rel='stylesheet'
+    />
+    <title>{title}</title>
+  </head>
+  <body class='font-montserrat'>
+    <div
+      class='absolute right-[-1rem] top-[20.38rem] z-[-2] w-[23rem] lg:right-[21rem] lg:top-[20.75rem] lg:w-auto'
+    >
+      <Image class='flex object-fill' src={FemaleDoctorStock} alt='' />
+    </div>
+    <div class='absolute right-0 top-0 z-[-1] hidden h-full lg:block'>
+      <Image class='h-full object-cover' src={Background} alt='' />
+    </div>
+    <div
+      class='absolute right-[-1rem] top-[7.7rem] z-[-1] block h-[70%] lg:hidden'
+    >
+      <Image class='flex h-full object-fill' src={BackgroundMobile} alt='' />
+    </div>
+
+    <div
+      class='container mx-auto h-full w-full pl-[1.19rem] pr-0 pt-[2.62rem] lg:pl-[0rem]'
+    >
+      <Logo />
+      <div class='pt-[3.62rem]'>
+        <span class='text-[6.25rem] font-medium text-tiffany lg:text-[12.5rem]'
+          >404</span
+        >
+      </div>
+      <div>
+        <span class='text-[1.78rem] font-semibold text-black lg:text-[3.56rem]'
+          >Page Not Found</span
+        >
+      </div>
+      <div class='max-w-[15rem] text-pretty pt-6 lg:max-w-[40.7rem]'>
+        <span class='text-[1rem] font-semibold text-black lg:text-[2rem]'
+          >Sorry, we couldn’t find the page you ‘re looking for</span
+        >
+      </div>
+      <div
+        class='absolute bottom-[8.5rem] flex underline-offset-4 hover:underline'
+      >
+        <a class='flex text-[2rem] font-semibold text-tiffany' href='/'
+          >Back to home <img src={ChevronIcon.src} alt='' /></a
+        >
+      </div>
+    </div>
+  </body>
+</html>
+<style is:global></style>

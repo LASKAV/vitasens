@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+:root {
+    --primary: #6a59ff;
+    --white: #ffffff;
+    --bg: #f5f5f5;
+}
+
+.swiper_checkup_container {
+    max-width: 68rem;
+    height: 41rem;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.swiper-wrapper > .swiper-slide.swiper_checkup_slide {
+    width: 25.7rem;
+    height: 36.25rem;
+    position: relative;
+    bottom: 0;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 1280px) {
+    .swiper_checkup_container {
+        max-width: 27rem !important;
+        height: 31rem !important;
+    }
+    .swiper-slide.swiper_checkup_slide {
+        width: 18.2rem !important;
+        height: 26rem !important;
+    }
+}
+
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+    display: none;
+}
+
+.swiper.swiper_checkup_container > .swiper-scrollbar.swiper-scrollbar-horizontal {
+    bottom: 0;
+    width: 150px;
+    height: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.swiper_checkup_slide.swiper-slide-active > div {
+    @apply hover:bg-vs-gray/40;
+}
+
+.swiper_checkup_slide.swiper-slide-active > div > div {
+    @apply block hover:opacity-100;
+}

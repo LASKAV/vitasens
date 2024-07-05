@@ -1,0 +1,55 @@
+---
+import { fetchAnalyseDataAndUnwrap } from '../lib/strapi';
+import fetchApi from '../lib/strapi';
+import type { Service } from '../types/Service';
+import SecondaryLayout from '../layouts/SecondaryLayout.astro';
+import PricesSlider from '../components/pricesSlider/pricesSlider';
+
+import Rect1 from '@/assets/images/prices-background-rect1.svg';
+import Rect2 from '@/assets/images/prices-background-rect2.svg';
+
+let services;
+let categories;
+
+try {
+  services = await fetchApi<Service[]>({
+    endpoint: 'services',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+    },
+  });
+} catch (e) {
+  console.error('err', e);
+}
+
+try {
+  categories = await fetchAnalyseDataAndUnwrap({
+    endpoint: 'analysis-super-categories',
+    wrappedByKey: 'data',
+    query: {
+      'sort[id]': 'asc',
+      'populate[AnalysisSubCategories][populate][0]': 'Analyses',
+      populate: 'Analyses',
+    },
+  });
+} catch (e) {
+  console.error('err', e);
+}
+---
+
+<SecondaryLayout title='Вартість'>
+  <PricesSlider
+    services={services}
+    categories={categories}
+    openUrlParam={Astro.url.searchParams.get('open') as string}
+    referrerUrl={Astro.url.href}
+    client:only='solid-js'
+  />
+  <img
+    class='absolute right-0 top-0 z-[-1] hidden xl:block'
+    src={Rect2.src}
+    alt=''
+  />
+  <img class='absolute bottom-0 hidden xl:block' src={Rect1.src} alt='' />
+</SecondaryLayout>
