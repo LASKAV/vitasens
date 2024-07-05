@@ -54,8 +54,8 @@ export default (props: DetailsProps) => {
         </Show>
         <div class='h-4'></div>
         <div class='static bottom-0 flex w-full items-center justify-between px-5 pb-5 md:absolute'>
-          <div class='bottom-[1.25rem] left-[1.25rem] font-bold'>
-            {props.details.info.position}
+          <div class='bottom-[1.25rem] left-[1.25rem] whitespace-pre font-bold'>
+            {props.details.info.position.replace(' ', '\n')}
           </div>
           <div class='relative bottom-[0] right-[0.93rem]'>
             <button
