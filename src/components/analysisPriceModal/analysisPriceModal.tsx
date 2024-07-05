@@ -1,4 +1,5 @@
 import LogoHighRes from '@/assets/images/logo-high-res.jpeg';
+import CloseModal from '@/assets/images/close-modal-icon.svg';
 import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory';
 import type { Analysis } from '@/types/Analysis';
 import { createEffect, For, Show } from 'solid-js';
@@ -53,6 +54,16 @@ export default (props: AnalysisPriceModalProps) => {
                   src={LogoHighRes.src}
                   alt=''
                 />
+                <div
+                  onClick={props.onClose}
+                  class='flex justify-end self-center lg:hidden'
+                >
+                  <img
+                    class='hover:cursor-pointer'
+                    src={CloseModal.src}
+                    alt=''
+                  />
+                </div>
               </div>
 
               <div class='flex w-full items-center justify-between rounded-[1rem] bg-gradient-to-r from-tiffany-dark to-[#DAF5F6] py-2 text-center text-[0.5rem] font-bold leading-4 lg:text-[0.75rem]'>

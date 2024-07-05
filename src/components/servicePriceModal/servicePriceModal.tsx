@@ -1,4 +1,5 @@
 import Logo from '@/components/logo/logo';
+import CloseModal from '@/assets/images/close-modal-icon.svg';
 import { createEffect, createSignal, For } from 'solid-js';
 import type { Service } from '@/types/Service.ts';
 import { ServiceType } from '@/enums/serviceType.enum.ts';
@@ -61,6 +62,16 @@ export default (props: ServicePriceModalProps) => {
                 </div>
                 <div class='hidden lg:block'>
                   <Logo />
+                </div>
+                <div
+                  onClick={props.onClose}
+                  class='flex justify-end self-center lg:hidden'
+                >
+                  <img
+                    class='hover:cursor-pointer'
+                    src={CloseModal.src}
+                    alt=''
+                  />
                 </div>
               </div>
               <div class='flex w-full items-center justify-between bg-gradient-to-r from-tiffany-darkest via-tiffany to-white px-4 py-2 font-bold'>

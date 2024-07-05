@@ -2,7 +2,7 @@ import CloseModal from '@/assets/images/close-modal-icon.svg';
 import Clock from '@/assets/images/clock-icon.svg';
 import Phone from '@/assets/images/phone-filled-tiffany-icon.svg';
 import Email from '@/assets/images/email-filled-tiffany-icon.svg';
-import Logo from '@/assets/images/logo.png';
+import Logo from '@/assets/images/logo-high-res.jpeg';
 import type { ContactUsModalProps } from '@/components/contactUsModal/contactUsModal.tsx';
 
 export default (props: ContactUsModalProps) => {
@@ -11,7 +11,7 @@ export default (props: ContactUsModalProps) => {
       <div class='grid grid-cols-2 grid-rows-2 gap-y-[3.5rem] px-[1rem] pb-[2.42rem] pt-[3.75rem] text-tiffany-light lg:grid-cols-3 lg:grid-rows-1 lg:gap-y-0'>
         <div class='select-none text-tiffany'>
           <div class='flex items-center gap-4'>
-            <div>
+            <div class='h-[2.5rem] w-[2.5rem]'>
               <img src={Logo.src} alt='Logo' />
             </div>
             <div class='text-2xl leading-normal'>VitaSens</div>
