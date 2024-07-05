@@ -46,7 +46,7 @@ export default (props: BookConsultationModalProps) => {
                   alt=''
                 />
               </div>
-              <div class='w-[50%] grow px-8 py-8'>
+              <div class='w-[50%] grow px-[2.25rem] pb-8 pt-[2.19rem]'>
                 <BookConsultation
                   isOpen={props.isOpen}
                   onClose={props.onClose}
