@@ -18,7 +18,11 @@ export default {
 			montserrat: ["Montserrat", "sans-serif"],
 			suave: ["Suave", "sans-serif"],
 		},
-		extend: {},
+		extend: {
+            gridTemplateColumns: {
+                'analyse': '1fr 2fr 6fr 1fr 2fr',
+            }
+        },
 	},
 	plugins: [],
 }

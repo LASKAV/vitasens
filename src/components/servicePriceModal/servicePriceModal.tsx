@@ -1,6 +1,6 @@
 import Logo from '@/components/logo/logo';
 import CloseModal from '@/assets/images/close-modal-icon.svg';
-import { createEffect, createSignal, For } from 'solid-js';
+import { createEffect, createSignal, For, Show } from 'solid-js';
 import type { Service } from '@/types/Service.ts';
 import { ServiceType } from '@/enums/serviceType.enum.ts';
 
@@ -80,7 +80,7 @@ export default (props: ServicePriceModalProps) => {
               </div>
               <div class='flex w-full flex-col'>
                 <For each={props.services}>
-                  {(service: Service) => (
+                  {(service: Service, index) => (
                     <>
                       <div class='flex w-full items-center justify-between px-6 text-tiffany-dark'>
                         <div>{service.name}</div>
@@ -102,7 +102,9 @@ export default (props: ServicePriceModalProps) => {
                           </button>
                         </div>
                       </div>
-                      <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
+                      <Show when={index() < props.services.length - 1}>
+                        <hr class='h-0.5 border-t-0 bg-tiffany-dark' />
+                      </Show>
                     </>
                   )}
                 </For>
