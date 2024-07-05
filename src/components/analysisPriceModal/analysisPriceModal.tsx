@@ -1,4 +1,5 @@
 import LogoHighRes from '@/assets/images/logo-high-res.jpeg';
+import CloseModal from '@/assets/images/close-modal-icon.svg';
 import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory';
 import type { Analysis } from '@/types/Analysis';
 import { createEffect, For, Show } from 'solid-js';
@@ -53,6 +54,16 @@ export default (props: AnalysisPriceModalProps) => {
                   src={LogoHighRes.src}
                   alt=''
                 />
+                <div
+                  onClick={props.onClose}
+                  class='flex justify-end self-center lg:hidden'
+                >
+                  <img
+                    class='hover:cursor-pointer'
+                    src={CloseModal.src}
+                    alt=''
+                  />
+                </div>
               </div>
 
               <div class='flex w-full items-center justify-between rounded-[1rem] bg-gradient-to-r from-tiffany-dark to-[#DAF5F6] py-2 text-center text-[0.5rem] font-bold leading-4 lg:text-[0.75rem]'>
@@ -94,19 +105,19 @@ export default (props: AnalysisPriceModalProps) => {
                                   ServiceType.Analysis
                                 );
                               }}
-                              class='flex w-full cursor-pointer justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'
+                              class='grid-cols-analyse grid w-full cursor-pointer justify-between gap-1 py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'
                             >
-                              <div class='grow'>{analyse.AnalysisCode}</div>
-                              <div class='grow-[2]'>
+                              <div class=''>{analyse.AnalysisCode}</div>
+                              <div class=''>
                                 {analyse.AnalysisTestTubeColor}
                               </div>
-                              <div class='w-[7.5rem] grow-[3] text-left font-normal'>
+                              <div class='text-left text-[0.75rem] font-normal lg:text-[1rem]'>
                                 {analyse.AnalysisTitle}
                               </div>
-                              <div class='grow-[2] text-[1rem]'>
+                              <div class='text-[0.75rem] lg:text-[1rem]'>
                                 {analyse.AnalysisEtaDays}
                               </div>
-                              <div class='grow text-[1rem]'>
+                              <div class='text-[0.75rem] lg:text-[1rem]'>
                                 {analyse.AnalysisPrice}
                               </div>
                             </div>
@@ -140,21 +151,19 @@ export default (props: AnalysisPriceModalProps) => {
                                         ServiceType.Analysis
                                       );
                                     }}
-                                    class='flex w-full cursor-pointer justify-between py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'
+                                    class='grid-cols-analyse grid w-full cursor-pointer justify-between gap-1 py-6 text-center text-[0.5rem] font-bold leading-4 text-tiffany-dark lg:text-[1rem]'
                                   >
-                                    <div class='grow'>
-                                      {analysis.AnalysisCode}
-                                    </div>
-                                    <div class='grow-[2]'>
+                                    <div class=''>{analysis.AnalysisCode}</div>
+                                    <div class=''>
                                       {analysis.AnalysisTestTubeColor}
                                     </div>
-                                    <div class='w-[7.5rem] grow-[3] text-left font-normal'>
+                                    <div class='text-left text-[0.75rem] font-normal lg:text-[1rem]'>
                                       {analysis.AnalysisTitle}
                                     </div>
-                                    <div class='grow-[2] text-[1rem]'>
+                                    <div class='text-[0.75rem] lg:text-[1rem]'>
                                       {analysis.AnalysisEtaDays}
                                     </div>
-                                    <div class='grow text-[1rem]'>
+                                    <div class='text-[0.75rem] lg:text-[1rem]'>
                                       {analysis.AnalysisPrice}
                                     </div>
                                   </div>
