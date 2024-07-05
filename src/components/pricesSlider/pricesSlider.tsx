@@ -118,7 +118,7 @@ export default (props: ServiceSliderProps) => {
           </For>
         </Swiper>
       </div>
-      <div class='hidden pt-[5rem] drop-shadow-[10px_10px_0px_rgba(70,208,208,1)] md:flex md:items-stretch md:justify-center md:gap-[9rem]'>
+      <div class='hidden pb-[9rem] pt-[5rem] drop-shadow-[10px_10px_0px_rgba(70,208,208,1)] md:flex md:items-stretch md:justify-center md:gap-[9rem]'>
         <For each={pricesData}>
           {(priceData: PricesInfoType) => (
             <PricesInfoCard
