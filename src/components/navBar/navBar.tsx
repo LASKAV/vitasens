@@ -94,7 +94,9 @@ export default (props: NavProps) => {
       <div class='sticky top-0 z-[9999] select-none bg-white text-tiffany'>
         <div class='container mx-auto flex justify-between'>
           <div class='w-[19.5rem] pl-5 xl:p-0'>
-            <Logo />
+            <a href='/'>
+              <Logo />
+            </a>
           </div>
           <div class='hidden w-full items-center xl:flex'>
             <div class='flex w-full justify-center gap-[2.5rem]'>

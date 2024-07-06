@@ -111,7 +111,7 @@ export default (props: AnalysisPriceModalProps) => {
                               <div class=''>
                                 {analyse.AnalysisTestTubeColor}
                               </div>
-                              <div class='text-left text-[0.75rem] font-normal lg:text-[1rem]'>
+                              <div class='text-left text-[0.5rem] font-normal lg:text-[1rem]'>
                                 {analyse.AnalysisTitle}
                               </div>
                               <div class='text-[0.75rem] lg:text-[1rem]'>
@@ -157,7 +157,7 @@ export default (props: AnalysisPriceModalProps) => {
                                     <div class=''>
                                       {analysis.AnalysisTestTubeColor}
                                     </div>
-                                    <div class='text-left text-[0.75rem] font-normal lg:text-[1rem]'>
+                                    <div class='text-left text-[0.5rem] font-normal lg:text-[1rem]'>
                                       {analysis.AnalysisTitle}
                                     </div>
                                     <div class='text-[0.75rem] lg:text-[1rem]'>

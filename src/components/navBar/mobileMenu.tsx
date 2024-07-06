@@ -1,6 +1,6 @@
 import type { NavBarItem } from '@/components/navBar/navBar.tsx';
 import type { NavBarSubmenuItem } from '@/components/navBar/navBar.tsx';
-import { createEffect, For, Show } from 'solid-js';
+import { createEffect, createSignal, For, Show } from 'solid-js';
 
 type MobileMenuProps = {
   isOpen: boolean;
@@ -9,6 +9,12 @@ type MobileMenuProps = {
 };
 
 export default (props: MobileMenuProps) => {
+  const [openMenu, setOpenMenu] = createSignal();
+
+  const handleMenuClick = (index: number) => {
+    setOpenMenu(openMenu() === index ? null : index);
+  };
+
   createEffect(() => {
     if (props.isOpen) {
       document.body.style.overflow = 'hidden';
@@ -19,17 +25,25 @@ export default (props: MobileMenuProps) => {
   return (
     <>
       {props.isOpen && (
-        <div class='fixed left-0 top-0 z-[9998] h-full w-full items-center justify-center bg-white/90 pt-[8.5rem] lg:flex'>
+        <div class='fixed left-0 top-0 z-[9998] h-full w-full items-center justify-center bg-white pt-[8.5rem] lg:flex'>
           <div class='h-full overflow-auto pl-[2.5rem]'>
             <For each={props.menuItems}>
-              {(menuItem: NavBarItem) => (
+              {(menuItem: NavBarItem, index) => (
                 <>
-                  <a onClick={menuItem.action} href={menuItem.href}>
+                  <a
+                    onClick={() => {
+                      if (menuItem.action) {
+                        menuItem.action();
+                      }
+                      handleMenuClick(index());
+                    }}
+                    href={menuItem.href}
+                  >
                     <div class='pb-[1.25rem] pt-[1.25rem] text-[1.5rem] text-tiffany-light'>
                       {menuItem.title}
                     </div>
                   </a>
-                  <Show when={menuItem.submenu}>
+                  <Show when={menuItem.submenu && openMenu() === index()}>
                     <div class='pl-5'>
                       <For each={menuItem.submenu}>
                         {(submenuItem: NavBarSubmenuItem) => (
