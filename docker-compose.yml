@@ -1,0 +1,16 @@
+services:
+  frontend:
+    container_name: vs
+    build: .
+    restart: unless-stopped
+    ports:
+      - "4321:4321"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vs-cms.rule=Host(`vitasens.com.ua`)
+      - traefik.http.routers.vs-cms.tls.certresolver=httple
+
+networks:
+  default:
+    name: traefik
+    external: true
