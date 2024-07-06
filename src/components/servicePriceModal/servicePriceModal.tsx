@@ -82,7 +82,7 @@ export default (props: ServicePriceModalProps) => {
                 <For each={props.services}>
                   {(service: Service, index) => (
                     <>
-                      <div class='flex w-full items-center justify-between px-6 text-tiffany-dark'>
+                      <div class='flex w-full items-center justify-between px-0 text-tiffany-dark lg:px-6'>
                         <div>{service.name}</div>
                         <div class='flex min-w-[9rem] items-center justify-end'>
                           <div class='px-3 font-semibold'>
