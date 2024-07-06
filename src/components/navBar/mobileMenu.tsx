@@ -39,8 +39,20 @@ export default (props: MobileMenuProps) => {
                     }}
                     href={menuItem.href}
                   >
-                    <div class='pb-[1.25rem] pt-[1.25rem] text-[1.5rem] text-tiffany-light'>
+                    <div class='flex items-center justify-start gap-2 pb-[1.25rem] pt-[1.25rem] text-[1.5rem] text-tiffany-light'>
                       {menuItem.title}
+                      <Show when={menuItem.submenu}>
+                        <svg
+                          class={`chevron-icon inline fill-tiffany-light ${openMenu() === index() ? 'rotate-[180deg]' : ''}`}
+                          xmlns='http://www.w3.org/2000/svg'
+                          width='20'
+                          height='12'
+                          viewBox='0 0 12 8'
+                          fill='none'
+                        >
+                          <path d='M1.41 0L6 4.58L10.59 0L12 1.41L6 7.41L0 1.41L1.41 0Z' />
+                        </svg>
+                      </Show>
                     </div>
                   </a>
                   <Show when={menuItem.submenu && openMenu() === index()}>
@@ -48,7 +60,7 @@ export default (props: MobileMenuProps) => {
                       <For each={menuItem.submenu}>
                         {(submenuItem: NavBarSubmenuItem) => (
                           <a href={submenuItem.href}>
-                            <div class='pt-[1.88rem] text-[1.25rem] text-tiffany-light'>
+                            <div class='py-[0.94rem] text-[1.25rem] text-tiffany-light'>
                               {submenuItem.title}
                             </div>
                           </a>
