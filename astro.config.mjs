@@ -8,7 +8,7 @@ import { loadEnv } from 'vite';
 const { ADAPTER } = loadEnv(process.env.ADAPTER, process.cwd(), '');
 
 const ssrAdapter =
-    ADAPTER === 'node' ? node({ mode: 'standalone' }) : vercel({});
+  ADAPTER === 'node' ? node({ mode: 'standalone' }) : vercel({});
 
 // https://astro.build/config
 export default defineConfig({
