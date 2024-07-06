@@ -3,8 +3,12 @@ import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import vercel from "@astrojs/vercel/serverless";
 import node from "@astrojs/node";
+import { loadEnv } from "vite";
 
-const ssrAdapter = process.env.ADAPTER === 'node' ? node({mode: "standalone"}) : vercel({})
+
+const { ADAPTER } = loadEnv(process.env.ADAPTER, process.cwd(), "");
+
+const ssrAdapter = ADAPTER === 'node' ? node({mode: "standalone"}) : vercel({})
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,5 +18,5 @@ export default defineConfig({
   devToolbar: {
     enabled: false
   },
-  adapter: ssrAdapter,
+  adapter: node({mode: "standalone"}),
 });
