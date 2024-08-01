@@ -4,8 +4,9 @@ import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsulta
 import HeroBgElementIcon from '@/assets/images/hero-bg-element.png';
 import CeoOfClinicImage from '@/assets/images/ceo.png';
 import './hero.css';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import { gsap } from 'gsap/dist/gsap';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { createSignal } from 'solid-js';
 import { ServiceType } from '@/enums/serviceType.enum.ts';
 
@@ -14,7 +15,9 @@ type HeroProps = {
   service?: string;
 };
 
-gsap.registerPlugin(ScrollTrigger);
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const gsapParallax = (element: HTMLDivElement) => {
   let tl = gsap.timeline({

@@ -19,11 +19,7 @@ try {
 ---
 
 <MainLayout title='Vita Sens'>
-  <Hero
-    serviceId={appointment?.id}
-    service={appointment?.name}
-    client:only='solid-js'
-  />
+  <Hero serviceId={appointment?.id} service={appointment?.name} client:load />
   <About />
   <Services />
 </MainLayout>
