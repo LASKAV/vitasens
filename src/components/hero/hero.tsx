@@ -2,7 +2,7 @@ import ActionButton from '../actionButton/actionButton';
 import ActionButtonMinor from '../actionButtonMinor/actionButtonMinor';
 import BookConsultationFlow from '@/components/bookConsultationFlow/bookConsultationFlow';
 import HeroBgElementIcon from '@/assets/images/hero-bg-element.png';
-import CeoOfClinicImage from '@/assets/images/ceo.png';
+import CeoOfClinicImage from '@/assets/images/ceo.webp';
 import './hero.css';
 // import { gsap } from 'gsap/dist/gsap';
 import gsap from 'gsap';
