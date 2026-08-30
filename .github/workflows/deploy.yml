@@ -1,0 +1,67 @@
+name: Deploy to production
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+# Never run two deploys at once; queue them instead of cancelling,
+# so a half-finished docker build is not interrupted.
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          echo "${{ secrets.DEPLOY_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Deploy
+        run: |
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=yes \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            'bash -euo pipefail -s' <<'REMOTE'
+          cd "${{ secrets.DEPLOY_PATH }}"
+
+          # Someone may have edited files straight on the server, as happened
+          # before this pipeline existed. Never silently discard that work:
+          # save it as a patch first, then report it in the job output.
+          if [ -n "$(git status --porcelain)" ]; then
+            PATCH="$HOME/vs-local-changes-$(date +%Y%m%d-%H%M%S).patch"
+            git diff HEAD > "$PATCH"
+            echo "::warning::Uncommitted changes found on the server, saved to $PATCH"
+            git status --short
+          fi
+
+          git fetch --prune origin
+          git reset --hard origin/master
+
+          docker compose up -d --build
+          docker image prune -f
+          REMOTE
+
+      - name: Health check
+        run: |
+          ssh -i ~/.ssh/deploy_key \
+            "${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}" \
+            'bash -euo pipefail -s' <<'REMOTE'
+          for i in $(seq 1 20); do
+            if curl -fsS -o /dev/null http://127.0.0.1:4321/; then
+              echo "Site is up after ${i} attempt(s)."
+              docker ps --filter name=vs --format 'table {{.Names}}\t{{.Status}}'
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Site did not respond on port 4321 within 60s."
+          docker compose -f "${{ secrets.DEPLOY_PATH }}/docker-compose.yml" logs --tail 50 frontend
+          exit 1
+          REMOTE
