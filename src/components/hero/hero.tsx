@@ -95,7 +95,7 @@ export default (props: HeroProps) => {
         </div>
         <div class='max-w-[43.56rem] text-pretty py-[2.19rem]'>
           <span class='text-[1.25rem] font-medium italic leading-[1.52419rem] tracking-[0.15rem] text-[#444]'>
-            Клініка VitaSens - коли все в одному місці і без черг. Аналізи, УЗД
+            Медичний центр VitaSens - коли все в одному місці і без черг. Аналізи, УЗД
             діагностика, консультація лікарів, а також - спеціально розроблені
             чек-апи для усіх систем організму.
           </span>
