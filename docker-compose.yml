@@ -5,6 +5,11 @@ services:
     restart: unless-stopped
     ports:
       - "4321:4321"
+    environment:
+      # Server-side rendering talks to Strapi over the shared docker network.
+      # Going through the public domain would route back into the reverse proxy
+      # that is waiting on this render, which deadlocks both containers.
+      - STRAPI_INTERNAL_URL=http://strapi:1337
     labels:
       - traefik.enable=true
       - traefik.http.routers.vs.rule=Host(`vitasens.com.ua`)
