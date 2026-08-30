@@ -2,7 +2,7 @@ import CloseModal from '@/assets/images/close-modal-icon.svg';
 import Clock from '@/assets/images/clock-icon.svg';
 import Phone from '@/assets/images/phone-filled-tiffany-icon.svg';
 import Email from '@/assets/images/email-filled-tiffany-icon.svg';
-import Logo from '@/assets/images/logo-high-res.jpeg';
+import Logo from '@/assets/images/logo-icon.png';
 import type { ContactUsModalProps } from '@/components/contactUsModal/contactUsModal.tsx';
 
 export default (props: ContactUsModalProps) => {

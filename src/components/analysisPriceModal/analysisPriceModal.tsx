@@ -1,4 +1,4 @@
-import LogoHighRes from '@/assets/images/logo-high-res.jpeg';
+import LogoHighRes from '@/assets/images/logo-icon.png';
 import CloseModal from '@/assets/images/close-modal-icon.svg';
 import type { AnalysisSuperCategory } from '@/types/AnalysisSuperCategory';
 import type { Analysis } from '@/types/Analysis';
